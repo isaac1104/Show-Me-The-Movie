@@ -1,19 +1,20 @@
 const express = require('express');
 const passport = require('passport');
+const mongoose = require('mongoose');
 const keys = require('./config/keys');
 const app = express();
 const path = require('path');
 const PORT = process.env.PORT || 5000;
 
 require('./models/User');
-require('/utils/passport');
+require('./utils/passport');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(keys.mongoURI);
 
 app.use(express.json());
 app.use(passport.initialize());
-app.user(passport.session());
+app.use(passport.session());
 
 if (['production', 'ci'].includes(process.env.NODE_ENV)) {
   app.use(express.static('client/build'));
