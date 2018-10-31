@@ -4,10 +4,6 @@ import { connect } from 'react-redux';
 import { fetchMovieData } from '../actions';
 
 class Search extends Component {
-  componentDidMount() {
-    this.props.fetchMovieData(this.props.match.params.title);
-  };
-
   componentDidUpdate(prevProps) {
     const { fetchMovieData, match: { params: { title } } } = this.props;
     if (prevProps.match.params.title !== title) {
@@ -16,7 +12,7 @@ class Search extends Component {
   };
 
   render() {
-    console.log(this.props.match.params.title);
+    console.log(this.props.movie_data);
     return (
       <div>
         <h1>Search</h1>

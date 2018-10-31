@@ -30,6 +30,7 @@ if (['production', 'ci'].includes(process.env.NODE_ENV)) {
 }
 
 require('./routes/auth')(app);
+require('./routes/movie_data_api')(app);
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'client', 'public', 'index.html'));
