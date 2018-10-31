@@ -6,8 +6,7 @@ import { withRouter } from 'react-router-dom';
 class Form extends Component {
   formSubmit = ({ title }) => {
     const { history } = this.props;
-    console.log(title);
-    // history.push(`/search/${title}`);
+    history.push(`/search/${title}`);
   }
 
   render() {
