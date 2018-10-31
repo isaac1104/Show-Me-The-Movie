@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchCurrentUser } from '../actions';
 
-const Home = () => {
-  return (
-    <div>
-      <h1>Welcome, User!</h1>
-    </div>
-  );
+class Home extends Component {
+  componentDidMount() {
+    this.props.fetchCurrentUser();
+  };
+
+  render() {
+    console.log(this.props.current_user);
+    return (
+      <div>
+        <h1>Welcome, {this.props.current_user.data.username || 'Guest'}</h1>
+      </div>
+    );
+  };
 };
 
-export default Home;
+function mapStateToProps({ current_user }) {
+  return { current_user };
+};
+
+export default connect(mapStateToProps, { fetchCurrentUser })(Home);
