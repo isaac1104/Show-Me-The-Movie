@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Row } from 'antd';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import SearchForm from '../components/SearchForm/SearchForm';
 import MovieDetails from '../components/MovieDetails';
-import { connect } from 'react-redux';
 import { fetchMovieData, resetMovieSearch } from '../actions';
 
 class SearchResults extends Component {
@@ -23,6 +24,14 @@ class SearchResults extends Component {
 
   renderResults() {
     const { data: { results } } = this.props.movie_data;
+    if (results && results.length === 0) {
+      return <Redirect to='/notfound' />;
+    }
+
+    if (!results) {
+      return <Redirect to='/notfound' />;
+    }
+
     if (results) {
       return results.map(movie => {
         return (
@@ -40,7 +49,7 @@ class SearchResults extends Component {
   }
 
   render() {
-    console.log(this.props.movie_data.data);
+    console.log(this.props.movie_data);
     return (
       <div>
         <SearchForm />
