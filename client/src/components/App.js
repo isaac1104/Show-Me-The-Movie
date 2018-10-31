@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Home from '../pages/Home';
+import Landing from '../pages/Landing';
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <h1>Welcome to React/Redux Boilerplate with Express</h1>
-      </div>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path='/' component={Landing} />
+          <Route exact path='/home' component={Home} />
+        </Switch>
+      </BrowserRouter>
     );
   }
 }
