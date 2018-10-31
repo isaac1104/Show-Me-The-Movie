@@ -7,27 +7,37 @@ const { Sider } = Layout;
 class Sidebar extends Component {
   render() {
     const { data } = this.props.current_user;
+    const styles = {
+      logout: {
+        position: 'absolute',
+        bottom: 0
+      }
+    };
+
     return (
       <Fragment>
         {data ? (
-          <Sider
-            breakpoint='lg'
-            collapsedWidth='0'
-            >
-              <div className="logo" />
-              <Menu mode="inline" theme='dark' defaultSelectedKeys={['0']}>
-                <Menu.Item key="0">
-                  <NavLink to="/home">
-                  <Icon type="home" />
+          <Sider breakpoint='lg' collapsedWidth='0'>
+            <div className="logo"/>
+            <Menu mode="inline" theme='dark' defaultSelectedKeys={['0']}>
+              <Menu.Item key="0">
+                <NavLink to="/home">
+                  <Icon type="home"/>
                   <span className="nav-text">Home</span>
                 </NavLink>
               </Menu.Item>
               <Menu.Item key="1">
                 <NavLink to="/search">
-                <Icon type="search" />
-                <span className="nav-text">Search</span>
-              </NavLink>
-            </Menu.Item>
+                  <Icon type="search"/>
+                  <span className="nav-text">Search</span>
+                </NavLink>
+              </Menu.Item>
+              <Menu.Item key="2" style={styles.logout}>
+                <a href="/api/signout">
+                  <Icon type="logout"/>
+                  <span className="nav-text">Logout</span>
+                </a>
+              </Menu.Item>
             </Menu>
           </Sider>
         ) : null}
@@ -36,8 +46,8 @@ class Sidebar extends Component {
   }
 };
 
-function mapStateToProps({ current_user }) {
-  return { current_user };
+function mapStateToProps({current_user}) {
+  return {current_user};
 };
 
 export default connect(mapStateToProps, null)(Sidebar);
