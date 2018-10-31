@@ -48,10 +48,11 @@ class SearchResults extends Component {
         return (
           <MovieCard
             key={movie.id}
+            keyword={this.props.match.params.title}
+            id={movie.id}
             title={movie.title}
             release_date={movie.release_date}
             poster={movie.poster_path}
-            id={movie.id}
            />
         );
       });

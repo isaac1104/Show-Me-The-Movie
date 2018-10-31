@@ -40,9 +40,9 @@ class App extends Component {
                 }}
               />
               <Route exact path='/home' component={requireAuth(Home)} />
-              <Route exact path='/search' component={requireAuth(Search)} />
+              <Route exact path='/search/:title/:id' component={requireAuth(MovieDetail)} />
               <Route exact path='/search/:title' component={requireAuth(SearchResults)} />
-              <Route exact path='/movie/:id' component={requireAuth(MovieDetail)} />
+              <Route exact path='/search' component={requireAuth(Search)} />
               <Route exact path='/notfound' component={requireAuth(NotFound)} />
             </Switch>
           </ContentLayout>
