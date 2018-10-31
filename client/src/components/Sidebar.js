@@ -16,8 +16,8 @@ class Sidebar extends Component {
             >
               <div className="logo" />
               <Menu mode="inline" theme='dark' defaultSelectedKeys={['0']}>
-                <Menu.Item key="1">
-                  <NavLink to="/">
+                <Menu.Item key="0">
+                  <NavLink to="/home">
                   <Icon type="home" />
                   <span className="nav-text">Home</span>
                 </NavLink>
