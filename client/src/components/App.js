@@ -9,7 +9,6 @@ import requireAuth from './requireAuth';
 import Home from '../pages/Home';
 import Landing from '../pages/Landing';
 import Search from '../pages/Search';
-import SearchResults from '../pages/SearchResults';
 
 class App extends Component {
   componentDidMount() {
@@ -39,7 +38,7 @@ class App extends Component {
               />
               <Route exact path='/home' component={requireAuth(Home)} />
               <Route exact path='/search' component={requireAuth(Search)} />
-              <Route exact path='/search/:title' component={requireAuth(SearchResults)} />
+              <Route exact path='/search/:title' component={requireAuth(Search)} />
             </Switch>
           </ContentLayout>
         </Layout>
