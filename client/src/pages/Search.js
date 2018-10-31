@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Row } from 'antd';
 import SearchForm from '../components/SearchForm/SearchForm';
 import MovieDetails from '../components/MovieDetails';
 import { connect } from 'react-redux';
@@ -19,8 +20,15 @@ class Search extends Component {
   renderResults() {
     const { data: { results } } = this.props.movie_data;
     if (results) {
-      return results.map(result => {
-        return <MovieDetails key={result.id} title={result.title} release_date={result.release_date} />
+      return results.map(movie => {
+        return (
+          <MovieDetails
+            key={movie.id}
+            title={movie.title}
+            release_date={movie.release_date}
+            poster={movie.poster_path}
+           />
+        );
       });
     } else {
       return;
@@ -33,7 +41,9 @@ class Search extends Component {
       <div>
         <h1>Search</h1>
         <SearchForm />
-        {this.renderResults()}
+        <Row type='flex'>
+          {this.renderResults()}
+        </Row>
       </div>
     );
   }
