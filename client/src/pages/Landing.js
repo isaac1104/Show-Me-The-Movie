@@ -8,9 +8,6 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
-  },
-  text: {
-    color: '#ffffff'
   }
 };
 
@@ -18,7 +15,7 @@ const Home = () => {
   return (
     <div style={styles.container}>
       <div>
-        <h1 style={styles.text}>Welcome to SMTM</h1>
+        <h1>Welcome to SMTM</h1>
         <GoogleButton />
       </div>
     </div>
