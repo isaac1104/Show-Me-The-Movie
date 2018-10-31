@@ -4,16 +4,18 @@ import { Layout } from 'antd';
 const { Content } = Layout;
 const style = {
   layout: {
-    padding: '0 24px',
+    padding: '0 12px',
     alignItems: 'center',
     backgroundColor: '#f0f2f5',
-    height: '100vh'
+    height: '100vh',
+    overflow: 'hidden'
   },
   content: {
     backgroundColor: '#ffffff',
     padding: 24,
     margin: 0,
-    width: '100%'
+    width: '100%',
+    overflowY: 'scroll'
   }
 };
 
