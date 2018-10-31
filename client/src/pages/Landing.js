@@ -2,7 +2,6 @@ import React from 'react';
 
 const styles = {
   container: {
-    backgroundColor: '#36393f',
     height: '100vh',
     overflow: 'hidden',
     display: 'flex',
