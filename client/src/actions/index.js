@@ -27,7 +27,22 @@ export const searchForMovies = title => async dispatch => {
   }
 };
 
-export const resetMovieSearch = () => ({
-  type: types.RESET_MOVIE_SEARCH,
+export const fetchMovieData = id => async dispatch => {
+  dispatch({ type: types.REQUEST_MOVIE_DATA, payload: true });
+  try {
+    const request = await axios.get('/api/movie_data', {
+      params: {
+        id
+      }
+    });
+    const { data } = request;
+    dispatch({ type: types.RECEIVE_MOVIE_DATA, payload: data });
+  } catch (e) {
+    dispatch({ type: types.REJECT_MOVIE_DATA, payload: e });
+  }
+};
+
+export const resetMovieData = () => ({
+  type: types.RESET_MOVIE_DATA,
   payload: ''
 });

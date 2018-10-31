@@ -11,4 +11,14 @@ module.exports = app => {
       res.send(e);
     }
   });
+
+  app.get('/api/movie_data', async (req, res) => {
+    try {
+      const request = await axios.get(`https://api.themoviedb.org/3/movie/${req.query.id}?api_key=${keys.tmdbApiKey}&language=en-US`);
+      const { data } = request;
+      res.send(data);
+    } catch (e) {
+      res.send(e);
+    }
+  });
 };

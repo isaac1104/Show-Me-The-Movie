@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import SearchForm from '../components/SearchForm/SearchForm';
 import MovieCard from '../components/MovieCard';
-import { searchForMovies, resetMovieSearch } from '../actions';
+import { searchForMovies, resetMovieData } from '../actions';
 
 class SearchResults extends Component {
   componentDidMount() {
@@ -19,7 +19,7 @@ class SearchResults extends Component {
   };
 
   componentWillUnmount() {
-    this.props.resetMovieSearch();
+    this.props.resetMovieData();
   };
 
   renderResults() {
@@ -76,4 +76,4 @@ function mapStateToProps({ movie_data }) {
   return { movie_data };
 };
 
-export default connect(mapStateToProps, { searchForMovies, resetMovieSearch })(SearchResults);
+export default connect(mapStateToProps, { searchForMovies, resetMovieData })(SearchResults);
