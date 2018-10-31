@@ -3,7 +3,7 @@ import { Row } from 'antd';
 import SearchForm from '../components/SearchForm/SearchForm';
 import MovieDetails from '../components/MovieDetails';
 import { connect } from 'react-redux';
-import { fetchMovieData } from '../actions';
+import { fetchMovieData, resetMovieSearch } from '../actions';
 
 class Search extends Component {
   componentDidMount() {
@@ -15,6 +15,10 @@ class Search extends Component {
     if (prevProps.match.params.title !== title) {
       fetchMovieData(title);
     }
+  };
+
+  componentWillUnmount() {
+    this.props.resetMovieSearch();
   };
 
   renderResults() {
@@ -52,4 +56,4 @@ function mapStateToProps({ movie_data }) {
   return { movie_data };
 };
 
-export default connect(mapStateToProps, { fetchMovieData })(Search);
+export default connect(mapStateToProps, { fetchMovieData, resetMovieSearch })(Search);

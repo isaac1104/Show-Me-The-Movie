@@ -1,4 +1,4 @@
-import { REQUEST_MOVIE_DATA, RECEIVE_MOVIE_DATA, REJECT_MOVIE_DATA } from '../actions/types';
+import { REQUEST_MOVIE_DATA, RECEIVE_MOVIE_DATA, REJECT_MOVIE_DATA, RESET_MOVIE_SEARCH } from '../actions/types';
 
 const INITIAL_STATE = {
   data: '',
@@ -26,7 +26,9 @@ const movieDataReducer = (state = INITIAL_STATE, action) => {
         data: '',
         isFetching: false,
         error: action.payload
-      }
+      };
+    case RESET_MOVIE_SEARCH:
+      return INITIAL_STATE;
     default:
       return state;
   }

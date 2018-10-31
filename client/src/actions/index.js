@@ -26,3 +26,8 @@ export const fetchMovieData = title => async dispatch => {
     dispatch({ type: types.REJECT_MOVIE_DATA, payload: e });
   }
 };
+
+export const resetMovieSearch = () => ({
+  type: types.RESET_MOVIE_SEARCH,
+  payload: ''
+});
