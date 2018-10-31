@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row } from 'antd';
+import { Icon, Row, Spin } from 'antd';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import SearchForm from '../components/SearchForm/SearchForm';
@@ -23,7 +23,22 @@ class SearchResults extends Component {
   };
 
   renderResults() {
-    const { data: { results } } = this.props.movie_data;
+    const { isFetching, data: { results } } = this.props.movie_data;
+    if (isFetching) {
+      return (
+        <Spin
+          size='large'
+          style={{ margin: 'auto', marginTop: '30px' }}
+          indicator={
+            <Icon
+              type='loading'
+              style={{ fontSize: '150px' }}
+            />
+          }
+        />
+      )
+    }
+
     if (results && results.length === 0) {
       return <Redirect to='/notfound' />;
     }
