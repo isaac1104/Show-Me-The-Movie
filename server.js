@@ -1,19 +1,29 @@
 const express = require('express');
 const passport = require('passport');
+const keys = require('./config/keys');
 const app = express();
 const path = require('path');
 const PORT = process.env.PORT || 5000;
 
-app.use(express.static('client/public'));
+require('./models/User');
+require('/utils/passport');
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.resolve(__dirname, 'client', 'build')));
+mongoose.Promise = global.Promise;
+mongoose.connect(keys.mongoURI);
+
+app.use(express.json());
+app.use(passport.initialize());
+app.user(passport.session());
+
+if (['production', 'ci'].includes(process.env.NODE_ENV)) {
+  app.use(express.static('client/build'));
+  const path = require('path');
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    res.sendFile(path.resolve('client', 'build', 'index.html'));
   });
 }
 
-require('./routes/test_route')(app);
+require('./routes/auth')(app);
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'client', 'public', 'index.html'));
