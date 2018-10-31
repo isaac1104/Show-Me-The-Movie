@@ -3,7 +3,7 @@ import { Icon, Row, Spin } from 'antd';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import SearchForm from '../components/SearchForm/SearchForm';
-import MovieDetails from '../components/MovieDetails';
+import MovieCard from '../components/MovieCard';
 import { fetchMovieData, resetMovieSearch } from '../actions';
 
 class SearchResults extends Component {
@@ -46,11 +46,12 @@ class SearchResults extends Component {
     if (results) {
       return results.map(movie => {
         return (
-          <MovieDetails
+          <MovieCard
             key={movie.id}
             title={movie.title}
             release_date={movie.release_date}
             poster={movie.poster_path}
+            id={movie.id}
            />
         );
       });
@@ -60,7 +61,6 @@ class SearchResults extends Component {
   }
 
   render() {
-    console.log(this.props.movie_data);
     return (
       <div>
         <SearchForm />

@@ -6,6 +6,7 @@ import { fetchCurrentUser } from '../actions';
 import ContentLayout from './Layout/ContentLayout';
 import Sidebar from './Sidebar';
 import requireAuth from './requireAuth';
+import MovieDetail from './MovieDetail';
 import Home from '../pages/Home';
 import Landing from '../pages/Landing';
 import Search from '../pages/Search';
@@ -41,6 +42,7 @@ class App extends Component {
               <Route exact path='/home' component={requireAuth(Home)} />
               <Route exact path='/search' component={requireAuth(Search)} />
               <Route exact path='/search/:title' component={requireAuth(SearchResults)} />
+              <Route exact path='/movie/:id' component={requireAuth(MovieDetail)} />
               <Route exact path='/notfound' component={requireAuth(NotFound)} />
             </Switch>
           </ContentLayout>
