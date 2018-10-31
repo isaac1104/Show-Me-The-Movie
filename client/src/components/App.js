@@ -8,6 +8,7 @@ import Sidebar from './Sidebar';
 import requireAuth from './requireAuth';
 import Home from '../pages/Home';
 import Landing from '../pages/Landing';
+import Search from '../pages/Search';
 
 class App extends Component {
   componentDidMount() {
@@ -36,6 +37,7 @@ class App extends Component {
                 }}
               />
               <Route exact path='/home' component={requireAuth(Home)} />
+              <Route exact path='/search' component={requireAuth(Search)} />
             </Switch>
           </ContentLayout>
         </Layout>
