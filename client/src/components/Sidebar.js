@@ -16,7 +16,11 @@ class Sidebar extends Component {
     }
 
     return (
-      <Sider style={style.sidebar}>
+      <Sider
+        breakpoint='lg'
+        collapsedWidth='0'
+        style={style.sidebar}
+        >
         <div className="logo" />
         <Menu mode="inline" theme='dark' defaultSelectedKeys={['0']}>
           <Menu.Item key="1">
