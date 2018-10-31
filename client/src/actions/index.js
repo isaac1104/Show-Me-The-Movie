@@ -1,13 +1,28 @@
 import axios from 'axios';
-import { REQUEST_AUTH, AUTH_USER, AUTH_ERROR } from './types';
+import * as types from './types';
 
 export const fetchCurrentUser = () => async dispatch => {
-  dispatch({ type: REQUEST_AUTH, payload: true });
+  dispatch({ type: types.REQUEST_AUTH, payload: true });
   try {
     const request = await axios.get('/api/current_user');
     const { data } = request;
-    dispatch({ type: AUTH_USER, payload: data });
+    dispatch({ type: types.AUTH_USER, payload: data });
   } catch (e) {
-    dispatch({ type: AUTH_ERROR, payload: 'Invalid Login Credentials!' });
+    dispatch({ type: types.AUTH_ERROR, payload: 'Invalid Login Credentials!' });
+  }
+};
+
+export const fetchMovieData = title => async dispatch => {
+  dispatch({ type: types.REQUEST_MOVIE_DATA, payload: true });
+  try {
+    const request = await axios.get('/api/movie_data', {
+      params: {
+        title
+      }
+    });
+    const { data } = request;
+    dispatch({ type: types.RECEIVE_MOVIE_DATA, payload: data });
+  } catch (e) {
+    dispatch({ type: types.REJECT_MOVIE_DATA, payload: e });
   }
 };

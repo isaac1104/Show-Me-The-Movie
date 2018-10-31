@@ -1,3 +1,6 @@
 export const REQUEST_AUTH = 'REQUEST_AUTH';
 export const AUTH_USER = 'AUTH_USER';
 export const AUTH_ERROR = 'AUTH_ERROR';
+export const REQUEST_MOVIE_DATA = 'REQUEST_MOVIE_DATA';
+export const RECEIVE_MOVIE_DATA = 'RECEIVE_MOVIE_DATA';
+export const REJECT_MOVIE_DATA = 'REJECT_MOVIE_DATA';
