@@ -12,7 +12,7 @@ export const fetchCurrentUser = () => async dispatch => {
   }
 };
 
-export const fetchMovieData = title => async dispatch => {
+export const searchForMovies = title => async dispatch => {
   dispatch({ type: types.REQUEST_MOVIE_DATA, payload: true });
   try {
     const request = await axios.get('/api/movie_search', {

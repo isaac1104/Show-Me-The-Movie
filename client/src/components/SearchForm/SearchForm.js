@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { fetchMovieData } from '../../actions';
+import { searchForMovies } from '../../actions';
 
 class Form extends Component {
   formSubmit = ({ title }) => {
@@ -33,4 +33,4 @@ function validate(value) {
   return errors;
 }
 
-export default compose(withRouter, reduxForm({ validate, form: 'title' }), connect(null, { fetchMovieData }))(Form);
+export default compose(withRouter, reduxForm({ validate, form: 'title' }), connect(null, { searchForMovies }))(Form);

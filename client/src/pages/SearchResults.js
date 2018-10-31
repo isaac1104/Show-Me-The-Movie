@@ -4,17 +4,17 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import SearchForm from '../components/SearchForm/SearchForm';
 import MovieCard from '../components/MovieCard';
-import { fetchMovieData, resetMovieSearch } from '../actions';
+import { searchForMovies, resetMovieSearch } from '../actions';
 
 class SearchResults extends Component {
   componentDidMount() {
-    this.props.fetchMovieData(this.props.match.params.title);
+    this.props.searchForMovies(this.props.match.params.title);
   };
 
   componentDidUpdate(prevProps) {
-    const { fetchMovieData, match: { params: { title } } } = this.props;
+    const { searchForMovies, match: { params: { title } } } = this.props;
     if (prevProps.match.params.title !== title) {
-      fetchMovieData(title);
+      searchForMovies(title);
     }
   };
 
@@ -76,4 +76,4 @@ function mapStateToProps({ movie_data }) {
   return { movie_data };
 };
 
-export default connect(mapStateToProps, { fetchMovieData, resetMovieSearch })(SearchResults);
+export default connect(mapStateToProps, { searchForMovies, resetMovieSearch })(SearchResults);
