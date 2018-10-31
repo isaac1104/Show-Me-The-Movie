@@ -43,10 +43,6 @@ class SearchResults extends Component {
       return <Redirect to='/notfound' />;
     }
 
-    if (!results) {
-      return <Redirect to='/notfound' />;
-    }
-
     if (results) {
       return results.map(movie => {
         return (
