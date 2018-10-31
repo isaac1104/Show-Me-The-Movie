@@ -6,7 +6,8 @@ const style = {
   layout: {
     padding: '0 24px',
     alignItems: 'center',
-    backgroundColor: '#2f3136'
+    backgroundColor: '#2f3136',
+    height: '100vh'
   },
   content: {
     backgroundColor: '#36393f',

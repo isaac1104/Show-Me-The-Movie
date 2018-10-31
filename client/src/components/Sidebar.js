@@ -8,13 +8,10 @@ class Sidebar extends Component {
     collapsed: false
   };
 
-  onCollapse = collapsed => {
-    this.setState({ collapsed });
-  };
   render() {
     const style = {
       sidebar: {
-        minHeight: '80vh'
+        // height: '100vh'
       }
     }
 

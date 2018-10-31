@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Layout } from 'antd';
 import ContentLayout from './Layout/ContentLayout';
+import Sidebar from './Sidebar';
 import Home from '../pages/Home';
 import Landing from '../pages/Landing';
 
@@ -10,6 +11,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Layout>
+          <Sidebar />
           <ContentLayout>
             <Switch>
               <Route exact path='/' component={Landing} />
