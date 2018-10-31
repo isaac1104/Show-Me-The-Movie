@@ -4,10 +4,10 @@ import { fetchCurrentUser } from '../actions';
 
 class Home extends Component {
   render() {
-    console.log(this.props.current_user);
+    const { data: { username } } = this.props.current_user;
     return (
       <div>
-        <h1>Welcome, {this.props.current_user.data.username || 'Guest'}</h1>
+        <h1>Welcome, {username ? username.split(' ')[0] : 'Guest'}</h1>
       </div>
     );
   };
