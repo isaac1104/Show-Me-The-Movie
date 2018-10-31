@@ -13,6 +13,7 @@ const FormField = ({ input }) => {
       {...input}
       autoComplete='off'
       onFocus={handleFocus}
+      placeholder='Enter A Movie Title'
     />
   );
 }

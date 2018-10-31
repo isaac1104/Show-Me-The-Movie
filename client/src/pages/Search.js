@@ -39,7 +39,6 @@ class Search extends Component {
     console.log(this.props.movie_data.data);
     return (
       <div>
-        <h1>Search</h1>
         <SearchForm />
         <Row type='flex'>
           {this.renderResults()}
