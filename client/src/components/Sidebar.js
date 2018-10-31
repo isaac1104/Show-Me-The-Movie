@@ -1,38 +1,37 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { Layout, Menu, Icon } from 'antd';
 const { Sider } = Layout;
 
 class Sidebar extends Component {
-  state = {
-    collapsed: false
-  };
-
   render() {
-    const style = {
-      sidebar: {
-        // height: '100vh'
-      }
-    }
-
+    const { data } = this.props.current_user;
     return (
-      <Sider
-        breakpoint='lg'
-        collapsedWidth='0'
-        style={style.sidebar}
-        >
-        <div className="logo" />
-        <Menu mode="inline" theme='dark' defaultSelectedKeys={['0']}>
-          <Menu.Item key="1">
-            <NavLink to="/">
-              <Icon type="home" />
-                <span className="nav-text">Home</span>
-            </NavLink>
-          </Menu.Item>
-        </Menu>
-      </Sider>
+      <Fragment>
+        {data ? (
+          <Sider
+            breakpoint='lg'
+            collapsedWidth='0'
+            >
+              <div className="logo" />
+              <Menu mode="inline" theme='dark' defaultSelectedKeys={['0']}>
+                <Menu.Item key="1">
+                  <NavLink to="/">
+                  <Icon type="home" />
+                  <span className="nav-text">Home</span>
+                </NavLink>
+              </Menu.Item>
+            </Menu>
+          </Sider>
+        ) : null}
+      </Fragment>
     );
   }
-}
+};
 
-export default Sidebar;
+function mapStateToProps({ current_user }) {
+  return { current_user };
+};
+
+export default connect(mapStateToProps, null)(Sidebar);
