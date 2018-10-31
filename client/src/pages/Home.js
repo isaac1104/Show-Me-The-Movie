@@ -3,10 +3,6 @@ import { connect } from 'react-redux';
 import { fetchCurrentUser } from '../actions';
 
 class Home extends Component {
-  componentDidMount() {
-    this.props.fetchCurrentUser();
-  };
-
   render() {
     console.log(this.props.current_user);
     return (
