@@ -5,7 +5,8 @@ const { Meta } = Card;
 const styles = {
   card: {
     width: '80%',
-    height: '100%'
+    height: '100%',
+    margin: 'auto'
   },
   poster: {
     margin: 'auto'
