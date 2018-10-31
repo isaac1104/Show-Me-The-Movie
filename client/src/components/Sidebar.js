@@ -22,6 +22,12 @@ class Sidebar extends Component {
                   <span className="nav-text">Home</span>
                 </NavLink>
               </Menu.Item>
+              <Menu.Item key="1">
+                <NavLink to="/search">
+                <Icon type="search" />
+                <span className="nav-text">Search</span>
+              </NavLink>
+            </Menu.Item>
             </Menu>
           </Sider>
         ) : null}
