@@ -11,7 +11,7 @@ require('./models/User');
 require('./utils/passport');
 
 mongoose.Promise = global.Promise;
-mongoose.connect(keys.mongoURI);
+mongoose.connect(keys.mongodbURI);
 
 app.use(express.json());
 app.use(cookieSession({
