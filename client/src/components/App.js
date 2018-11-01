@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { Layout, Spin, Icon } from 'antd';
 import { connect } from 'react-redux';
@@ -33,12 +33,9 @@ class App extends Component {
                   if (isFetching) {
                     return (
                       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh' }}>
-                        <div>
-                          <Spin
-                            size='large'
-                            style={{ margin: 'auto', marginTop: '30px' }}
-                          />
-                        </div>
+                        <Fragment>
+                          <Spin size='large' indicator={ <Icon type='loading' /> } />
+                        </Fragment>
                       </div>
                     );
                   } else if (data) {

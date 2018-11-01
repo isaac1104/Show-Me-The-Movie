@@ -26,11 +26,14 @@ class SearchResults extends Component {
     const { isFetching, data: { results } } = this.props.movie_data;
     if (isFetching) {
       return (
-        <Spin
-          size='large'
-          style={{ margin: 'auto' }}
-          indicator={ <Icon type='loading' style={{ marginTop: '30px' }} /> }
-        />
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh', width: '100%' }}>
+          <Fragment>
+            <Spin
+              size='large'
+              indicator={ <Icon type='loading' /> }
+            />
+          </Fragment>
+        </div>
       );
     }
 

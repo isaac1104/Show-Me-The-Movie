@@ -23,12 +23,13 @@ class MovieDetail extends Component {
     const { isFetching, data } = this.props.movie_data;
     if (isFetching) {
       return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <Spin
-            size='large'
-            style={{ margin: 'auto', marginTop: '30px' }}
-            indicator={ <Icon type='loading' /> }
-          />
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh', width: '100%' }}>
+          <Fragment>
+            <Spin
+              size='large'
+              indicator={ <Icon type='loading' /> }
+            />
+          </Fragment>
         </div>
       );
     }
