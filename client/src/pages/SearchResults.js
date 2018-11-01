@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Icon, Row, Spin } from 'antd';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -28,15 +28,10 @@ class SearchResults extends Component {
       return (
         <Spin
           size='large'
-          style={{ margin: 'auto', marginTop: '30px' }}
-          indicator={
-            <Icon
-              type='loading'
-              style={{ fontSize: '150px' }}
-            />
-          }
+          style={{ margin: 'auto' }}
+          indicator={ <Icon type='loading' style={{ marginTop: '30px' }} /> }
         />
-      )
+      );
     }
 
     if (results && results.length === 0) {
@@ -53,22 +48,22 @@ class SearchResults extends Component {
             title={movie.title}
             release_date={movie.release_date}
             poster={movie.poster_path}
-           />
+          />
         );
       });
     } else {
-      return;
+      return null;
     }
-  }
+  };
 
   render() {
     return (
-      <div>
+      <Fragment>
         <SearchForm />
         <Row type='flex'>
           {this.renderResults()}
         </Row>
-      </div>
+      </Fragment>
     );
   }
 }
