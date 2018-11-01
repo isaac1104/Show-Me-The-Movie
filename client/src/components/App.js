@@ -3,6 +3,7 @@ import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { Layout, Spin, Icon } from 'antd';
 import { connect } from 'react-redux';
 import { fetchCurrentUser } from '../actions';
+import ScrollToTop from './ScrollToTop';
 import ContentLayout from './Layout/ContentLayout';
 import Sidebar from './Sidebar';
 import requireAuth from './requireAuth';
@@ -21,38 +22,40 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Layout>
-          <Sidebar />
-          <ContentLayout>
-            <Switch>
-              <Route
-                exact
-                path='/'
-                render={() => {
-                  const { isFetching, data } = this.props.current_user;
-                  if (isFetching) {
-                    return (
-                      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh' }}>
-                        <Fragment>
-                          <Spin size='large' indicator={ <Icon type='loading' /> } />
-                        </Fragment>
-                      </div>
-                    );
-                  } else if (data) {
-                    return <Redirect to='/home' />;
-                  } else {
-                    return <Landing />;
-                  }
-                }}
-              />
-              <Route exact path='/home' component={requireAuth(Home)} />
-              <Route exact path='/search/:title/:id' component={requireAuth(MovieDetail)} />
-              <Route exact path='/search/:title' component={requireAuth(SearchResults)} />
-              <Route exact path='/search' component={requireAuth(Search)} />
-              <Route exact path='/notfound' component={requireAuth(NotFound)} />
-            </Switch>
-          </ContentLayout>
-        </Layout>
+        <ScrollToTop>
+          <Layout>
+            <Sidebar />
+            <ContentLayout>
+              <Switch>
+                <Route
+                  exact
+                  path='/'
+                  render={() => {
+                    const { isFetching, data } = this.props.current_user;
+                    if (isFetching) {
+                      return (
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh' }}>
+                          <Fragment>
+                            <Spin size='large' indicator={ <Icon type='loading' /> } />
+                          </Fragment>
+                        </div>
+                      );
+                    } else if (data) {
+                      return <Redirect to='/home' />;
+                    } else {
+                      return <Landing />;
+                    }
+                  }}
+                />
+                <Route exact path='/home' component={requireAuth(Home)} />
+                <Route exact path='/movie/:id' component={requireAuth(MovieDetail)} />
+                <Route exact path='/search/:title/:page' component={requireAuth(SearchResults)} />
+                <Route exact path='/search' component={requireAuth(Search)} />
+                <Route exact path='/notfound' component={requireAuth(NotFound)} />
+              </Switch>
+            </ContentLayout>
+          </Layout>
+        </ScrollToTop>
       </BrowserRouter>
     );
   }

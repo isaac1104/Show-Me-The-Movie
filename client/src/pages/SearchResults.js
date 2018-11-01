@@ -8,13 +8,14 @@ import { searchForMovies, resetMovieData } from '../actions';
 
 class SearchResults extends Component {
   componentDidMount() {
-    this.props.searchForMovies(this.props.match.params.title, 1);
+    const { params: { title, page} } = this.props.match;
+    this.props.searchForMovies(title, page);
   };
 
   componentDidUpdate(prevProps) {
-    const { searchForMovies, match: { params: { title } } } = this.props;
-    if (prevProps.match.params.title !== title) {
-      searchForMovies(title, 1);
+    const { searchForMovies, match: { params: { title, page } } } = this.props;
+    if (prevProps.match.params.title !== title || prevProps.match.params.page !== page) {
+      searchForMovies(title, page);
     }
   };
 
@@ -61,7 +62,7 @@ class SearchResults extends Component {
   };
 
   renderPagination() {
-    const { data } = this.props.movie_data;
+    const { movie_data: { data }, match: { params : { title } } } = this.props;
     if (data) {
       return (
         <Pagination
@@ -69,7 +70,7 @@ class SearchResults extends Component {
           defaultPageSize={20}
           hideOnSinglePage
           total={data.total_results}
-          onChange={page => this.props.searchForMovies(this.props.match.params.title, page)}
+          onChange={page => this.props.history.push(`/search/${title}/${page}`)}
           style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
         />
       );

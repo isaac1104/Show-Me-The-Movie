@@ -31,7 +31,7 @@ class MovieCard extends Component {
               style={styles.poster}
             />
           }
-          onClick={() => this.props.history.push(`/search/${this.props.keyword}/${this.props.id}`)}
+          onClick={() => this.props.history.push(`/movie/${this.props.id}`)}
           style={styles.card}
           >
             <Meta

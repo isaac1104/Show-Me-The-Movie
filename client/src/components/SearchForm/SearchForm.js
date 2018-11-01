@@ -8,9 +8,8 @@ import { searchForMovies } from '../../actions';
 
 class Form extends Component {
   formSubmit = ({ title }) => {
-    const { history } = this.props;
-    history.push(`/search/${title}`);
-  }
+    this.props.history.push(`/search/${title}/1`);
+  };
 
   render() {
     const { handleSubmit } = this.props;
@@ -23,7 +22,7 @@ class Form extends Component {
       </form>
     );
   }
-}
+};
 
 function validate(value) {
   const errors = {};
@@ -31,6 +30,6 @@ function validate(value) {
     errors.title = 'Movie title is required!'
   }
   return errors;
-}
+};
 
 export default compose(withRouter, reduxForm({ validate, form: 'title' }), connect(null, { searchForMovies }))(Form);
