@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Icon, Row, Spin } from 'antd';
+import { Icon, Pagination, Row, Spin } from 'antd';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import SearchForm from '../components/SearchForm/SearchForm';
@@ -60,14 +60,33 @@ class SearchResults extends Component {
     }
   };
 
+  renderPagination() {
+    const { data } = this.props.movie_data;
+    if (data) {
+      return (
+        <Pagination
+          defaultCurrent={1}
+          defaultPageSize={20}
+          hideOnSinglePage
+          total={data.total_results}
+          onChange={page => console.log(page)}
+          style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        />
+      );
+    } else {
+      return <div />;
+    }
+  };
+
   render() {
-    console.log(this.props.movie_data.data);
+    // console.log(this.props.movie_data.data);
     return (
       <Fragment>
         <SearchForm />
         <Row type='flex'>
           {this.renderResults()}
         </Row>
+        {this.renderPagination()}
       </Fragment>
     );
   }
