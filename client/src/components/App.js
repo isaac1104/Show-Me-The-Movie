@@ -32,11 +32,13 @@ class App extends Component {
                   const { isFetching, data } = this.props.current_user;
                   if (isFetching) {
                     return (
-                      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <Spin
-                          size='large'
-                          style={{ margin: 'auto', marginTop: '30px' }}
-                        />
+                      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh' }}>
+                        <div>
+                          <Spin
+                            size='large'
+                            style={{ margin: 'auto', marginTop: '30px' }}
+                          />
+                        </div>
                       </div>
                     );
                   } else if (data) {
