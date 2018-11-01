@@ -22,6 +22,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./routes/auth')(app);
+require('./routes/test_route')(app);
 require('./routes/movie_data_api')(app);
 
 app.use((err, req, res, next) => {
