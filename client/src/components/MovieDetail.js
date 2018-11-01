@@ -54,7 +54,7 @@ class MovieDetail extends Component {
             </Col>
             <Col xs={24} sm={12} md={12} lg={12} xl={12}>
               <h1>{data.title}</h1>
-              <h4>{data.release_date} <Divider type='vertical'/> {data.runtime} Min.</h4>
+              <h4>{data.release_date} <Divider type='vertical'/> {data.runtime ? `${data.runtime} Min.` : 'N/A'}</h4>
               <Divider />
               <h3>Genres</h3>
               {data.genres ? data.genres.map(genre => {
