@@ -51,6 +51,7 @@ class SearchResults extends Component {
             title={movie.title}
             release_date={movie.release_date}
             poster={movie.poster_path}
+            rating={movie.vote_average}
           />
         );
       });
@@ -60,6 +61,7 @@ class SearchResults extends Component {
   };
 
   render() {
+    console.log(this.props.movie_data.data);
     return (
       <Fragment>
         <SearchForm />

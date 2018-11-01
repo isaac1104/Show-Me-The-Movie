@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import { withRouter } from 'react-router-dom';
-import { Card, Col } from 'antd';
+import { Card, Col, Rate } from 'antd';
 const { Meta } = Card;
 
 class MovieCard extends Component {
@@ -13,6 +13,10 @@ class MovieCard extends Component {
       },
       poster: {
         margin: 'auto'
+      },
+      rate: {
+        fontSize: '12px',
+        marginTop: '10px'
       }
     };
 
@@ -33,6 +37,9 @@ class MovieCard extends Component {
             <Meta
               title={this.props.title}
               description={this.props.release_date}
+            />
+            <Meta
+              description={<Rate allowHalf disabled defaultValue={this.props.rating / 2} style={styles.rate} />}
             />
           </Card>
         </Col>
