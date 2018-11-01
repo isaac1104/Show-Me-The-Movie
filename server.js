@@ -21,6 +21,13 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
+require('./routes/auth')(app);
+require('./routes/movie_data_api')(app);
+
+app.use((err, req, res, next) => {
+  res.status(422).send({ error: err.message });
+});
+
 if (['production', 'ci'].includes(process.env.NODE_ENV)) {
   app.use(express.static('client/build'));
   app.get('*', (req, res) => {
@@ -28,12 +35,6 @@ if (['production', 'ci'].includes(process.env.NODE_ENV)) {
   });
 }
 
-require('./routes/auth')(app);
-require('./routes/movie_data_api')(app);
-
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'client', 'public', 'index.html'));
-});
-app.listen(PORT, () => {
-  console.log(`Server on PORT: ${PORT}`);
+app.listen(PORT, function() {
+  console.log(`🌎 ==> Server now on port ${PORT}!`);
 });
