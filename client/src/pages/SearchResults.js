@@ -62,12 +62,13 @@ class SearchResults extends Component {
   };
 
   renderPagination() {
-    const { movie_data: { data }, match: { params : { title } } } = this.props;
+    const { movie_data: { data }, match: { params : { title, page } } } = this.props;
     if (data) {
       return (
         <Pagination
           defaultCurrent={1}
           defaultPageSize={20}
+          current={parseInt(page, 10)}
           hideOnSinglePage
           total={data.total_results}
           onChange={page => this.props.history.push(`/search/${title}/${page}`)}
