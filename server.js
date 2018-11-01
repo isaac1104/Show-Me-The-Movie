@@ -13,6 +13,7 @@ require('./utils/passport');
 mongoose.Promise = global.Promise;
 mongoose.connect(keys.mongodbURI);
 
+app.use(express.static('client/public'));
 app.use(express.json());
 app.use(cookieSession({
   maxAge: 30 * 24 * 60 * 60 * 1000,
@@ -21,11 +22,10 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-if (['production', 'ci'].includes(process.env.NODE_ENV)) {
-  app.use(express.static('client/build'));
-  const path = require('path');
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.resolve(__dirname, 'client', 'build')));
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve('client', 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
 
