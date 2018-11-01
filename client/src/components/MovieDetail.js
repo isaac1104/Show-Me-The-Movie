@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Button, Col, Divider, Icon, Row, Spin } from 'antd';
+import { Button, Col, Divider, Icon, Rate, Row, Spin } from 'antd';
 import { connect } from 'react-redux';
 import { fetchMovieData, resetMovieData } from '../actions';
 
@@ -54,19 +54,16 @@ class MovieDetail extends Component {
             </Col>
             <Col xs={24} sm={12} md={12} lg={12} xl={12}>
               <h1>{data.title}</h1>
-              <h4>{data.release_date} <Divider type='vertical'/> {data.runtime ? `${data.runtime} Min.` : 'N/A'}</h4>
+              <h4>Release Date: {data.release_date} <Divider type='vertical'/> {data.runtime ? `Runtime: ${data.runtime} Min.` : 'Runtime: N/A'}</h4>
+              <Rate allowHalf disabled defaultValue={data.vote_average / 2} />
               <Divider />
-              <h3>Genres</h3>
-              {data.genres ? data.genres.map(genre => {
-                return <p key={genre.id}>{genre.name}</p>
+              <h3>Genres:</h3>
+              {data.genres && data.genres.length !== 0 ? data.genres.map(genre => {
+                return <li key={genre.id}>{genre.name}</li>
               }) : 'N/A'}
               <Divider />
-              <h3>Ratings</h3>
-              <p>Average: {data.vote_average}</p>
-              <p>Popularity: {data.popularity}</p>
-              <Divider />
-              <h3>Plot</h3>
-              <p>{data.overview}</p>
+              <h3>Plot:</h3>
+              <p>{data.overview ? data.overview : 'N/A'}</p>
             </Col>
           </Row>
         </Fragment>
