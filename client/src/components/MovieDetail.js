@@ -53,8 +53,21 @@ class MovieDetail extends Component {
               />
             </Col>
             <Col xs={24} sm={12} md={12} lg={12} xl={12}>
-              <h1>{data.title}</h1>
-              <h4>Release Date: {data.release_date} <Divider type='vertical'/> {data.runtime ? `Runtime: ${data.runtime} Min.` : 'Runtime: N/A'}</h4>
+              <h1>
+                {data.title}
+                <Divider type='vertical' />
+                <Rate
+                  character={<Icon type='heart' theme='filled' />}
+                  count={1}
+                  style={{ color: 'red' }}
+                  onChange={value => console.log(value)}
+                />
+              </h1>
+              <h4>
+                Release Date: {data.release_date}
+                <Divider type='vertical'/>
+                {data.runtime ? `Runtime: ${data.runtime} Min.` : 'Runtime: N/A'}
+              </h4>
               <Rate allowHalf disabled defaultValue={data.vote_average / 2} />
               <Divider />
               <h3>Genres:</h3>
