@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { Layout } from 'antd';
+import { Layout, Spin, Icon } from 'antd';
 import { connect } from 'react-redux';
 import { fetchCurrentUser } from '../actions';
 import ContentLayout from './Layout/ContentLayout';
@@ -31,7 +31,14 @@ class App extends Component {
                 render={() => {
                   const { isFetching, data } = this.props.current_user;
                   if (isFetching) {
-                    return null;
+                    return (
+                      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                        <Spin
+                          size='large'
+                          style={{ margin: 'auto', marginTop: '30px' }}
+                        />
+                      </div>
+                    );
                   } else if (data) {
                     return <Redirect to='/home' />;
                   } else {
