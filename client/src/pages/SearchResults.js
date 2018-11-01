@@ -8,13 +8,13 @@ import { searchForMovies, resetMovieData } from '../actions';
 
 class SearchResults extends Component {
   componentDidMount() {
-    this.props.searchForMovies(this.props.match.params.title);
+    this.props.searchForMovies(this.props.match.params.title, 1);
   };
 
   componentDidUpdate(prevProps) {
     const { searchForMovies, match: { params: { title } } } = this.props;
     if (prevProps.match.params.title !== title) {
-      searchForMovies(title);
+      searchForMovies(title, 1);
     }
   };
 
@@ -69,7 +69,7 @@ class SearchResults extends Component {
           defaultPageSize={20}
           hideOnSinglePage
           total={data.total_results}
-          onChange={page => console.log(page)}
+          onChange={page => this.props.searchForMovies(this.props.match.params.title, page)}
           style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
         />
       );
@@ -79,7 +79,6 @@ class SearchResults extends Component {
   };
 
   render() {
-    // console.log(this.props.movie_data.data);
     return (
       <Fragment>
         <SearchForm />
