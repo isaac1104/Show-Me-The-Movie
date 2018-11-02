@@ -63,9 +63,7 @@ class MovieDetail extends Component {
     const { data: { results } } = this.props.recommended_movies;
     if (results.length === 0) {
       return <h3>Recommeded Movies: NA</h3>
-    }
-
-    if (results) {
+    } else {
       const settings = {
         arrows: true,
         draggable: false,
@@ -77,23 +75,26 @@ class MovieDetail extends Component {
       };
 
       return (
-        <Slider {...settings}>
-          {results.map(movie => {
-            return (
-              <div key={movie.id}>
-                <MovieCard
-                  keyword={this.props.match.params.title}
-                  id={movie.id}
-                  title={movie.title}
-                  release_date={movie.release_date}
-                  poster={movie.poster_path}
-                  rating={movie.vote_average}
-                  width={'100%'}
-                />
-              </div>
-            );
-          })}
-        </Slider>
+        <Fragment>
+          <p>Recommended Movies:</p>
+          <Slider {...settings}>
+            {results.map(movie => {
+              return (
+                <div key={movie.id}>
+                  <MovieCard
+                    keyword={this.props.match.params.title}
+                    id={movie.id}
+                    title={movie.title}
+                    release_date={movie.release_date}
+                    poster={movie.poster_path}
+                    rating={movie.vote_average}
+                    width={'100%'}
+                  />
+                </div>
+              );
+            })}
+          </Slider>
+        </Fragment>
       );
     }
   };
