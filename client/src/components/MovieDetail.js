@@ -71,7 +71,7 @@ class MovieDetail extends Component {
         draggable: false,
         autoplay: true,
         infinite: true,
-        speed: 500,
+        speed: 1000,
         slidesToShow: 4,
         slidesToScroll: 4
       };
@@ -124,14 +124,14 @@ class MovieDetail extends Component {
             onClick={() => this.props.history.goBack()}
           />
           <Row type='flex'>
-            <Col xs={24} sm={12} md={12} lg={12} xl={12} style={{ display: 'flex' }}>
+            <Col xs={24} sm={24} md={10} lg={10} xl={10} style={{ display: 'flex' }}>
               <img
                 src={data.poster_path ? `http://image.tmdb.org/t/p/w185/${data.poster_path}` : 'https://via.placeholder.com/300?text=Poster+Not+Available' }
                 alt='movie poster'
                 style={{ margin: 'auto', width: '50%' }}
               />
             </Col>
-            <Col xs={24} sm={12} md={12} lg={12} xl={12}>
+            <Col xs={24} sm={24} md={12} lg={12} xl={12}>
               <h1>
                 {data.title}
                 <Divider type='vertical' />
