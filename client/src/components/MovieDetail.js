@@ -92,16 +92,16 @@ class MovieDetail extends Component {
                 {this.renderLikeIcon()}
               </h1>
               <h4>
-                Release Date: {data.release_date}
+                Release Date: {data.release_date ? data.release_date : 'N/A'}
                 <Divider type='vertical'/>
-                {data.runtime ? `Runtime: ${data.runtime} Min.` : 'Runtime: N/A'}
+                Runtime: {data.runtime ? `${data.runtime} Min.` : 'N/A'}
               </h4>
               <div>
                 <Rate
                   allowHalf
                   disabled
                   defaultValue={data.vote_average / 2} />
-                  ({data.vote_count ? `${data.vote_count} Votes` : ''})
+                  {data.vote_count ? `(${data.vote_count} Votes)` : ''}
               </div>
               <Divider />
               <h3>Genres:</h3>
