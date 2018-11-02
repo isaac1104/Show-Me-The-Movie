@@ -47,12 +47,9 @@ class LikedMovies extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Liked Movies</h1>
-        <Row type='flex'>
-          {this.renderLikedMovies()}
-        </Row>
-      </div>
+      <Row type='flex'>
+        {this.renderLikedMovies()}
+      </Row>
     );
   }
 }
