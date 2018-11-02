@@ -71,3 +71,14 @@ export const deleteLikedMovie = movieId => async dispatch => {
     dispatch({ type: types.DELETE_LIKED_MOVIE, payload: e });
   }
 };
+
+export const fetchLikedMovies = () => async dispatch => {
+  dispatch({ type: types.REQUEST_LIKED_MOVIES, payload: true });
+  try {
+    const request = await axios.get('/api/liked_movies');
+    const { data } = request;
+    dispatch({ type: types.RECEIVE_LIKED_MOVIES, payload: data });
+  } catch (e) {
+    dispatch({ type: types.REJECT_LIKED_MOVIES, payload: e });
+  }
+};
