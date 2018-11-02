@@ -129,7 +129,7 @@ class MovieDetail extends Component {
               <img
                 src={data.poster_path ? `http://image.tmdb.org/t/p/w185/${data.poster_path}` : 'https://via.placeholder.com/300?text=Poster+Not+Available' }
                 alt='movie poster'
-                style={{ margin: 'auto', width: '50%' }}
+                style={{ margin: 'auto', width: '70%' }}
               />
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={12}>
