@@ -1,7 +1,7 @@
-import { SAVE_LIKED_MOVIE } from '../actions/types';
+import { SAVE_LIKED_MOVIE, DELETE_LIKED_MOVIE } from '../actions/types';
 
 const INITIAL_STATE = {
-  data: ''
+  data: []
 };
 
 const likedMoviesReducer = (state = INITIAL_STATE, action) => {
@@ -9,7 +9,12 @@ const likedMoviesReducer = (state = INITIAL_STATE, action) => {
     case SAVE_LIKED_MOVIE:
       return {
         ...state,
-        data: action.payload
+        data: [...action.payload]
+      };
+    case DELETE_LIKED_MOVIE:
+      return {
+        ...state,
+        data: state.data.filter(movie => movie.movieId !== action.payload)
       };
     default:
       return state;

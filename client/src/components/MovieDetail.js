@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Button, Col, Divider, Icon, Rate, Row, Spin } from 'antd';
 import { connect } from 'react-redux';
-import { fetchMovieData, resetMovieData, saveLikedMovie } from '../actions';
+import * as actions from '../actions';
 
 class MovieDetail extends Component {
   componentDidMount() {
@@ -60,7 +60,11 @@ class MovieDetail extends Component {
                   character={<Icon type='heart' theme='filled' />}
                   count={1}
                   style={{ color: 'red' }}
-                  onChange={value => value === 1 ? this.props.saveLikedMovie({ title: data.title, movieId: data.id }) : null}
+                  onChange={
+                    value => value === 1
+                      ? this.props.saveLikedMovie({ title: data.title, movieId: data.id })
+                      : this.props.deleteLikedMovie(data.id)}
+
                 />
               </h1>
               <h4>
@@ -98,4 +102,4 @@ function mapStateToProps({ movie_data }) {
   return { movie_data };
 };
 
-export default connect(mapStateToProps, { fetchMovieData, resetMovieData, saveLikedMovie })(MovieDetail);
+export default connect(mapStateToProps, actions)(MovieDetail);

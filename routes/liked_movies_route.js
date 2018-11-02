@@ -24,4 +24,13 @@ module.exports = app => {
       res.status(400).send(e);
     }
   });
+
+  app.delete('/api/liked_movies', async (req, res) => {
+    const { movieId } = req.query;
+    try {
+      const removeLikedMovie = await LikedMovies.deleteOne({ movieId });
+    } catch (e) {
+      res.status(422).send(e);
+    }
+  });
 };
