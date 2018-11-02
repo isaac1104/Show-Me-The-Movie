@@ -84,7 +84,6 @@ export const fetchLikedMovies = () => async dispatch => {
 };
 
 export const fetchRecommendedMovies = id => async dispatch => {
-  console.log(id);
   dispatch({ type: types.REQUEST_RECOMMENDED_MOVIES, payload: true });
   try {
     const request = await axios.get('/api/recommended_movies', {

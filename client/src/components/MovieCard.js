@@ -6,6 +6,10 @@ const { Meta } = Card;
 class MovieCard extends Component {
   render() {
     const styles = {
+      col: {
+        marginTop: '15px',
+        marginBottom: '15px'
+      },
       card: {
         width: '80%',
         height: '100%',
@@ -21,7 +25,7 @@ class MovieCard extends Component {
     };
 
     return (
-      <Col xs={24} sm={12} md={6} lg={4} xl={4} style={{ marginTop: '15px', marginBottom: '15px' }}>
+      <Col xs={24} sm={12} md={6} lg={4} xl={4} style={styles.col}>
         <Card
           hoverable
           cover={

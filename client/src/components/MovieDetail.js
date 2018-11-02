@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import MovieRecommendation from './MovieRecommendation';
 import { Button, Col, Divider, Icon, Rate, Row, Spin } from 'antd';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
@@ -118,7 +119,6 @@ class MovieDetail extends Component {
               <p>{data.overview ? data.overview : 'N/A'}</p>
               <p>{data.tagline ? `"${data.tagline}"` : ''}</p>
               <Divider />
-              <h3>Recommended Movies:</h3>
             </Col>
           </Row>
         </Fragment>
@@ -127,17 +127,20 @@ class MovieDetail extends Component {
   };
 
   render() {
-    console.log(this.props.recommended_movies);
     return (
       <Fragment>
         {this.renderMovieDetail()}
+        <MovieRecommendation
+          movieId={this.props.match.params.id}
+          title={this.props.match.params.title}
+        />
       </Fragment>
     );
   }
 }
 
-function mapStateToProps({ movie_data, liked_movies, recommended_movies }) {
-  return { movie_data, liked_movies, recommended_movies };
+function mapStateToProps({ movie_data, liked_movies }) {
+  return { movie_data, liked_movies };
 };
 
 export default connect(mapStateToProps, actions)(MovieDetail);
