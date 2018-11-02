@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import MovieCard from './MovieCard';
 import Slider from 'react-slick';
-import { Button, Col, Divider, Icon, Rate, Row, Spin } from 'antd';
+import { Button, Col, Divider, Icon, Rate, Row, Spin, Tag } from 'antd';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
@@ -125,7 +125,7 @@ class MovieDetail extends Component {
             onClick={() => this.props.history.goBack()}
           />
           <Row type='flex'>
-            <Col xs={24} sm={24} md={10} lg={10} xl={10} style={{ display: 'flex' }}>
+            <Col xs={24} sm={24} md={10} lg={10} xl={10} style={{ display: 'flex', marginBottom: '30px' }}>
               <img
                 src={data.poster_path ? `http://image.tmdb.org/t/p/w185/${data.poster_path}` : 'https://via.placeholder.com/300?text=Poster+Not+Available' }
                 alt='movie poster'
@@ -150,11 +150,11 @@ class MovieDetail extends Component {
                   defaultValue={data.vote_average / 2} />
                   {data.vote_count ? `(${data.vote_count} Votes)` : ''}
               </div>
-              <Divider />
-              <h3>Genres:</h3>
-              {data.genres && data.genres.length !== 0 ? data.genres.map(genre => {
-                return <li key={genre.id}>{genre.name}</li>
-              }) : 'N/A'}
+              <div style={{ marginTop: '15px' }}>
+                {data.genres && data.genres.length !== 0 ? data.genres.map(genre => {
+                  return <Tag key={genre.id} color='#1890ff'>{genre.name}</Tag>;
+                }) : 'N/A'}
+              </div>
               <Divider />
               <h3>Plot:</h3>
               <p>{data.overview ? data.overview : 'N/A'}</p>
