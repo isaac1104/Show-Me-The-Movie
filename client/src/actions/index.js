@@ -59,7 +59,6 @@ export const saveLikedMovie = values => async dispatch => {
 };
 
 export const deleteLikedMovie = movieId => async dispatch => {
-  console.log(movieId);
   try {
     const request = await axios.delete('/api/liked_movies', {
       params: {
