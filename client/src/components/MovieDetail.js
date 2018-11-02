@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import MovieRecommendation from './MovieRecommendation';
+import MovieCard from './MovieCard';
+import Slider from 'react-slick';
 import { Button, Col, Divider, Icon, Rate, Row, Spin } from 'antd';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
@@ -58,9 +59,48 @@ class MovieDetail extends Component {
     }
   };
 
+  renderRecommendedMovies() {
+    const { data: { results } } = this.props.recommended_movies;
+    if (results.length === 0) {
+      return <h3>Recommeded Movies: NA</h3>
+    }
+
+    if (results) {
+      const settings = {
+        arrows: true,
+        draggable: false,
+        autoplay: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 4
+      };
+
+      return (
+        <Slider {...settings}>
+          {results.map(movie => {
+            return (
+              <div key={movie.id}>
+                <MovieCard
+                  keyword={this.props.match.params.title}
+                  id={movie.id}
+                  title={movie.title}
+                  release_date={movie.release_date}
+                  poster={movie.poster_path}
+                  rating={movie.vote_average}
+                  width={'100%'}
+                />
+              </div>
+            );
+          })}
+        </Slider>
+      );
+    }
+  };
+
   renderMovieDetail() {
     const { isFetching, data } = this.props.movie_data;
-    if (isFetching) {
+    if (isFetching || this.props.recommended_movies.isFetching) {
       return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh', width: '100%' }}>
           <Fragment>
@@ -119,10 +159,7 @@ class MovieDetail extends Component {
               <p>{data.overview ? data.overview : 'N/A'}</p>
               <p>{data.tagline ? `"${data.tagline}"` : ''}</p>
               <Divider />
-              <MovieRecommendation
-                movieId={this.props.match.params.id}
-                title={this.props.match.params.title}
-              />
+              {this.renderRecommendedMovies()}
             </Col>
           </Row>
         </Fragment>
@@ -139,8 +176,8 @@ class MovieDetail extends Component {
   }
 }
 
-function mapStateToProps({ movie_data, liked_movies }) {
-  return { movie_data, liked_movies };
+function mapStateToProps({ movie_data, liked_movies, recommended_movies }) {
+  return { movie_data, liked_movies, recommended_movies };
 };
 
 export default connect(mapStateToProps, actions)(MovieDetail);
