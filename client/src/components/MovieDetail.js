@@ -86,8 +86,6 @@ class MovieDetail extends Component {
   };
 
   render() {
-    console.log(this.props.movie_data);
-    console.log(this.props.liked_movies);
     return (
       <Fragment>
         {this.renderMovieDetail()}
@@ -96,8 +94,8 @@ class MovieDetail extends Component {
   }
 }
 
-function mapStateToProps({ movie_data, liked_movies }) {
-  return { movie_data, liked_movies };
+function mapStateToProps({ movie_data }) {
+  return { movie_data };
 };
 
 export default connect(mapStateToProps, { fetchMovieData, resetMovieData, saveLikedMovie })(MovieDetail);

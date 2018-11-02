@@ -49,9 +49,11 @@ export const resetMovieData = () => ({
 });
 
 export const saveLikedMovie = values => async dispatch => {
-  console.log(values);
-  const request = await axios.post('/api/liked_movies', values);
-  console.log(request);
-  const { data } = request;
-  dispatch({ type: types.SAVE_LIKED_MOVIE, payload: data });
+  try {
+    const request = await axios.post('/api/liked_movies', values);
+    const { data } = request;
+    dispatch({ type: types.SAVE_LIKED_MOVIE, payload: data });
+  } catch (e) {
+    dispatch({ type: types.SAVE_LIKED_MOVIE, payload: e });
+  }
 };

@@ -7,9 +7,12 @@ module.exports = app => {
     res.send(likedMovies);
   });
 
-  app.post('/api/liked_movies', async (req, res) => {
-    console.log(req.body);
+  app.post('/api/liked_movies', async (req, res, done) => {
     const { title, movieId } = req.body;
+    const currentMovie = await LikedMovies.findOne({ movieId });
+    if (currentMovie) {
+      return done(null, currentMovie);
+    }
     const likedMovies = new LikedMovies({
       movieId,
       title,
