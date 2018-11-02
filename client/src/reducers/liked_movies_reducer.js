@@ -2,7 +2,7 @@ import { REQUEST_LIKED_MOVIES, RECEIVE_LIKED_MOVIES, REJECT_LIKED_MOVIES } from 
 
 const INITIAL_STATE = {
   isFetching: false,
-  data: '',
+  data: [],
   error: ''
 };
 

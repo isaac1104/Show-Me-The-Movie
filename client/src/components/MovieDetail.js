@@ -6,17 +6,50 @@ import * as actions from '../actions';
 class MovieDetail extends Component {
   componentDidMount() {
     this.props.fetchMovieData(this.props.match.params.id);
+    this.props.fetchLikedMovies();
   };
 
   componentDidUpdate(prevProps) {
-    const { fetchMovieData, match: { params: { id } } } = this.props;
+    const { fetchMovieData, fetchLikedMovies, match: { params: { id } } } = this.props;
     if (prevProps.match.params.id !== id) {
       fetchMovieData(id);
+      fetchLikedMovies();
     }
   };
 
   componentWillUnmount() {
     this.props.resetMovieData();
+  };
+
+  renderLikeIcon() {
+    const { liked_movies: { data }, match: { params: { id } } } = this.props;
+    const savedMovie = data.find(movie => movie.movieId === parseInt(id, 10));
+    if (savedMovie !== undefined) {
+      return (
+        <Rate
+          character={<Icon type='heart' theme='filled' />}
+          defaultValue={1}
+          count={1}
+          style={{ color: 'red' }}
+          onChange={() => this.props.deleteLikedMovie(this.props.movie_data.data.id)}
+        />
+      );
+    } else {
+      return (
+        <Rate
+          character={<Icon type='heart' theme='filled' />}
+          defaultValue={0}
+          count={1}
+          style={{ color: 'red' }}
+          onChange={() => this.props.saveLikedMovie({
+            title: this.props.movie_data.data.title,
+            movieId: this.props.movie_data.data.id,
+            rating: this.props.movie_data.data.vote_average,
+            poster: this.props.movie_data.data.poster_path
+          })}
+        />
+      );
+    }
   };
 
   renderMovieDetail() {
@@ -56,23 +89,20 @@ class MovieDetail extends Component {
               <h1>
                 {data.title}
                 <Divider type='vertical' />
-                <Rate
-                  character={<Icon type='heart' theme='filled' />}
-                  count={1}
-                  style={{ color: 'red' }}
-                  onChange={
-                    value => value === 1
-                      ? this.props.saveLikedMovie({ title: data.title, movieId: data.id, rating: data.vote_average, poster: data.poster_path })
-                      : this.props.deleteLikedMovie(data.id)}
-
-                />
+                {this.renderLikeIcon()}
               </h1>
               <h4>
                 Release Date: {data.release_date}
                 <Divider type='vertical'/>
                 {data.runtime ? `Runtime: ${data.runtime} Min.` : 'Runtime: N/A'}
               </h4>
-              <div><Rate allowHalf disabled defaultValue={data.vote_average / 2} /> ({data.vote_count ? `${data.vote_count} Votes` : ''})</div>
+              <div>
+                <Rate
+                  allowHalf
+                  disabled
+                  defaultValue={data.vote_average / 2} />
+                  ({data.vote_count ? `${data.vote_count} Votes` : ''})
+              </div>
               <Divider />
               <h3>Genres:</h3>
               {data.genres && data.genres.length !== 0 ? data.genres.map(genre => {
@@ -98,8 +128,8 @@ class MovieDetail extends Component {
   }
 }
 
-function mapStateToProps({ movie_data }) {
-  return { movie_data };
+function mapStateToProps({ movie_data, liked_movies }) {
+  return { movie_data, liked_movies };
 };
 
 export default connect(mapStateToProps, actions)(MovieDetail);
