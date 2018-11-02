@@ -23,9 +23,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./routes/auth')(app);
-require('./routes/test_route')(app);
 require('./routes/movie_data_api')(app);
 require('./routes/liked_movies_route')(app);
+require('./routes/recommended_movies_route')(app);
 
 app.use((err, req, res, next) => {
   res.status(422).send({ error: err.message });

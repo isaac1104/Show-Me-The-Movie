@@ -1,18 +1,20 @@
 import React, { Component, Fragment } from 'react';
-import { Button, Carousel, Col, Divider, Icon, Rate, Row, Spin } from 'antd';
+import { Button, Col, Divider, Icon, Rate, Row, Spin } from 'antd';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 class MovieDetail extends Component {
   componentDidMount() {
     this.props.fetchMovieData(this.props.match.params.id);
+    this.props.fetchRecommendedMovies(this.props.match.params.id);
     this.props.fetchLikedMovies();
   };
 
   componentDidUpdate(prevProps) {
-    const { fetchMovieData, fetchLikedMovies, match: { params: { id } } } = this.props;
+    const { fetchMovieData, fetchLikedMovies, fetchRecommendedMovies, match: { params: { id } } } = this.props;
     if (prevProps.match.params.id !== id) {
       fetchMovieData(id);
+      fetchRecommendedMovies(id);
       fetchLikedMovies();
     }
   };
@@ -115,6 +117,8 @@ class MovieDetail extends Component {
               <h3>Plot:</h3>
               <p>{data.overview ? data.overview : 'N/A'}</p>
               <p>{data.tagline ? `"${data.tagline}"` : ''}</p>
+              <Divider />
+              <h3>Recommended Movies:</h3>
             </Col>
           </Row>
         </Fragment>
@@ -123,6 +127,7 @@ class MovieDetail extends Component {
   };
 
   render() {
+    console.log(this.props.recommended_movies);
     return (
       <Fragment>
         {this.renderMovieDetail()}
@@ -131,8 +136,8 @@ class MovieDetail extends Component {
   }
 }
 
-function mapStateToProps({ movie_data, liked_movies }) {
-  return { movie_data, liked_movies };
+function mapStateToProps({ movie_data, liked_movies, recommended_movies }) {
+  return { movie_data, liked_movies, recommended_movies };
 };
 
 export default connect(mapStateToProps, actions)(MovieDetail);
