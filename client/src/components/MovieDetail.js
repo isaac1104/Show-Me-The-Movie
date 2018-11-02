@@ -68,7 +68,7 @@ class MovieDetail extends Component {
                 <Divider type='vertical'/>
                 {data.runtime ? `Runtime: ${data.runtime} Min.` : 'Runtime: N/A'}
               </h4>
-              <p><Rate allowHalf disabled defaultValue={data.vote_average / 2} /> ({data.vote_count ? `${data.vote_count} Votes` : ''})</p>
+              <div><Rate allowHalf disabled defaultValue={data.vote_average / 2} /> ({data.vote_count ? `${data.vote_count} Votes` : ''})</div>
               <Divider />
               <h3>Genres:</h3>
               {data.genres && data.genres.length !== 0 ? data.genres.map(genre => {
