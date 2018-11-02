@@ -10,6 +10,7 @@ import requireAuth from './requireAuth';
 import MovieDetail from './MovieDetail';
 import Home from '../pages/Home';
 import Landing from '../pages/Landing';
+import LikedMovies from '../pages/LikedMovies';
 import Search from '../pages/Search';
 import SearchResults from '../pages/SearchResults';
 import NotFound from '../pages/NotFound';
@@ -49,6 +50,7 @@ class App extends Component {
                 />
                 <Route exact path='/home' component={requireAuth(Home)} />
                 <Route exact path='/movie/:id' component={requireAuth(MovieDetail)} />
+                <Route exact path='/liked_movies' component={requireAuth(LikedMovies)} />
                 <Route exact path='/search/:title/:page' component={requireAuth(SearchResults)} />
                 <Route exact path='/search' component={requireAuth(Search)} />
                 <Route exact path='/notfound' component={requireAuth(NotFound)} />

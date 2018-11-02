@@ -27,12 +27,18 @@ class Sidebar extends Component {
                 </NavLink>
               </Menu.Item>
               <Menu.Item key="1">
+                <NavLink to="/liked_movies">
+                  <Icon type="heart"/>
+                  <span className="nav-text">Liked</span>
+                </NavLink>
+              </Menu.Item>
+              <Menu.Item key="2">
                 <NavLink to="/search">
                   <Icon type="search"/>
                   <span className="nav-text">Search</span>
                 </NavLink>
               </Menu.Item>
-              <Menu.Item key="2" style={styles.logout}>
+              <Menu.Item key="3" style={styles.logout}>
                 <a href="/api/signout">
                   <Icon type="logout"/>
                   <span className="nav-text">Logout</span>
