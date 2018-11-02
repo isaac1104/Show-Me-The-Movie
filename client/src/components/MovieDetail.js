@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Button, Col, Divider, Icon, Rate, Row, Spin } from 'antd';
+import { Button, Carousel, Col, Divider, Icon, Rate, Row, Spin } from 'antd';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
@@ -25,16 +25,18 @@ class MovieDetail extends Component {
     const { liked_movies: { data }, match: { params: { id } } } = this.props;
     const savedMovie = data.find(movie => movie.movieId === parseInt(id, 10));
     if (savedMovie !== undefined) {
+      const { data } = this.props.movie_data;
       return (
         <Rate
           character={<Icon type='heart' theme='filled' />}
           defaultValue={1}
           count={1}
           style={{ color: 'red' }}
-          onChange={() => this.props.deleteLikedMovie(this.props.movie_data.data.id)}
+          onChange={() => this.props.deleteLikedMovie(data.id)}
         />
       );
     } else {
+      const { data } = this.props.movie_data;
       return (
         <Rate
           character={<Icon type='heart' theme='filled' />}
@@ -42,11 +44,11 @@ class MovieDetail extends Component {
           count={1}
           style={{ color: 'red' }}
           onChange={() => this.props.saveLikedMovie({
-            title: this.props.movie_data.data.title,
-            movieId: this.props.movie_data.data.id,
-            rating: this.props.movie_data.data.vote_average,
-            poster: this.props.movie_data.data.poster_path,
-            releaseDate: this.props.movie_data.data.release_date
+            title: data.title,
+            movieId: data.id,
+            rating: data.vote_average,
+            poster: data.poster_path,
+            releaseDate: data.release_date
           })}
         />
       );
