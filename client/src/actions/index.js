@@ -47,3 +47,27 @@ export const resetMovieData = () => ({
   type: types.RESET_MOVIE_DATA,
   payload: ''
 });
+
+export const saveLikedMovie = values => async dispatch => {
+  try {
+    const request = await axios.post('/api/liked_movies', values);
+    const { data } = request;
+    dispatch({ type: types.SAVE_LIKED_MOVIE, payload: data });
+  } catch (e) {
+    dispatch({ type: types.SAVE_LIKED_MOVIE, payload: e });
+  }
+};
+
+export const deleteLikedMovie = movieId => async dispatch => {
+  try {
+    const request = await axios.delete('/api/liked_movies', {
+      params: {
+        movieId
+      }
+    });
+    const { data } = request;
+    dispatch({ type: types.DELETE_LIKED_MOVIE, payload: data });
+  } catch (e) {
+    dispatch({ type: types.DELETE_LIKED_MOVIE, payload: e });
+  }
+};

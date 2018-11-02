@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Button, Col, Divider, Icon, Rate, Row, Spin } from 'antd';
 import { connect } from 'react-redux';
-import { fetchMovieData, resetMovieData } from '../actions';
+import * as actions from '../actions';
 
 class MovieDetail extends Component {
   componentDidMount() {
@@ -60,7 +60,11 @@ class MovieDetail extends Component {
                   character={<Icon type='heart' theme='filled' />}
                   count={1}
                   style={{ color: 'red' }}
-                  onChange={value => console.log(value)}
+                  onChange={
+                    value => value === 1
+                      ? this.props.saveLikedMovie({ title: data.title, movieId: data.id })
+                      : this.props.deleteLikedMovie(data.id)}
+
                 />
               </h1>
               <h4>
@@ -68,7 +72,7 @@ class MovieDetail extends Component {
                 <Divider type='vertical'/>
                 {data.runtime ? `Runtime: ${data.runtime} Min.` : 'Runtime: N/A'}
               </h4>
-              <p><Rate allowHalf disabled defaultValue={data.vote_average / 2} /> ({data.vote_count ? `${data.vote_count} Votes` : ''})</p>
+              <div><Rate allowHalf disabled defaultValue={data.vote_average / 2} /> ({data.vote_count ? `${data.vote_count} Votes` : ''})</div>
               <Divider />
               <h3>Genres:</h3>
               {data.genres && data.genres.length !== 0 ? data.genres.map(genre => {
@@ -86,7 +90,6 @@ class MovieDetail extends Component {
   };
 
   render() {
-    console.log(this.props.movie_data);
     return (
       <Fragment>
         {this.renderMovieDetail()}
@@ -99,4 +102,4 @@ function mapStateToProps({ movie_data }) {
   return { movie_data };
 };
 
-export default connect(mapStateToProps, { fetchMovieData, resetMovieData })(MovieDetail);
+export default connect(mapStateToProps, actions)(MovieDetail);
