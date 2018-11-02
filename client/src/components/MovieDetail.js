@@ -119,6 +119,10 @@ class MovieDetail extends Component {
               <p>{data.overview ? data.overview : 'N/A'}</p>
               <p>{data.tagline ? `"${data.tagline}"` : ''}</p>
               <Divider />
+              <MovieRecommendation
+                movieId={this.props.match.params.id}
+                title={this.props.match.params.title}
+              />
             </Col>
           </Row>
         </Fragment>
@@ -130,10 +134,6 @@ class MovieDetail extends Component {
     return (
       <Fragment>
         {this.renderMovieDetail()}
-        <MovieRecommendation
-          movieId={this.props.match.params.id}
-          title={this.props.match.params.title}
-        />
       </Fragment>
     );
   }

@@ -8,7 +8,8 @@ class MovieCard extends Component {
     const styles = {
       col: {
         marginTop: '15px',
-        marginBottom: '15px'
+        marginBottom: '15px',
+        width: this.props.width || null
       },
       card: {
         width: '80%',

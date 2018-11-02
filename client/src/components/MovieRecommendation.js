@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import MovieCard from './MovieCard';
+import Slider from 'react-slick';
 import { connect } from 'react-redux';
 import { fetchRecommendedMovies } from '../actions';
 
@@ -18,19 +19,34 @@ class MovieRecommendation extends Component {
   renderRecommendedMovies() {
     const { data: { results } } = this.props.recommended_movies;
     if (results) {
-      return results.map(movie => {
-        return (
-          <MovieCard
-            key={movie.id}
-            keyword={this.props.title}
-            id={movie.id}
-            title={movie.title}
-            release_date={movie.release_date}
-            poster={movie.poster_path}
-            rating={movie.vote_average}
-          />
-        );
-      });
+      const settings = {
+        arrows: true,
+        autoplay: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 4
+      };
+
+      return (
+        <Slider {...settings}>
+          {results.map(movie => {
+            return (
+              <div key={movie.id}>
+                <MovieCard
+                  keyword={this.props.title}
+                  id={movie.id}
+                  title={movie.title}
+                  release_date={movie.release_date}
+                  poster={movie.poster_path}
+                  rating={movie.vote_average}
+                  width={'100%'}
+                />
+              </div>
+            );
+          })}
+        </Slider>
+      );
     }
   };
 
