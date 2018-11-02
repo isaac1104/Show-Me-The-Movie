@@ -8,7 +8,7 @@ module.exports = app => {
   });
 
   app.post('/api/liked_movies', async (req, res, done) => {
-    const { title, movieId } = req.body;
+    const { title, movieId, rating, poster } = req.body;
     const currentMovie = await LikedMovies.findOne({ movieId });
     if (currentMovie) {
       return done(null, currentMovie);
@@ -16,6 +16,8 @@ module.exports = app => {
     const likedMovies = new LikedMovies({
       movieId,
       title,
+      rating,
+      poster,
       _user: req.user.id
     });
     try {

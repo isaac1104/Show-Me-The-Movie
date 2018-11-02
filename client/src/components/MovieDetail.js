@@ -62,7 +62,7 @@ class MovieDetail extends Component {
                   style={{ color: 'red' }}
                   onChange={
                     value => value === 1
-                      ? this.props.saveLikedMovie({ title: data.title, movieId: data.id })
+                      ? this.props.saveLikedMovie({ title: data.title, movieId: data.id, rating: data.vote_average, poster: data.poster_path })
                       : this.props.deleteLikedMovie(data.id)}
 
                 />
