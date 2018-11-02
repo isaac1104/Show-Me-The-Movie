@@ -1,20 +1,31 @@
-import { SAVE_LIKED_MOVIE, DELETE_LIKED_MOVIE } from '../actions/types';
+import { REQUEST_LIKED_MOVIES, RECEIVE_LIKED_MOVIES, REJECT_LIKED_MOVIES } from '../actions/types';
 
 const INITIAL_STATE = {
-  data: []
+  isFetching: false,
+  data: '',
+  error: ''
 };
 
 const likedMoviesReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case SAVE_LIKED_MOVIE:
+    case REQUEST_LIKED_MOVIES:
       return {
         ...state,
-        data: [...action.payload]
+        isFetching: action.payload
       };
-    case DELETE_LIKED_MOVIE:
+    case RECEIVE_LIKED_MOVIES:
       return {
         ...state,
-        data: state.data.filter(movie => movie.movieId !== action.payload)
+        isFetching: false,
+        data: action.payload,
+        error: ''
+      };
+    case REJECT_LIKED_MOVIES:
+      return {
+        ...state,
+        isFetching: false,
+        data: '',
+        error: action.payload
       };
     default:
       return state;
