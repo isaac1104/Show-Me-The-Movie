@@ -45,7 +45,8 @@ class MovieDetail extends Component {
             title: this.props.movie_data.data.title,
             movieId: this.props.movie_data.data.id,
             rating: this.props.movie_data.data.vote_average,
-            poster: this.props.movie_data.data.poster_path
+            poster: this.props.movie_data.data.poster_path,
+            releaseDate: this.props.movie_data.data.release_date
           })}
         />
       );

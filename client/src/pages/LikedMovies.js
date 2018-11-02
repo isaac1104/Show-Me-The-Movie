@@ -36,7 +36,7 @@ class LikedMovies extends Component {
             key={movie.movieId}
             id={movie.movieId}
             title={movie.title}
-            release_date={movie.release_date}
+            release_date={movie.releaseDate}
             poster={movie.poster}
             rating={movie.rating}
           />

@@ -6,6 +6,7 @@ const likedMoviesSchema = new Schema({
   movieId: Number,
   rating: Number,
   poster: String,
+  releaseDate: String,
   _user: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
