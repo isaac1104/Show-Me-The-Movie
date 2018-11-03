@@ -61,42 +61,41 @@ class MovieDetail extends Component {
 
   renderRecommendedMovies() {
     const { data: { results } } = this.props.recommended_movies;
-    if (results.length === 0) {
+    if (results && results.length === 0) {
       return <h3>Recommeded Movies: NA</h3>
-    } else {
-      const settings = {
-        arrows: true,
-        draggable: false,
-        autoplay: true,
-        infinite: true,
-        speed: 1000,
-        slidesToShow: 4,
-        slidesToScroll: 4
-      };
-
-      return (
-        <Fragment>
-          <p>Recommended Movies:</p>
-          <Slider {...settings}>
-            {results.map(movie => {
-              return (
-                <div key={movie.id}>
-                  <MovieCard
-                    keyword={this.props.match.params.title}
-                    id={movie.id}
-                    title={movie.title}
-                    release_date={movie.release_date}
-                    poster={movie.poster_path}
-                    rating={movie.vote_average}
-                    width={'100%'}
-                  />
-                </div>
-              );
-            })}
-          </Slider>
-        </Fragment>
-      );
     }
+
+    const settings = {
+      arrows: true,
+      draggable: false,
+      autoplay: true,
+      infinite: true,
+      speed: 1000,
+      slidesToShow: 4,
+      slidesToScroll: 4
+    };
+    return (
+      <Fragment>
+        <p>Recommended Movies:</p>
+        <Slider {...settings}>
+          {results.map(movie => {
+            return (
+              <div key={movie.id}>
+                <MovieCard
+                  keyword={this.props.match.params.title}
+                  id={movie.id}
+                  title={movie.title}
+                  release_date={movie.release_date}
+                  poster={movie.poster_path}
+                  rating={movie.vote_average}
+                  width={'100%'}
+                />
+              </div>
+            );
+          })}
+        </Slider>
+      </Fragment>
+    );
   };
 
   renderMovieDetail() {
