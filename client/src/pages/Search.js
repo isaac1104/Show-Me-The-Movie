@@ -37,6 +37,13 @@ class Search extends Component {
         slidesToScroll: 8,
         responsive: [
           {
+            breakpoint: 1600,
+            settings: {
+              slidesToShow: 8,
+              slidesToScroll: 8
+            }
+          },
+          {
             breakpoint: 1440,
             settings: {
               slidesToShow: 6,
