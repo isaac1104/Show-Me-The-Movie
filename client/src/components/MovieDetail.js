@@ -151,7 +151,7 @@ class MovieDetail extends Component {
                   allowHalf
                   disabled
                   defaultValue={data.vote_average / 2} />
-                  {data.vote_count ? `(${data.vote_count} Votes)` : ''}
+                {data.vote_count ? `(${data.vote_count} Votes)` : ''}
               </div>
               <div style={{ marginTop: '15px' }}>
                 {data.genres && data.genres.length !== 0 ? data.genres.map(genre => {
