@@ -61,8 +61,7 @@ class Search extends Component {
             breakpoint: 576,
             settings: {
               slidesToShow: 2,
-              slidesToScroll: 2,
-              initialSlide: 2
+              slidesToScroll: 2
             }
           },
           {
