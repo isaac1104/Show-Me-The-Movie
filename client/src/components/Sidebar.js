@@ -11,15 +11,21 @@ class Sidebar extends Component {
       logout: {
         position: 'absolute',
         bottom: 0
+      },
+      sidebar: {
+        backgroundColor: '#202225'
+      },
+      menu: {
+        backgroundColor: '#202225'
       }
     };
 
     return (
       <Fragment>
         {data ? (
-          <Sider breakpoint='lg' collapsedWidth='0'>
+          <Sider breakpoint='lg' collapsedWidth='0' style={styles.sidebar}>
             <div className="logo"/>
-            <Menu mode="inline" theme='dark' defaultSelectedKeys={['0']}>
+            <Menu mode="inline" theme='dark' defaultSelectedKeys={['0']} style={styles.menu}>
               <Menu.Item key="0">
                 <NavLink to="/home">
                   <Icon type="home"/>
