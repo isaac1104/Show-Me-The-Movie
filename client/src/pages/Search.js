@@ -61,7 +61,6 @@ class Search extends Component {
   };
 
   render() {
-    console.log(this.props.now_playing_movies);
     return (
       <Fragment>
         <SearchForm />

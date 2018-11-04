@@ -64,6 +64,20 @@ class MovieDetail extends Component {
     if (results) {
       if (results.length === 0) {
         return <h3>Recommeded Movies: NA</h3>
+      } else if (results.length === 1) {
+        return (
+          <Fragment>
+            <p>Recommended Movie:</p>
+            <MovieCard
+              id={results[0].id}
+              title={results[0].title}
+              release_date={results[0].release_date}
+              poster={results[0].poster_path}
+              rating={results[0].vote_average}
+              width={'30%'}
+            />
+          </Fragment>
+        );
       } else {
         const settings = {
           arrows: true,
@@ -82,7 +96,6 @@ class MovieDetail extends Component {
                 return (
                   <div key={movie.id}>
                     <MovieCard
-                      keyword={this.props.match.params.title}
                       id={movie.id}
                       title={movie.title}
                       release_date={movie.release_date}
