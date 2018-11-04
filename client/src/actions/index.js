@@ -97,3 +97,14 @@ export const fetchRecommendedMovies = id => async dispatch => {
     dispatch({ type: types.REJECT_RECOMMENDED_MOVIES, payload: e });
   }
 };
+
+export const fetchNowPlayingMovies = () => async dispatch => {
+  dispatch({ type: types.REQUEST_NOW_PLAYING_MOVIES, payload: true });
+  try {
+    const request = await axios.get('/api/now_playing_movies');
+    const { data } = request;
+    dispatch({ type: types.RECEIVE_NOW_PLAYING_MOVIES, payload: data });
+  } catch (e) {
+    dispatch({ type: types.REJECT_NOW_PLAYING_MOVIES, payload: e });
+  }
+};
