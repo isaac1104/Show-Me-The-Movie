@@ -26,7 +26,7 @@ class MovieCard extends Component {
     };
 
     return (
-      <Col xs={24} sm={12} md={6} lg={6} xl={3} style={styles.col}>
+      <Col xs={24} sm={12} md={6} lg={6} xl={4} xxl={3} style={styles.col}>
         <Card
           hoverable
           cover={
