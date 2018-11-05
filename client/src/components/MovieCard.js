@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import { withRouter } from 'react-router-dom';
-import { Card, Col, Icon, Rate, Spin } from 'antd';
+import { Card, Col, Rate } from 'antd';
 import { FadeIn } from 'react-lazyload-fadein';
 const { Meta } = Card;
 
@@ -32,10 +32,7 @@ class MovieCard extends Component {
         <Card
           hoverable
           cover={
-            <FadeIn
-              height={300}
-              offset={100}
-              >
+            <FadeIn height={240}>
               {onload => (
                 <img
                   src={this.props.poster ? `http://image.tmdb.org/t/p/w185/${this.props.poster}` : 'https://via.placeholder.com/300?text=Poster+Not+Available' }
