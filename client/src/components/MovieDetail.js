@@ -87,7 +87,8 @@ class MovieDetail extends Component {
         );
       } else {
         const settings = {
-          arrows: true,
+          arrows: false,
+          dots: true,
           draggable: false,
           autoplay: true,
           infinite: true,
