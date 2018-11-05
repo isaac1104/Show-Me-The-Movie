@@ -16,7 +16,8 @@ class Search extends Component {
     const { data: { results } } = this.props.now_playing_movies;
     if (results) {
       const settings = {
-        arrows: true,
+        arrows: false,
+        dots: true,
         draggable: false,
         autoplay: true,
         infinite: true,
@@ -96,7 +97,8 @@ class Search extends Component {
     const { data: { results } } = this.props.popular_movies;
     if (results) {
       const settings = {
-        arrows: true,
+        arrows: false,
+        dots: true,
         draggable: false,
         autoplay: true,
         infinite: true,
