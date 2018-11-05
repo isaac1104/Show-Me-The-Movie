@@ -78,7 +78,7 @@ class MovieDetail extends Component {
                     release_date={movie.release_date}
                     poster={movie.poster_path}
                     rating={movie.vote_average}
-                    width={'30%'}
+                    width={'25%'}
                   />
                 </div>
               );
