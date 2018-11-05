@@ -70,7 +70,7 @@ class Search extends Component {
       };
       return (
         <Fragment>
-          <Tag color='#1890ff' style={{ marginTop: '15px' }}>Now Playing</Tag>
+          <Tag color='#ff4f00' style={{ marginTop: '15px' }}>Now Playing</Tag>
           <Slider {...settings}>
             {results.map(movie => {
               return (
@@ -150,7 +150,7 @@ class Search extends Component {
       };
       return (
         <Fragment>
-          <Tag color='#f50' style={{ marginTop: '15px' }}>Top 20 Popular Movies</Tag>
+          <Tag color='#1890ff' style={{ marginTop: '15px' }}>Top 20 Popular Movies</Tag>
           <Slider {...settings}>
             {results.map(movie => {
               return (
