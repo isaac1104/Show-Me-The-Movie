@@ -9,23 +9,11 @@ import MovieCard from '../components/MovieCard';
 class Search extends Component {
   componentDidMount() {
     this.props.fetchNowPlayingMovies();
+    this.props.fetchPopularMovies();
   };
 
   renderNowPlayingMovies() {
-    const { isFetching, data: { results } } = this.props.now_playing_movies;
-    if (isFetching) {
-      return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh', width: '100%' }}>
-          <Fragment>
-            <Spin
-              size='large'
-              indicator={ <Icon type='loading' /> }
-            />
-          </Fragment>
-        </div>
-      );
-    }
-
+    const { data: { results } } = this.props.now_playing_movies;
     if (results) {
       const settings = {
         arrows: true,
@@ -105,20 +93,7 @@ class Search extends Component {
   };
 
   renderPopularMovies() {
-    const { isFetching, data: { results } } = this.props.now_playing_movies;
-    if (isFetching) {
-      return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh', width: '100%' }}>
-          <Fragment>
-            <Spin
-              size='large'
-              indicator={ <Icon type='loading' /> }
-            />
-          </Fragment>
-        </div>
-      );
-    }
-
+    const { data: { results } } = this.props.popular_movies;
     if (results) {
       const settings = {
         arrows: true,
@@ -175,7 +150,7 @@ class Search extends Component {
       };
       return (
         <Fragment>
-          <Tag color='#1890ff' style={{ marginTop: '15px' }}>Popular Movies</Tag>
+          <Tag color='#f50' style={{ marginTop: '15px' }}>Top 20 Popular Movies</Tag>
           <Slider {...settings}>
             {results.map(movie => {
               return (
@@ -198,12 +173,27 @@ class Search extends Component {
   };
 
   render() {
-    console.log(this.props.popular_movies);
     return (
       <Fragment>
         <SearchForm />
-        {this.renderNowPlayingMovies()}
-        {/* {this.renderPopularMovies()} */}
+        {this.props.now_playing_movies.isFetching || this.props.popular_movies.isFetching
+          ? (
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh', width: '100%' }}>
+              <Fragment>
+                <Spin
+                  size='large'
+                  indicator={ <Icon type='loading' /> }
+                />
+              </Fragment>
+            </div>
+          )
+          : (
+            <Fragment>
+              {this.renderNowPlayingMovies()}
+              {this.renderPopularMovies()}
+            </Fragment>
+          )
+        }
       </Fragment>
     );
   }
