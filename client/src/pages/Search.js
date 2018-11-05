@@ -82,7 +82,7 @@ class Search extends Component {
       };
       return (
         <Fragment>
-          <Tag color='#1890ff' style={{ marginTop: '15px' }}>Now Playing: </Tag>
+          <Tag color='#1890ff' style={{ marginTop: '15px' }}>Now Playing</Tag>
           <Slider {...settings}>
             {results.map(movie => {
               return (
