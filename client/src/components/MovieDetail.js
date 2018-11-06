@@ -68,7 +68,7 @@ class MovieDetail extends Component {
       } else if (results.length <= 4) {
         return (
           <Fragment>
-            <p>Recommended Movies:</p>
+            <h3>Recommended Movies:</h3>
             {results.map(movie => {
               return (
                 <div key={movie.id}>
@@ -128,7 +128,7 @@ class MovieDetail extends Component {
         };
         return (
           <Fragment>
-            <p>Recommended Movies:</p>
+            <h3>Recommended Movies:</h3>
             <Slider {...settings}>
               {results.map(movie => {
                 return (
