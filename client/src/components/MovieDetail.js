@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import MovieCard from './MovieCard';
 import Slider from 'react-slick';
 import { Button, Col, Divider, Icon, Rate, Row, Spin, Tag } from 'antd';
-import { FadeIn } from 'react-lazyload-fadein';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
