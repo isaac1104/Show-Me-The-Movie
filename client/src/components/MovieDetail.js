@@ -235,7 +235,7 @@ class MovieDetail extends Component {
         {this.renderMovieDetail()}
       </Fragment>
     );
-  }
+  };
 }
 
 function mapStateToProps({ movie_data, liked_movies, recommended_movies }) {
