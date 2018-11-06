@@ -180,18 +180,11 @@ class MovieDetail extends Component {
           />
           <Row type='flex'>
             <Col xs={24} sm={24} md={10} lg={10} xl={10} style={{ display: 'flex', marginBottom: '30px' }}>
-              <FadeIn height={700}>
-                {onload => (
-                  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
-                    <img
-                      src={data.poster_path ? `http://image.tmdb.org/t/p/w185/${data.poster_path}` : 'https://via.placeholder.com/300?text=Poster+Not+Available' }
-                      alt='movie poster'
-                      style={{ margin: 'auto', width: '70%' }}
-                      onLoad={onload}
-                    />
-                  </div>
-                )}
-              </FadeIn>
+              <img
+                src={data.poster_path ? `http://image.tmdb.org/t/p/w185/${data.poster_path}` : 'https://via.placeholder.com/300?text=Poster+Not+Available' }
+                alt='movie poster'
+                style={{ margin: 'auto', width: '70%' }}
+              />
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={12}>
               <h1>
