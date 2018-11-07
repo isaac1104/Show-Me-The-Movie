@@ -40,6 +40,6 @@ if (['production', 'ci'].includes(process.env.NODE_ENV)) {
   });
 }
 
-app.listen(PORT, function() {
+app.listen(PORT, () => {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
 });
