@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Card, Col, Rate } from 'antd';
-import { FadeIn } from 'react-lazyload-fadein';
+import { SimpleImg, SimpleImgProvider } from 'react-simple-img';
 const { Meta } = Card;
 
 class MovieCard extends Component {
@@ -13,13 +13,9 @@ class MovieCard extends Component {
         width: this.props.width || null
       },
       card: {
-        width: '80%',
+        width: '90%',
         height: '100%',
         margin: 'auto'
-      },
-      poster: {
-        margin: 'auto',
-        width: '100%'
       },
       rate: {
         fontSize: '12px',
@@ -32,16 +28,14 @@ class MovieCard extends Component {
         <Card
           hoverable
           cover={
-            <FadeIn height={240}>
-              {onload => (
-                <img
-                  src={this.props.poster ? `http://image.tmdb.org/t/p/w185/${this.props.poster}` : 'https://via.placeholder.com/300?text=Poster+Not+Available' }
-                  alt='movie poster'
-                  style={styles.poster}
-                  onLoad={onload}
-                />
-              )}
-            </FadeIn>
+            <SimpleImgProvider>
+              <SimpleImg
+                width={180}
+                height={240}
+                src={this.props.poster ? `http://image.tmdb.org/t/p/w185/${this.props.poster}` : 'https://via.placeholder.com/300?text=Poster+Not+Available' }
+                alt='poster'
+              />
+            </SimpleImgProvider>
           }
           onClick={() => this.props.history.push(`/movie/${this.props.id}`)}
           style={styles.card}

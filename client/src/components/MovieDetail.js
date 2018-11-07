@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import MovieCard from './MovieCard';
 import Slider from 'react-slick';
 import { Button, Col, Divider, Icon, Rate, Row, Spin, Tag } from 'antd';
+import { SimpleImg, SimpleImgProvider } from 'react-simple-img';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
@@ -177,13 +178,15 @@ class MovieDetail extends Component {
             size='large'
             onClick={() => this.props.history.goBack()}
           />
-          <Row type='flex'>
-            <Col xs={24} sm={24} md={10} lg={10} xl={10} style={{ display: 'flex', marginBottom: '30px' }}>
-              <img
-                src={data.poster_path ? `http://image.tmdb.org/t/p/w185/${data.poster_path}` : 'https://via.placeholder.com/300?text=Poster+Not+Available' }
-                alt='movie poster'
-                style={{ margin: 'auto', width: '70%' }}
-              />
+          <Row type='flex' gutter={16}>
+            <Col xs={24} sm={24} md={10} lg={10} xl={10} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '30px' }}>
+              <SimpleImgProvider>
+                <SimpleImg
+                  height={700}
+                  src={data.poster_path ? `http://image.tmdb.org/t/p/w185/${data.poster_path}` : 'https://via.placeholder.com/300?text=Poster+Not+Available' }
+                  alt='movie-poster'
+                />
+              </SimpleImgProvider>
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={12}>
               <h1>
