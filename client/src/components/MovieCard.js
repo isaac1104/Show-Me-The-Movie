@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Card, Col, Rate } from 'antd';
 import { FadeIn } from 'react-lazyload-fadein';
