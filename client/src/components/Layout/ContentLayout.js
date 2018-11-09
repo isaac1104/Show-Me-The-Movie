@@ -12,14 +12,14 @@ class ContentLayout extends Component {
         alignItems: 'center',
         backgroundColor: pathname === '/' ? 'transparent' : '#f0f2f5',
         height: '100vh',
-        overflow: 'hidden',
-        backgroundImage: pathname === '/' ? `url(${moviesImage})` : null
+        overflow: 'hidden'
       },
       content: {
         backgroundColor: pathname === '/' ? 'transparent' : '#ffffff',
         padding: 24,
         margin: 0,
         width: '100%',
+        height: '100%',
         overflowY: pathname === '/' ? 'hidden' : 'scroll'
       }
     };
