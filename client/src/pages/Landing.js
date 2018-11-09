@@ -7,7 +7,8 @@ const styles = {
     overflow: 'hidden',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    textAlign: 'center'
   }
 };
 
@@ -15,7 +16,8 @@ const Home = () => {
   return (
     <div style={styles.container}>
       <div>
-        <h1>Welcome to SMTM</h1>
+        <h1>Show Me The Movie</h1>
+        <h3>Search For Your Favorite Old Movies, or Discover Something New You Haven't Watched</h3>
         <GoogleButton />
       </div>
     </div>
