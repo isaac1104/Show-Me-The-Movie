@@ -65,13 +65,12 @@ class SearchResults extends Component {
     if (data) {
       return (
         <Pagination
-          defaultCurrent={1}
           defaultPageSize={20}
           current={parseInt(page, 10)}
           hideOnSinglePage
           total={data.total_results}
           onChange={page => this.props.history.push(`/search/${title}/${page}`)}
-          style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+          style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '15px' }}
         />
       );
     } else {
