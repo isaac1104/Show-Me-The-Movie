@@ -20,3 +20,9 @@ Show Me The Movie is a fun web app that lets you search for your favorite movies
 2. Sign in using your Google account
 3. Enjoy the app!
 
+## Tech Stack
+1. React
+2. Redux
+3. Mongo
+4. Node
+5. Express
