@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import moviesImage from '../../images/movies.jpg';
 import { Layout } from 'antd';
 const { Content } = Layout;
 
