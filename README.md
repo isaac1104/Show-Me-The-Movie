@@ -1,84 +1,20 @@
-# Create React Express App
+# Show Me The Movie
 
-## About This Boilerplate
+## About This App
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+Show Me The Movie is a fun web app that lets you search for your favorite movies, get details, and "like" those movies for you to access them later.
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+### Search for your favorite movies!
+![2](https://user-images.githubusercontent.com/28583016/48290564-2d9eb280-e428-11e8-8c68-f44483a4e2e8.PNG)
+![3](https://user-images.githubusercontent.com/28583016/48290570-34c5c080-e428-11e8-9dc4-e54730377133.PNG)
+### Get details about your favorite movie!
+![1](https://user-images.githubusercontent.com/28583016/48290559-2b3c5880-e428-11e8-92ec-49d705b7f11a.PNG)
+### Access your favorite movies by liking them!
+![4](https://user-images.githubusercontent.com/28583016/48290836-2fb54100-e429-11e8-9d87-effb65cfd5bc.PNG)
 
-## Starting the app locally
+## To use the app
 
-Start by installing front and backend dependencies. While in this directory, run the following commands:
+1. Please go to `https://isaac-smtm.herokuapp.com/`
+2. Sign in using your Google account
+3. Enjoy the app!
 
-```
-yarn install
-cd client
-yarn install
-cd ..
-``
-
-After both installations complete, run the following command in your terminal:
-
-```
-yarn start
-```
-
-That's it, your app should be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
-
-## Deployment (Heroku)
-
-### Create a Git Repo
-
-Once you're ready to deploy, start by making sure your project is a git repository. If so, proceed to the next section, otherwise run the following commands in your terminal:
-
-```
-git init
-git add .
-git commit -m "Initial commit"
-```
-
-### Heroku
-
-Make sure that you have a Heroku app created for this project. If so, proceed to the next section, otherwise run the following command in your terminal:
-
-```
-heroku create
-```
-
-Optionally add an argument for your application's name after `create`, e.g.
-
-```
-heroku myawesomeapp
-```
-
-### Deploying
-
-#### Option 1
-
-Use the deploy script inside of the outer `package.json`
-
-After confirming that you have an up to date git repository and a Heroku app created, run the following command to deploy:
-
-```
-yarn deploy
-```
-
-If all previous steps were followed correctly, your application should be deployed to Heroku!
-
-#### Option 2
-
-Manually deploy 
-
-After confirming that you have an up to date git repository and a Heroku app created, complete the following:
-
-1. Build the React app for production by running the following command:
-
-```
-yarn build
-```
-
-2. Add and commit all changes to git
-
-3. Push to Heroku
-
-If all previous steps were followed correctly, your application should be deployed to Heroku!
