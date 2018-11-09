@@ -33,7 +33,7 @@ const Home = () => {
       <div style={styles.poster}/>
       <div style={styles.textContainer}>
         <h1 style={styles.text}>Show Me The Movie</h1>
-        <h3 style={styles.text}>Whether You Are Looking For Your Favorite Old Movies, Or In A Mood To Watch Something New You Haven't Watched, We Have It All</h3>
+        <h3 style={styles.text}>Whether You Are Looking For Your Favorite Old Movies, Or In A Mood To Discover Something New, We Have It All</h3>
         <GoogleButton />
       </div>
     </div>
