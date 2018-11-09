@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moviesImage from '../../images/movies.jpg';
 import { Layout } from 'antd';
 const { Content } = Layout;
 
@@ -9,12 +10,13 @@ class ContentLayout extends Component {
       layout: {
         padding: '0 24px',
         alignItems: 'center',
-        backgroundColor: pathname === '/' ? '#36393f' : '#ffffff',
+        backgroundColor: pathname === '/' ? 'transparent' : '#f0f2f5',
         height: '100vh',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        backgroundImage: pathname === '/' ? `url(${moviesImage})` : null
       },
       content: {
-        backgroundColor: pathname === '/' ? '#36393f' : '#ffffff',
+        backgroundColor: pathname === '/' ? 'transparent' : '#ffffff',
         padding: 24,
         margin: 0,
         width: '100%',
