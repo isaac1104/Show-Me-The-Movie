@@ -17,7 +17,7 @@ const Home = () => {
     <div style={styles.container}>
       <div>
         <h1>Show Me The Movie</h1>
-        <h3>Search For Your Favorite Old Movies, or Discover Something New You Haven't Watched</h3>
+        <h3>Whether You Are Looking For Your Favorite Old Movies, Or In A Mood To Watch Something New You Haven't Watched, We Have It All</h3>
         <GoogleButton />
       </div>
     </div>
