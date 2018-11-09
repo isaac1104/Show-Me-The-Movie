@@ -14,7 +14,7 @@ Show Me The Movie is a fun web app that lets you search for your favorite movies
 
 ## To use the app
 
-1. Please go to `https://isaac-smtm.herokuapp.com/`
+1. Please click the [link](https://isaac-smtm.herokuapp.com) to go to the website
 2. Sign in using your Google account
 3. Enjoy the app!
 
