@@ -5,7 +5,7 @@
 Show Me The Movie is a fun web app that lets you search for your favorite movies, get details, and "like" those movies for you to access them later.
 
 ### Demo
-![demo](https://user-images.githubusercontent.com/28583016/48291394-27f69c00-e42b-11e8-8900-08a2840cac6e.gif)
+![demo](https://user-images.githubusercontent.com/28583016/48362890-81dca900-e659-11e8-8a9f-944fae0682a8.gif)
 
 ### Search for your favorite movies!
 ![3](https://user-images.githubusercontent.com/28583016/48290570-34c5c080-e428-11e8-9dc4-e54730377133.PNG)
