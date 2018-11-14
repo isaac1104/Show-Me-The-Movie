@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { fetchNowPlayingMovies, fetchPopularMovies } from '../actions';
-import { Icon, Spin, Tag} from 'antd';
+import { Tag} from 'antd';
 import Slider from 'react-slick';
 import SearchForm from '../components/SearchForm/SearchForm';
 import MovieCard from '../components/MovieCard';
+import Spinner from '../components/Spinner';
 
 class Search extends Component {
   componentDidMount() {
@@ -179,16 +180,7 @@ class Search extends Component {
       <Fragment>
         <SearchForm />
         {this.props.now_playing_movies.isFetching || this.props.popular_movies.isFetching
-          ? (
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh', width: '100%' }}>
-              <Fragment>
-                <Spin
-                  size='large'
-                  indicator={ <Icon type='loading' /> }
-                />
-              </Fragment>
-            </div>
-          )
+          ? <Spinner />
           : (
             <Fragment>
               {this.renderNowPlayingMovies()}

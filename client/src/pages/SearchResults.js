@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react';
-import { Icon, Pagination, Row, Spin } from 'antd';
+import { Pagination, Row } from 'antd';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import SearchForm from '../components/SearchForm/SearchForm';
 import MovieCard from '../components/MovieCard';
+import Spinner from '../components/Spinner';
 import { searchForMovies, resetMovieData } from '../actions';
 
 class SearchResults extends Component {
@@ -26,16 +27,7 @@ class SearchResults extends Component {
   renderResults() {
     const { isFetching, data: { results } } = this.props.movie_data;
     if (isFetching) {
-      return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh', width: '100%' }}>
-          <Fragment>
-            <Spin
-              size='large'
-              indicator={ <Icon type='loading' /> }
-            />
-          </Fragment>
-        </div>
-      );
+      return <Spinner />;
     }
 
     if (results && results.length === 0) {

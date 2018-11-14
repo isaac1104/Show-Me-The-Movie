@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import MovieCard from './MovieCard';
+import Spinner from './Spinner';
 import Slider from 'react-slick';
-import { Button, Col, Divider, Icon, Rate, Row, Spin, Tag } from 'antd';
+import { Button, Col, Divider, Icon, Rate, Row, Tag } from 'antd';
 import { SimpleImg, SimpleImgProvider } from 'react-simple-img';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
@@ -156,16 +157,7 @@ class MovieDetail extends Component {
   renderMovieDetail() {
     const { isFetching, data } = this.props.movie_data;
     if (isFetching || this.props.recommended_movies.isFetching) {
-      return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh', width: '100%' }}>
-          <Fragment>
-            <Spin
-              size='large'
-              indicator={ <Icon type='loading' /> }
-            />
-          </Fragment>
-        </div>
-      );
+      return <Spinner />;
     }
 
     if (data) {

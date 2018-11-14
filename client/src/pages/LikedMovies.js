@@ -1,7 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import Spinner from '../components/Spinner';
 import MovieCard from '../components/MovieCard';
 import { connect } from 'react-redux';
-import { Icon, Row, Spin } from 'antd';
+import { Row } from 'antd';
 import { fetchLikedMovies } from '../actions';
 
 class LikedMovies extends Component {
@@ -13,16 +14,7 @@ class LikedMovies extends Component {
     const { isFetching, data } = this.props.liked_movies;
 
     if (isFetching) {
-      return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh', width: '100%' }}>
-          <Fragment>
-            <Spin
-              size='large'
-              indicator={ <Icon type='loading' /> }
-            />
-          </Fragment>
-        </div>
-      );
+      return <Spinner />;
     }
 
     if (data.length === 0) {

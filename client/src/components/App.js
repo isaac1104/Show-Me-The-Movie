@@ -1,11 +1,12 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { Layout, Spin, Icon } from 'antd';
+import { Layout } from 'antd';
 import { connect } from 'react-redux';
 import { fetchCurrentUser } from '../actions';
 import ScrollToTop from './ScrollToTop';
 import ContentLayout from './Layout/ContentLayout';
 import Sidebar from './Sidebar';
+import Spinner from './Spinner';
 import requireAuth from './requireAuth';
 import MovieDetail from './MovieDetail';
 import Home from '../pages/Home';
@@ -34,13 +35,7 @@ class App extends Component {
                   render={() => {
                     const { isFetching, data } = this.props.current_user;
                     if (isFetching) {
-                      return (
-                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh' }}>
-                          <Fragment>
-                            <Spin size='large' indicator={ <Icon type='loading' /> } />
-                          </Fragment>
-                        </div>
-                      );
+                      return <Spinner />;
                     } else if (data) {
                       return <Redirect to='/home' />;
                     } else {
