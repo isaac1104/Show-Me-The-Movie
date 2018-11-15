@@ -9,9 +9,10 @@ import * as actions from '../actions';
 
 class MovieDetail extends Component {
   componentDidMount() {
-    this.props.fetchMovieData(this.props.match.params.id);
-    this.props.fetchRecommendedMovies(this.props.match.params.id);
-    this.props.fetchLikedMovies();
+    const { fetchMovieData, fetchRecommendedMovies, fetchLikedMovies, match: { params: { id } } } = this.props;
+    fetchMovieData(id);
+    fetchRecommendedMovies(id);
+    fetchLikedMovies();
   };
 
   componentDidUpdate(prevProps) {

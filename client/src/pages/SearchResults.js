@@ -9,8 +9,8 @@ import { searchForMovies, resetMovieData } from '../actions';
 
 class SearchResults extends Component {
   componentDidMount() {
-    const { params: { title, page} } = this.props.match;
-    this.props.searchForMovies(title, page);
+    const { searchForMovies, match : { params: { title, page} } } = this.props;
+    searchForMovies(title, page);
   };
 
   componentDidUpdate(prevProps) {
