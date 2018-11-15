@@ -22,7 +22,7 @@ class Search extends Component {
         draggable: false,
         autoplay: true,
         infinite: true,
-        speed: 1000,
+        speed: 1500,
         slidesToShow: 8,
         slidesToScroll: 8,
         responsive: [
@@ -100,7 +100,7 @@ class Search extends Component {
         draggable: false,
         autoplay: true,
         infinite: true,
-        speed: 1000,
+        speed: 1500,
         slidesToShow: 8,
         slidesToScroll: 8,
         responsive: [

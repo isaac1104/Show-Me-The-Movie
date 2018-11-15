@@ -90,7 +90,7 @@ class MovieDetail extends Component {
           draggable: false,
           autoplay: true,
           infinite: true,
-          speed: 1000,
+          speed: 1500,
           slidesToShow: 4,
           slidesToScroll: 4,
           responsive: [
