@@ -26,11 +26,7 @@ class LikedMovies extends Component {
         return (
           <MovieCard
             key={movie.movieId}
-            id={movie.movieId}
-            title={movie.title}
-            release_date={movie.releaseDate}
-            poster={movie.poster}
-            rating={movie.rating}
+            movie={movie}
             cardWidth={'90%'}
           />
         );

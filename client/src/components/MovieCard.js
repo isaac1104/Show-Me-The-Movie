@@ -23,6 +23,7 @@ class MovieCard extends Component {
       }
     };
 
+    const { title, release_date, releaseDate, poster, poster_path, vote_average, rating, movieId, id } = this.props.movie;
     return (
       <Col xs={24} sm={12} md={6} lg={6} xl={4} xxl={3} style={styles.col}>
         <Card
@@ -32,20 +33,20 @@ class MovieCard extends Component {
               <SimpleImg
                 width={180}
                 height={240}
-                src={this.props.poster ? `http://image.tmdb.org/t/p/w185/${this.props.poster}` : 'https://via.placeholder.com/300?text=Poster+Not+Available'}
-                alt='poster'
+                src={poster ? `http://image.tmdb.org/t/p/w185/${poster}` : poster_path ? `http://image.tmdb.org/t/p/w185/${poster_path}` : 'https://via.placeholder.com/300?text=Poster+Not+Available'}
+                alt={title}
               />
             </SimpleImgProvider>
           }
-          onClick={() => this.props.history.push(`/movie/${this.props.id}`)}
+          onClick={() => this.props.history.push(`/movie/${movieId ? movieId : id }`)}
           style={styles.card}
         >
           <Meta
-            title={this.props.title}
-            description={this.props.release_date}
+            title={title}
+            description={release_date ? release_date : releaseDate}
           />
           <Meta
-            description={<Rate allowHalf disabled defaultValue={this.props.rating / 2} style={styles.rate} />}
+            description={<Rate allowHalf disabled defaultValue={vote_average ? vote_average / 2 : rating / 2} style={styles.rate} />}
           />
         </Card>
       </Col>
@@ -56,10 +57,12 @@ class MovieCard extends Component {
 MovieCard.defaultProp = {
   colWidth: null,
   cardWidth: '100%',
-  poster: null,
   id: null,
+  movieId: null,
   title: '',
   release_date: '',
+  releaseDate: '',
+  vote_average: 0,
   rating: 0
 };
 

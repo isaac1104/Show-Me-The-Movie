@@ -74,11 +74,7 @@ class MovieDetail extends Component {
               return (
                 <div key={movie.id}>
                   <MovieCard
-                    id={movie.id}
-                    title={movie.title}
-                    release_date={movie.release_date}
-                    poster={movie.poster_path}
-                    rating={movie.vote_average}
+                    movie={movie}
                     colWidth={'25%'}
                   />
                 </div>
@@ -135,11 +131,7 @@ class MovieDetail extends Component {
                 return (
                   <div key={movie.id}>
                     <MovieCard
-                      id={movie.id}
-                      title={movie.title}
-                      release_date={movie.release_date}
-                      poster={movie.poster_path}
-                      rating={movie.vote_average}
+                      movie={movie}
                       colWidth={'100%'}
                     />
                   </div>

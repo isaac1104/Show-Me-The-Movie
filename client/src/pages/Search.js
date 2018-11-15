@@ -78,11 +78,7 @@ class Search extends Component {
               return (
                 <div key={movie.id}>
                   <MovieCard
-                    id={movie.id}
-                    title={movie.title}
-                    release_date={movie.release_date}
-                    poster={movie.poster_path}
-                    rating={movie.vote_average}
+                    movie={movie}
                     colWidth={'100%'}
                     cardWidth={'90%'}
                   />
@@ -160,11 +156,7 @@ class Search extends Component {
               return (
                 <div key={movie.id}>
                   <MovieCard
-                    id={movie.id}
-                    title={movie.title}
-                    release_date={movie.release_date}
-                    poster={movie.poster_path}
-                    rating={movie.vote_average}
+                    movie={movie}
                     colWidth={'100%'}
                     cardWidth={'90%'}
                   />

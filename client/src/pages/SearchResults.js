@@ -39,11 +39,7 @@ class SearchResults extends Component {
         return (
           <MovieCard
             key={movie.id}
-            id={movie.id}
-            title={movie.title}
-            release_date={movie.release_date}
-            poster={movie.poster_path}
-            rating={movie.vote_average}
+            movie={movie}
             cardWidth={'90%'}
           />
         );
