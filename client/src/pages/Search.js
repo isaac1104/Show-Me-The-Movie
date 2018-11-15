@@ -169,19 +169,25 @@ class Search extends Component {
     }
   };
 
+  renderMovieData() {
+    const { now_playing_movies, popular_movies } = this.props;
+    if (now_playing_movies.isFetching || popular_movies.isFetching) {
+      return <Spinner />;
+    } else {
+      return (
+        <Fragment>
+          {this.renderNowPlayingMovies()}
+          {this.renderPopularMovies()}
+        </Fragment>
+      );
+    }
+  }
+
   render() {
     return (
       <Fragment>
         <SearchForm />
-        {this.props.now_playing_movies.isFetching || this.props.popular_movies.isFetching
-          ? <Spinner />
-          : (
-            <Fragment>
-              {this.renderNowPlayingMovies()}
-              {this.renderPopularMovies()}
-            </Fragment>
-          )
-        }
+        {this.renderMovieData()}
       </Fragment>
     );
   }
