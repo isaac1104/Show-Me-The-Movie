@@ -10,10 +10,10 @@ class MovieCard extends Component {
       col: {
         marginTop: '15px',
         marginBottom: '15px',
-        width: this.props.width
+        width: this.props.colWidth
       },
       card: {
-        width: '90%',
+        width: this.props.cardWidth,
         height: '100%',
         margin: 'auto'
       },
@@ -54,12 +54,13 @@ class MovieCard extends Component {
 }
 
 MovieCard.defaultProp = {
-  width: null,
+  colWidth: null,
+  cardWidth: '100%',
   poster: null,
   id: null,
-  rating: 0,
   title: '',
-  release_date: ''
+  release_date: '',
+  rating: 0
 };
 
 export default withRouter(MovieCard);

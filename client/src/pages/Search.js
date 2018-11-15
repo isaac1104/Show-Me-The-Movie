@@ -83,7 +83,8 @@ class Search extends Component {
                     release_date={movie.release_date}
                     poster={movie.poster_path}
                     rating={movie.vote_average}
-                    width={'100%'}
+                    colWidth={'100%'}
+                    cardWidth={'90%'}
                   />
                 </div>
               );
@@ -164,7 +165,8 @@ class Search extends Component {
                     release_date={movie.release_date}
                     poster={movie.poster_path}
                     rating={movie.vote_average}
-                    width={'100%'}
+                    colWidth={'100%'}
+                    cardWidth={'90%'}
                   />
                 </div>
               );

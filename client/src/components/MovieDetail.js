@@ -79,7 +79,7 @@ class MovieDetail extends Component {
                     release_date={movie.release_date}
                     poster={movie.poster_path}
                     rating={movie.vote_average}
-                    width={'25%'}
+                    colWidth={'25%'}
                   />
                 </div>
               );
@@ -140,7 +140,7 @@ class MovieDetail extends Component {
                       release_date={movie.release_date}
                       poster={movie.poster_path}
                       rating={movie.vote_average}
-                      width={'100%'}
+                      colWidth={'100%'}
                     />
                   </div>
                 );

@@ -31,6 +31,7 @@ class LikedMovies extends Component {
             release_date={movie.releaseDate}
             poster={movie.poster}
             rating={movie.rating}
+            cardWidth={'90%'}
           />
         );
       });
