@@ -10,7 +10,7 @@ class MovieCard extends Component {
       col: {
         marginTop: '15px',
         marginBottom: '15px',
-        width: this.props.width || null
+        width: this.props.width
       },
       card: {
         width: '90%',
@@ -32,25 +32,34 @@ class MovieCard extends Component {
               <SimpleImg
                 width={180}
                 height={240}
-                src={this.props.poster ? `http://image.tmdb.org/t/p/w185/${this.props.poster}` : 'https://via.placeholder.com/300?text=Poster+Not+Available' }
+                src={this.props.poster ? `http://image.tmdb.org/t/p/w185/${this.props.poster}` : 'https://via.placeholder.com/300?text=Poster+Not+Available'}
                 alt='poster'
               />
             </SimpleImgProvider>
           }
           onClick={() => this.props.history.push(`/movie/${this.props.id}`)}
           style={styles.card}
-          >
-            <Meta
-              title={this.props.title}
-              description={this.props.release_date}
-            />
-            <Meta
-              description={<Rate allowHalf disabled defaultValue={this.props.rating / 2} style={styles.rate} />}
-            />
-          </Card>
-        </Col>
+        >
+          <Meta
+            title={this.props.title}
+            description={this.props.release_date}
+          />
+          <Meta
+            description={<Rate allowHalf disabled defaultValue={this.props.rating / 2} style={styles.rate} />}
+          />
+        </Card>
+      </Col>
     );
   }
 }
+
+MovieCard.defaultProp = {
+  width: null,
+  poster: null,
+  id: null,
+  rating: 0,
+  title: '',
+  release_date: ''
+};
 
 export default withRouter(MovieCard);
