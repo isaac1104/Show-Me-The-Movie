@@ -168,7 +168,7 @@ class MovieDetail extends Component {
               <SimpleImgProvider>
                 <SimpleImg
                   height={700}
-                  src={data.poster_path ? `http://image.tmdb.org/t/p/w185/${data.poster_path}` : 'https://via.placeholder.com/300?text=Poster+Not+Available' }
+                  src={data.poster_path ? `https://image.tmdb.org/t/p/w185/${data.poster_path}` : 'https://via.placeholder.com/300?text=Poster+Not+Available' }
                   alt='movie-poster'
                 />
               </SimpleImgProvider>
