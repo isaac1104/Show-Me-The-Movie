@@ -8,13 +8,13 @@ module.exports = app => {
     res.send(likedMovies);
   });
 
-  app.post('/api/liked_movies', requireAuth, async (req, res, done) => {
+  app.post('/api/liked_movies', requireAuth, async (req, res) => {
     const { title, movieId, rating, poster, releaseDate } = req.body;
     const currentMovie = await LikedMovies.findOne({ movieId });
     if (currentMovie) {
-      return done(null, currentMovie);
+      return;
     }
-    const likedMovies = new LikedMovies({
+    const likedMovie = new LikedMovies({
       movieId,
       title,
       rating,
@@ -23,18 +23,22 @@ module.exports = app => {
       _user: req.user.id
     });
     try {
-      await likedMovies.save();
+      await likedMovie.save();
+      res.status(201);
+      res.json();
     } catch (e) {
       res.status(400).send(e);
     }
   });
 
-  app.delete('/api/liked_movies', requireAuth, async (req, res) => {
+  app.delete('/api/liked_movies', requireAuth, async (req, res, next) => {
     const { movieId } = req.query;
     try {
-      const removeLikedMovie = await LikedMovies.deleteOne({ movieId });
+      const likedMovie = await LikedMovies.deleteOne({ movieId });
+      res.status(201);
+      res.json();
     } catch (e) {
-      res.status(422).send(e);
+      res.status(400).send(e);
     }
   });
 };
