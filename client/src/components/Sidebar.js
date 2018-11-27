@@ -5,7 +5,7 @@ import { Layout, Menu, Icon } from 'antd';
 const { Sider } = Layout;
 
 class Sidebar extends Component {
-  render() {
+  renderSidebar() {
     const { data } = this.props.current_user;
     const styles = {
       logout: {
@@ -20,41 +20,45 @@ class Sidebar extends Component {
       }
     };
 
-    return (
-      <Fragment>
-        {data ? (
-          <Sider breakpoint='lg' collapsedWidth='0' style={styles.sidebar}>
-            <div className="logo"/>
-            <Menu mode="inline" theme='dark' defaultSelectedKeys={['0']} style={styles.menu}>
-              <Menu.Item key="0">
-                <NavLink to="/home">
-                  <Icon type="home"/>
-                  <span className="nav-text">Home</span>
-                </NavLink>
-              </Menu.Item>
-              <Menu.Item key="1">
-                <NavLink to="/liked_movies">
-                  <Icon type="heart"/>
-                  <span className="nav-text">Liked</span>
-                </NavLink>
-              </Menu.Item>
-              <Menu.Item key="2">
-                <NavLink to="/search">
-                  <Icon type="search"/>
-                  <span className="nav-text">Search</span>
-                </NavLink>
-              </Menu.Item>
-              <Menu.Item key="3" style={styles.logout}>
-                <a href="/api/signout">
-                  <Icon type="logout"/>
-                  <span className="nav-text">Logout</span>
-                </a>
-              </Menu.Item>
-            </Menu>
-          </Sider>
-        ) : null}
-      </Fragment>
-    );
+    if (data) {
+      return (
+        <Sider breakpoint='lg' collapsedWidth='0' style={styles.sidebar}>
+          <div className="logo"/>
+          <Menu mode="inline" theme='dark' defaultSelectedKeys={['0']} style={styles.menu}>
+            <Menu.Item key="0">
+              <NavLink to="/home">
+                <Icon type="home"/>
+                <span className="nav-text">Home</span>
+              </NavLink>
+            </Menu.Item>
+            <Menu.Item key="1">
+              <NavLink to="/liked_movies">
+                <Icon type="heart"/>
+                <span className="nav-text">Liked</span>
+              </NavLink>
+            </Menu.Item>
+            <Menu.Item key="2">
+              <NavLink to="/search">
+                <Icon type="search"/>
+                <span className="nav-text">Search</span>
+              </NavLink>
+            </Menu.Item>
+            <Menu.Item key="3" style={styles.logout}>
+              <a href="/api/signout">
+                <Icon type="logout"/>
+                <span className="nav-text">Logout</span>
+              </a>
+            </Menu.Item>
+          </Menu>
+        </Sider>
+      );
+    } else {
+      return null;
+    }
+  }
+
+  render() {
+    return <Fragment>{this.renderSidebar()}</Fragment>;
   }
 };
 
