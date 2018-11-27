@@ -6,6 +6,7 @@ import { fetchCurrentUser } from '../actions';
 import ScrollToTop from './ScrollToTop';
 import ContentLayout from './Layout/ContentLayout';
 import Sidebar from './Sidebar';
+import FooterNav from './FooterNav';
 import Spinner from './Spinner';
 import requireAuth from './requireAuth';
 import MovieDetail from './MovieDetail';
@@ -51,6 +52,7 @@ class App extends Component {
                 <Route exact path='/notfound' component={requireAuth(NotFound)} />
               </Switch>
             </ContentLayout>
+            <FooterNav />
           </Layout>
         </ScrollToTop>
       </BrowserRouter>

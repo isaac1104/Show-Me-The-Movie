@@ -58,8 +58,8 @@ class Sidebar extends Component {
   }
 };
 
-function mapStateToProps({current_user}) {
-  return {current_user};
+function mapStateToProps({ current_user }) {
+  return { current_user };
 };
 
 export default connect(mapStateToProps, null)(Sidebar);
