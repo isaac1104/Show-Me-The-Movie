@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import MovieCard from '../components/MovieCard';
 import Spinner from '../components/Spinner';
+import LikeIcon from '../components/LikeIcon';
 import Slider from 'react-slick';
-import { Button, Col, Divider, Icon, Rate, Row, Tag } from 'antd';
+import { Button, Col, Divider, Rate, Row, Tag } from 'antd';
 import { SimpleImg, SimpleImgProvider } from 'react-simple-img';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
@@ -26,40 +27,6 @@ class MovieDetail extends Component {
 
   componentWillUnmount() {
     this.props.resetMovieData();
-  };
-
-  renderLikeIcon() {
-    const { liked_movies: { data }, match: { params: { id } } } = this.props;
-    const savedMovie = data.find(movie => movie.movieId === parseInt(id, 10));
-    if (savedMovie !== undefined) {
-      const { data } = this.props.movie_data;
-      return (
-        <Rate
-          character={<Icon type='heart' theme='filled' />}
-          defaultValue={1}
-          count={1}
-          style={{ color: 'red' }}
-          onChange={() => this.props.deleteLikedMovie(data.id)}
-        />
-      );
-    } else {
-      const { data } = this.props.movie_data;
-      return (
-        <Rate
-          character={<Icon type='heart' theme='filled' />}
-          defaultValue={0}
-          count={1}
-          style={{ color: 'red' }}
-          onChange={() => this.props.saveLikedMovie({
-            title: data.title,
-            movieId: data.id,
-            rating: data.vote_average,
-            poster: data.poster_path,
-            releaseDate: data.release_date
-          })}
-        />
-      );
-    }
   };
 
   renderRecommendedMovies() {
@@ -148,7 +115,7 @@ class MovieDetail extends Component {
   };
 
   renderMovieDetail() {
-    const { isFetching, data } = this.props.movie_data;
+    const { movie_data: { isFetching, data }, liked_movies } = this.props;
     if (isFetching || this.props.recommended_movies.isFetching) {
       return <Spinner />;
     }
@@ -177,7 +144,12 @@ class MovieDetail extends Component {
               <h1>
                 {data.title}
                 <Divider type='vertical' />
-                {this.renderLikeIcon()}
+                <LikeIcon
+                  likedMovies={liked_movies.data}
+                  movieData={data}
+                  saveLikedMovie={this.props.saveLikedMovie}
+                  deleteLikedMovie={this.props.deleteLikedMovie}
+                />
               </h1>
               <h4>
                 Release Date: {data.release_date ? data.release_date : 'N/A'}
