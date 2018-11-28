@@ -4,7 +4,7 @@ import { Tag } from 'antd';
 import Slider from 'react-slick';
 
 const MovieCarousel = ({ type, title, data, tagColor }) => {
-  if (type === 'search') {
+  if (data && type === 'search') {
     const settings = {
       arrows: false,
       dots: true,
@@ -79,12 +79,12 @@ const MovieCarousel = ({ type, title, data, tagColor }) => {
     );
   }
 
-  if (type === 'recommendation') {
-    if (data && data.length === 0) {
+  if (data && type === 'recommendation') {
+    if (data.length === 0) {
       return <h3>Recommeded Movies: N/A</h3>;
     }
 
-    if (data && data.length <= 4) {
+    if (data.length <= 4) {
       return (
         <Fragment>
           <h3>{title}</h3>
