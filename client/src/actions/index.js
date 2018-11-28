@@ -8,7 +8,7 @@ export const fetchCurrentUser = () => async dispatch => {
     const { data } = request;
     dispatch({ type: types.AUTH_USER, payload: data });
   } catch (e) {
-    dispatch({ type: types.AUTH_ERROR, payload: 'Invalid Login Credentials!' });
+    dispatch({ type: types.AUTH_ERROR, payload: e });
   }
 };
 
