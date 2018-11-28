@@ -80,11 +80,11 @@ const MovieCarousel = ({ type, title, data, tagColor }) => {
   }
 
   if (type === 'recommendation') {
-    if (data.length === 0) {
+    if (data && data.length === 0) {
       return <h3>Recommeded Movies: N/A</h3>;
     }
 
-    if (data.length <= 4) {
+    if (data && data.length <= 4) {
       return (
         <Fragment>
           <h3>{title}</h3>
