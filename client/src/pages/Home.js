@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Avatar } from 'antd';
 import { connect } from 'react-redux';
-import { fetchCurrentUser } from '../actions';
 
 class Home extends Component {
   render() {
@@ -18,4 +17,4 @@ function mapStateToProps({ current_user }) {
   return { current_user };
 };
 
-export default connect(mapStateToProps, { fetchCurrentUser })(Home);
+export default connect(mapStateToProps, null)(Home);
