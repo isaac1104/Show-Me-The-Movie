@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import MovieCard from './MovieCard';
-import Spinner from './Spinner';
+import MovieCard from '../components/MovieCard';
+import Spinner from '../components/Spinner';
 import Slider from 'react-slick';
 import { Button, Col, Divider, Icon, Rate, Row, Tag } from 'antd';
 import { SimpleImg, SimpleImgProvider } from 'react-simple-img';

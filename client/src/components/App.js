@@ -9,7 +9,7 @@ import Sidebar from './Sidebar';
 import FooterNav from './FooterNav';
 import Spinner from './Spinner';
 import requireAuth from './requireAuth';
-import MovieDetail from './MovieDetail';
+import MovieDetail from '../pages/MovieDetail';
 import Home from '../pages/Home';
 import Landing from '../pages/Landing';
 import LikedMovies from '../pages/LikedMovies';
