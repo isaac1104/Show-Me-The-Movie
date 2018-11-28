@@ -13,7 +13,7 @@ class Search extends Component {
 
   renderMovieData() {
     const { now_playing_movies, popular_movies } = this.props;
-    if (!now_playing_movies.data.results || !popular_movies.data.results) {
+    if (!now_playing_movies.data.results || !popular_movies.data.results || now_playing_movies.isFetching || popular_movies.isFetching) {
       return <Spinner />;
     }
 
