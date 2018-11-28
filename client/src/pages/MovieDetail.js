@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import MovieCard from '../components/MovieCard';
 import Spinner from '../components/Spinner';
 import LikeIcon from '../components/LikeIcon';
-import Slider from 'react-slick';
+import MovieCarousel from '../components/MovieCarousel';
 import { Button, Col, Divider, Rate, Row, Tag } from 'antd';
 import { SimpleImg, SimpleImgProvider } from 'react-simple-img';
 import { connect } from 'react-redux';
@@ -29,94 +28,9 @@ class MovieDetail extends Component {
     this.props.resetMovieData();
   };
 
-  renderRecommendedMovies() {
-    const { data: { results } } = this.props.recommended_movies;
-    if (results) {
-      if (results.length === 0) {
-        return <h3>Recommeded Movies: NA</h3>
-      } else if (results.length <= 4) {
-        return (
-          <Fragment>
-            <h3>Recommended Movies:</h3>
-            {results.map(movie => {
-              return (
-                <div key={movie.id}>
-                  <MovieCard
-                    movie={movie}
-                    colWidth={'25%'}
-                  />
-                </div>
-              );
-            })}
-          </Fragment>
-        );
-      } else {
-        const settings = {
-          arrows: false,
-          dots: true,
-          draggable: false,
-          autoplay: true,
-          infinite: true,
-          speed: 1500,
-          slidesToShow: 4,
-          slidesToScroll: 4,
-          responsive: [
-            {
-              breakpoint: 1440,
-              settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3
-              }
-            },
-            {
-              breakpoint: 1024,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2
-              }
-            },
-            {
-              breakpoint: 576,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-              }
-            },
-            {
-              breakpoint: 480,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-              }
-            }
-          ]
-        };
-        return (
-          <Fragment>
-            <h3>Recommended Movies:</h3>
-            <Slider {...settings}>
-              {results.map(movie => {
-                return (
-                  <div key={movie.id}>
-                    <MovieCard
-                      movie={movie}
-                      colWidth={'100%'}
-                    />
-                  </div>
-                );
-              })}
-            </Slider>
-          </Fragment>
-        );
-      }
-    } else {
-      return <div />;
-    }
-  };
-
   renderMovieDetail() {
-    const { movie_data: { isFetching, data }, liked_movies } = this.props;
-    if (isFetching || this.props.recommended_movies.isFetching) {
+    const { movie_data: { isFetching, data }, liked_movies, recommended_movies } = this.props;
+    if (isFetching || recommended_movies.isFetching) {
       return <Spinner />;
     }
 
@@ -173,7 +87,11 @@ class MovieDetail extends Component {
               <p>{data.overview ? data.overview : 'N/A'}</p>
               <p>{data.tagline ? `"${data.tagline}"` : ''}</p>
               <Divider />
-              {this.renderRecommendedMovies()}
+              <MovieCarousel
+                type='recommendation'
+                title='Recommended Movies:'
+                data={this.props.recommended_movies.data.results}
+              />
             </Col>
           </Row>
         </Fragment>

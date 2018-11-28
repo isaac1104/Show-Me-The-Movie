@@ -19,8 +19,8 @@ class Search extends Component {
 
     return (
       <Fragment>
-        <MovieCarousel title={'Top 20 Popular Movies'} data={popular_movies.data.results} tagColor='#1890ff' />
-        <MovieCarousel title={'Now Playing'} data={now_playing_movies.data.results} tagColor='#ff4f00' />
+        <MovieCarousel type='search' title={'Now Playing'} data={now_playing_movies.data.results} tagColor='#ff4f00' />
+        <MovieCarousel type='search' title={'Top 20 Popular Movies'} data={popular_movies.data.results} tagColor='#1890ff' />
       </Fragment>
     );
   }
