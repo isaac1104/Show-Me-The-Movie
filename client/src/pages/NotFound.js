@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchForm from '../components/SearchForm/SearchForm';
+import SearchForm from '../components/searchForm/SearchForm';
 
 const styles = {
   text: {

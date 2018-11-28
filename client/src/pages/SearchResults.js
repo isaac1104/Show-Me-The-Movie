@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Pagination, Row } from 'antd';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import SearchForm from '../components/SearchForm/SearchForm';
+import SearchForm from '../components/searchForm/SearchForm';
 import MovieCard from '../components/MovieCard';
 import Spinner from '../components/Spinner';
 import { searchForMovies, resetMovieData } from '../actions';
