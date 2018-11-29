@@ -42,19 +42,17 @@ class SearchResults extends Component {
       return <h1 style={styles.text}>Hmm... Sorry, we couldn't find that. Please check for any spelling errors and try again!</h1>;
     }
 
-    if (results) {
-      return results.map(movie => {
-        return (
-          <MovieCard
-            key={movie.id}
-            movie={movie}
-            cardWidth={'90%'}
-          />
-        );
-      });
-    } else {
-      return null;
-    }
+    if (!results) return null;
+
+    return results.map(movie => {
+      return (
+        <MovieCard
+          key={movie.id}
+          movie={movie}
+          cardWidth={'90%'}
+        />
+      );
+    });
   };
 
   render() {
