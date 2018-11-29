@@ -4,7 +4,7 @@ import { Layout } from 'antd';
 import { connect } from 'react-redux';
 import { fetchCurrentUser } from '../actions';
 import ScrollToTop from './utils/ScrollToTop';
-import ContentLayout from './layout/ContentLayout';
+import ContentLayout from './layouts/ContentLayout';
 import Sidebar from './Sidebar';
 import FooterNav from './FooterNav';
 import Spinner from './Spinner';
