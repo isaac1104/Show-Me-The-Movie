@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import SearchForm from '../components/searchForms/SearchForm';
 import MovieCard from '../components/MovieCard';
 import Spinner from '../components/Spinner';
+import MoviePagination from '../components/MoviePagination';
 import { searchForMovies, resetMovieData } from '../actions';
 
 class SearchResults extends Component {
@@ -56,32 +57,19 @@ class SearchResults extends Component {
     }
   };
 
-  renderPagination() {
-    const { movie_data: { data }, match: { params : { title, page } } } = this.props;
-    if (data) {
-      return (
-        <Pagination
-          defaultPageSize={20}
-          current={parseInt(page, 10)}
-          hideOnSinglePage
-          total={data.total_results}
-          onChange={page => this.props.history.push(`/search/${title}/${page}`)}
-          style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '15px' }}
-        />
-      );
-    } else {
-      return <div />;
-    }
-  };
-
   render() {
+    const { movie_data: { data }, match: { params : { title, page } } } = this.props;
     return (
       <Fragment>
         <SearchForm />
         <Row type='flex'>
           {this.renderResults()}
         </Row>
-        {this.renderPagination()}
+        <MoviePagination
+          data={data}
+          title={title}
+          page={page}
+         />
       </Fragment>
     );
   }
