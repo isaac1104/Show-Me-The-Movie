@@ -1,7 +1,7 @@
 import { REQUEST_AUTH, AUTH_USER, AUTH_ERROR } from '../actions/types';
 
 const INITIAL_STATE = {
-  isFetching: false,
+  isFetching: null,
   data: '',
   error: ''
 };

@@ -5,32 +5,29 @@ import { withRouter } from 'react-router-dom';
 export default ChildComponent => {
   class ComposedComponent extends Component {
     componentDidMount() {
-      this.shouldNavigateAway();
-    };
+      this.redirectUser();
+    }
 
     componentDidUpdate() {
-      this.shouldNavigateAway();
-    };
+      this.redirectUser();
+    }
 
-    shouldNavigateAway() {
-      const { data } = this.props.current_user;
-      if (data === '') {
-        return;
-      }
-
-      if (!data) {
+    redirectUser() {
+      const { isFetching, data } = this.props.current_user;
+      if (isFetching === null) return;
+      if (!isFetching && typeof data !== 'object') {
         this.props.history.push('/');
       }
-    };
+    }
 
     render() {
-      return <ChildComponent {...this.props} />;
+      return <ChildComponent {...this.props}/>;
     }
-  };
+  }
 
-  function mapStateToProps({ current_user }) {
+  const mapStateToProps = ({ current_user }) => {
     return { current_user };
   };
 
   return withRouter(connect(mapStateToProps, null)(ComposedComponent));
-};
+}
