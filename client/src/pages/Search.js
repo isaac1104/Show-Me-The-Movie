@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { fetchNowPlayingMovies, fetchPopularMovies } from '../actions';
 import MovieCarousel from '../components/MovieCarousel';
-import SearchForm from '../components/searchForm/SearchForm';
+import SearchForm from '../components/searchForms/SearchForm';
 import Spinner from '../components/Spinner';
 
 class Search extends Component {
