@@ -13,8 +13,12 @@ export default ChildComponent => {
     };
 
     shouldNavigateAway() {
-      const { isFetching, data } = this.props.current_user;
-      if (!isFetching && data === '') {
+      const { data } = this.props.current_user;
+      if (data === '') {
+        return;
+      }
+
+      if (!data) {
         this.props.history.push('/');
       }
     };
