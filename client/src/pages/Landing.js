@@ -1,5 +1,6 @@
 import React from 'react';
 import GoogleButton from '../components/GoogleButton';
+import FacebookButton from '../components/FacebookButton';
 import moviesImage from '../images/movies.jpg';
 
 const styles = {
@@ -35,6 +36,7 @@ const Home = () => {
         <h1 style={styles.text}>Show Me The Movie</h1>
         <h3 style={styles.text}>Whether You Are Looking For Your Favorite Old Movies, Or In A Mood To Discover Something New, We Have It All</h3>
         <GoogleButton />
+        <FacebookButton />
       </div>
     </div>
   );
