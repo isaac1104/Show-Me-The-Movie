@@ -15,7 +15,7 @@ import Landing from '../pages/Landing';
 import LikedMovies from '../pages/LikedMovies';
 import Search from '../pages/Search';
 import SearchResults from '../pages/SearchResults';
-import NotFound from '../pages/NotFound';
+import PageNotFound from '../pages/PageNotFound';
 
 class App extends Component {
   componentDidMount() {
@@ -49,7 +49,7 @@ class App extends Component {
                 <Route exact path='/liked_movies' component={requireAuth(LikedMovies)} />
                 <Route exact path='/search/:title/:page' component={requireAuth(SearchResults)} />
                 <Route exact path='/search' component={requireAuth(Search)} />
-                <Route component={NotFound} />
+                <Route component={PageNotFound} />
               </Switch>
             </ContentLayout>
             <FooterNav />
