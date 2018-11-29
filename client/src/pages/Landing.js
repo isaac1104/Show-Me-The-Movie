@@ -33,7 +33,7 @@ const Home = () => {
     <div style={styles.container}>
       <div style={styles.poster}/>
       <div style={styles.textContainer}>
-        <h1 style={styles.text}><span role='img' aria-label='popcorn'>🍿</span>Show Me The Movie</h1>
+        <h1 style={styles.text}><span role='img' aria-label='popcorn'>🍿</span> Show Me The Movie</h1>
         <h3 style={styles.text}>Whether You Are Looking For Your Favorite Old Movies, Or In A Mood To Discover Something New, We Have It All</h3>
         <GoogleButton />
         <FacebookButton />

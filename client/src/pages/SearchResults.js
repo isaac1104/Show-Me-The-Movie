@@ -34,12 +34,11 @@ class SearchResults extends Component {
       const styles = {
         text: {
           marginTop: '15px',
-          fontWeight: 'bold',
-          color: '#41bd9b'
+          fontWeight: 'bold'
         }
       };
 
-      return <h1 style={styles.text}>Hmm... Sorry, we couldn't find that. Please check for any spelling errors and try again!</h1>;
+      return <h1 style={styles.text}><span role='img' aria-label='shrugg'>🤷‍</span> Hmm... Sorry, we couldn't find that. Please check for any spelling errors and try again!</h1>;
     }
 
     if (!results) return null;
