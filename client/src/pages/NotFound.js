@@ -1,5 +1,4 @@
 import React from 'react';
-import SearchForm from '../components/searchForms/SearchForm';
 
 const styles = {
   text: {
@@ -13,8 +12,7 @@ const styles = {
 const NotFound = () => {
   return (
     <div>
-      <SearchForm />
-      <h1 style={styles.text}>Movie Not Found!</h1>
+      <h1 style={styles.text}>Page Not Found!</h1>
     </div>
   )
 };

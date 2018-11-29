@@ -49,7 +49,7 @@ class App extends Component {
                 <Route exact path='/liked_movies' component={requireAuth(LikedMovies)} />
                 <Route exact path='/search/:title/:page' component={requireAuth(SearchResults)} />
                 <Route exact path='/search' component={requireAuth(Search)} />
-                <Route exact path='/notfound' component={requireAuth(NotFound)} />
+                <Route component={NotFound} />
               </Switch>
             </ContentLayout>
             <FooterNav />

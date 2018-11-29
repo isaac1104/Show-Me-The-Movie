@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Pagination, Row } from 'antd';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import SearchForm from '../components/searchForms/SearchForm';
 import MovieCard from '../components/MovieCard';
 import Spinner from '../components/Spinner';
@@ -31,7 +30,15 @@ class SearchResults extends Component {
     }
 
     if (results && results.length === 0) {
-      return <Redirect to='/notfound' />;
+      const styles = {
+        text: {
+          marginTop: '15px',
+          fontWeight: 'bold',
+          color: '#41bd9b'
+        }
+      };
+
+      return <h1 style={styles.text}>Hmm... Sorry, we couldn't find that. Please check for any spelling errors and try again!</h1>;
     }
 
     if (results) {
