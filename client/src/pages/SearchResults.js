@@ -56,10 +56,11 @@ class SearchResults extends Component {
   };
 
   render() {
-    const { movie_data: { data }, match: { params : { title, page } } } = this.props;
+    const { movie_data: { data, isFetching }, match: { params : { title, page } } } = this.props;
     return (
       <Fragment>
         <SearchForm />
+        {isFetching ? null : <h3 style={{ marginTop: '15px' }}>{data.total_results} Result(s) Found</h3>}
         <Row type='flex'>
           {this.renderResults()}
         </Row>
