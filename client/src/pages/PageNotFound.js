@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import GoogleButton from '../components/GoogleButton';
 import FacebookButton from '../components/FacebookButton';
 
@@ -27,8 +26,8 @@ class PageNotFound extends Component {
       return (
         <div style={styles.container}>
           <div>
-            <h1 style={styles.text}>🛑 Error: Page Not Found!</h1>
-            <h2 style={styles.text}>Please Navigate Using The Sidebar 👈</h2>
+            <h1 style={styles.text}><span role='img' aria-label='stop'>🛑</span> Error: Page Not Found!</h1>
+            <h2 style={styles.text}>Please Navigate Using The Sidebar <span role='img' aria-label='point-left'>👈</span></h2>
           </div>
         </div>
       );
@@ -37,8 +36,8 @@ class PageNotFound extends Component {
     return (
       <div style={styles.container}>
         <div>
-          <h1 style={styles.text}>🛑 Error: Page Not Found!</h1>
-          <h2 style={styles.text}>Please Login First 👇</h2>
+          <h1 style={styles.text}><span role='img' aria-label='stop'>🛑</span> Error: Page Not Found!</h1>
+          <h2 style={styles.text}>Please Login First <span role='img' aria-label='point-down'>👇</span></h2>
           <GoogleButton />
           <FacebookButton />
         </div>

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Pagination, Row } from 'antd';
+import { Row } from 'antd';
 import { connect } from 'react-redux';
 import SearchForm from '../components/searchForms/SearchForm';
 import MovieCard from '../components/MovieCard';
