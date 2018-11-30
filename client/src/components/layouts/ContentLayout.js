@@ -8,7 +8,6 @@ class ContentLayout extends Component {
     const style = {
       layout: {
         padding: '0 24px',
-        alignItems: 'center',
         backgroundColor: pathname === '/' ? 'transparent' : '#f0f2f5',
         height: '100vh',
         overflow: 'hidden'
