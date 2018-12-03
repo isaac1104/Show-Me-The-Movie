@@ -21,17 +21,15 @@ class LikedMovies extends Component {
       return <h1>You Don't Have Any Liked Movies</h1>
     }
 
-    if (data) {
-      return data.map(movie => {
-        return (
-          <MovieCard
-            key={movie.movieId}
-            movie={movie}
-            cardWidth={'90%'}
-          />
-        );
-      });
-    }
+    return data.map(movie => {
+      return (
+        <MovieCard
+          key={movie.movieId}
+          movie={movie}
+          cardWidth={'90%'}
+        />
+      );
+    });
   };
 
   render() {
