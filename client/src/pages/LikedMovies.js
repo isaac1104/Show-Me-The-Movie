@@ -18,7 +18,7 @@ class LikedMovies extends Component {
     }
 
     if (data.length === 0) {
-      return <h1>You Don't Have Any Liked Movies</h1>
+      return <h1>You Don't Have Any Liked Movies</h1>;
     }
 
     return data.map(movie => {
