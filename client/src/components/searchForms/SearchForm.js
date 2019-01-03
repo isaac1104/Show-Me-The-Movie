@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { searchForMovies } from '../../actions';
 
-class Form extends Component {
+class SearchForm extends Component {
   formSubmit = ({ title }) => {
     this.props.history.push(`/search/${title}/1`);
   };
@@ -32,4 +32,4 @@ function validate(value) {
   return errors;
 };
 
-export default compose(withRouter, reduxForm({ validate, form: 'title' }), connect(null, { searchForMovies }))(Form);
+export default compose(withRouter, reduxForm({ validate, form: 'title' }), connect(null, { searchForMovies }))(SearchForm);
