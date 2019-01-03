@@ -63,12 +63,9 @@
     }
 
     .insp-logo-frame-img {
-      width: 112px;
-      height: 112px;
       -webkit-align-self: center;
       -moz-align-self: center;
       align-self: center;
-      /* border-radius: 50%; */
     }
 
     .ipl-progress-indicator-head {
@@ -193,6 +190,52 @@
         transform: translate(100%) scaleX(0.1);
       }
     }
+
+    #loader {
+      animation: animate 1.5s linear infinite;
+      clip: rect(0, 80px, 80px, 40px);
+      height: 80px;
+      width: 80px;
+      position: absolute;
+      left: calc(50% - 40px);
+      top: calc(50% - 40px);
+    }
+
+    @keyframes animate {
+      0% {
+        transform: rotate(0deg)
+      }
+
+      100% {
+        transform: rotate(220deg)
+      }
+    }
+
+    #loader:after {
+      animation: animate2 1.5s ease-in-out infinite;
+      clip: rect(0, 80px, 80px, 40px);
+      content: '';
+      border-radius: 50%;
+      height: 80px;
+      width: 80px;
+      position: absolute;
+    }
+
+    @keyframes animate2 {
+      0% {
+        box-shadow: inset #fff 0 0 0 17px;
+        transform: rotate(-140deg);
+      }
+
+      50% {
+        box-shadow: inset #fff 0 0 0 2px;
+      }
+
+      100% {
+        box-shadow: inset #fff 0 0 0 17px;
+        transform: rotate(140deg);
+      }
+    }
   </style>
   <!--
       Notice the use of %PUBLIC_URL% in the tags above.
@@ -217,7 +260,7 @@
         <div class="second-indicator"></div>
       </div>
       <div class="insp-logo-frame">
-        <!-- <img src='https://backgroundcheckall.com/wp-content/uploads/2017/12/ajax-loading-gif-transparent-background-2.gif' class='insp-logo-frame-img'> -->
+        <div id='loader'></div>
       </div>
     </div>
   </div>
