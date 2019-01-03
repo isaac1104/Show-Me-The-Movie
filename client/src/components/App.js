@@ -7,7 +7,6 @@ import ScrollToTop from './utils/ScrollToTop';
 import ContentLayout from './layouts/ContentLayout';
 import Sidebar from './Sidebar';
 import FooterNav from './FooterNav';
-import Spinner from './Spinner';
 import requireAuth from './utils/requireAuth';
 import MovieDetail from '../pages/MovieDetail';
 import Home from '../pages/Home';
@@ -34,10 +33,8 @@ class App extends Component {
                   exact
                   path='/'
                   render={() => {
-                    const { isFetching, data } = this.props.current_user;
-                    if (isFetching) {
-                      return <Spinner />;
-                    } else if (data) {
+                    const { data } = this.props.current_user;
+                    if (data) {
                       return <Redirect to='/home' />;
                     } else {
                       return <Landing />;
