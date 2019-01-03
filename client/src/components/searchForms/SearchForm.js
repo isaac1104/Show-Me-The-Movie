@@ -1,15 +1,27 @@
 import React, { Component } from 'react';
-import FormField from './FormField';
 import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { searchForMovies } from '../../actions';
+import { Input } from 'antd';
+const { Search } = Input;
 
 class SearchForm extends Component {
   formSubmit = ({ title }) => {
     this.props.history.push(`/search/${title}/1`);
   };
+
+  renderInput({ input }) {
+    return (
+      <Search
+        {...input}
+        autoComplete='off'
+        placeholder='Enter A Movie Title'
+        onFocus={event => event.target.select()}
+      />
+    )
+  }
 
   render() {
     const { handleSubmit } = this.props;
@@ -17,7 +29,7 @@ class SearchForm extends Component {
       <form onSubmit={handleSubmit(this.formSubmit)}>
         <Field
           name='title'
-          component={FormField}
+          component={this.renderInput}
         />
       </form>
     );
