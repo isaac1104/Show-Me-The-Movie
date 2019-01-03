@@ -1,10 +1,24 @@
 import React, { Component, Fragment } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Layout, Menu, Icon } from 'antd';
 const { Sider } = Layout;
 
 class Sidebar extends Component {
+  highlightMenu() {
+    const { pathname } = window.location;
+    switch (pathname) {
+      case '/home':
+        return ['0'];
+      case '/liked_movies':
+        return ['1'];
+      case '/search':
+        return ['2'];
+      default:
+        return ['0'];
+    }
+  };
+
   renderSidebar() {
     const { data } = this.props.current_user;
     const styles = {
@@ -24,24 +38,24 @@ class Sidebar extends Component {
       return (
         <Sider breakpoint='lg' collapsedWidth='0' style={styles.sidebar}>
           <div className="logo"/>
-          <Menu mode="inline" theme='dark' defaultSelectedKeys={['0']} style={styles.menu}>
+          <Menu mode="inline" theme='dark' defaultSelectedKeys={this.highlightMenu()} style={styles.menu}>
             <Menu.Item key="0">
-              <NavLink to="/home">
+              <Link to="/home">
                 <Icon type="home"/>
                 <span className="nav-text">Home</span>
-              </NavLink>
+              </Link>
             </Menu.Item>
             <Menu.Item key="1">
-              <NavLink to="/liked_movies">
+              <Link to="/liked_movies">
                 <Icon type="heart"/>
                 <span className="nav-text">Liked</span>
-              </NavLink>
+              </Link>
             </Menu.Item>
             <Menu.Item key="2">
-              <NavLink to="/search">
+              <Link to="/search">
                 <Icon type="search"/>
                 <span className="nav-text">Search</span>
-              </NavLink>
+              </Link>
             </Menu.Item>
             <Menu.Item key="3" style={styles.logout}>
               <a href="/api/signout">

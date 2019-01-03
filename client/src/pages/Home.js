@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Avatar } from 'antd';
+import { Avatar, Icon } from 'antd';
 import { connect } from 'react-redux';
 
 class Home extends Component {
@@ -8,6 +8,7 @@ class Home extends Component {
     return (
       <div>
         <h1><Avatar src={avatar} /> Welcome, {username ? username.split(' ')[0] : 'Guest'}</h1>
+        <h1><a href='/search'><Icon type='search' /> Search</a> for a movie to get started!</h1>
       </div>
     );
   };
