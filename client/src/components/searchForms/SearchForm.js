@@ -21,7 +21,7 @@ class SearchForm extends Component {
         onFocus={event => event.target.select()}
       />
     )
-  }
+  };
 
   render() {
     const { handleSubmit } = this.props;
