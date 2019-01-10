@@ -1,20 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { Layout } from 'antd';
 import { connect } from 'react-redux';
 import { fetchCurrentUser } from '../actions';
 import ScrollToTop from './utils/ScrollToTop';
+import requireAuth from './utils/requireAuth';
 import ContentLayout from './layouts/ContentLayout';
 import Sidebar from './Sidebar';
 import FooterNav from './FooterNav';
-import requireAuth from './utils/requireAuth';
-import MovieDetail from '../pages/MovieDetail';
-import Home from '../pages/Home';
-import Landing from '../pages/Landing';
-import LikedMovies from '../pages/LikedMovies';
-import Search from '../pages/Search';
-import SearchResults from '../pages/SearchResults';
-import PageNotFound from '../pages/PageNotFound';
+import Spinner from './Spinner';
+
+const Landing = lazy(() => import('../pages/Landing'));
+const Home = lazy(() => import('../pages/Home'));
+const MovieDetail = lazy(() => import('../pages/MovieDetail'));
+const LikedMovies = lazy(() => import('../pages/LikedMovies'));
+const Search = lazy(() => import('../pages/Search'));
+const SearchResults = lazy(() => import('../pages/SearchResults'));
+const PageNotFound = lazy(() => import('../pages/PageNotFound'));
 
 class App extends Component {
   componentDidMount() {
@@ -28,26 +30,28 @@ class App extends Component {
           <Layout>
             <Sidebar />
             <ContentLayout>
-              <Switch>
-                <Route
-                  exact
-                  path='/'
-                  render={() => {
-                    const { data } = this.props.current_user;
-                    if (data) {
-                      return <Redirect to='/home' />;
-                    } else {
-                      return <Landing />;
-                    }
-                  }}
-                />
-                <Route exact path='/home' component={requireAuth(Home)} />
-                <Route exact path='/movie/:id' component={requireAuth(MovieDetail)} />
-                <Route exact path='/liked_movies' component={requireAuth(LikedMovies)} />
-                <Route exact path='/search/:title/:page' component={requireAuth(SearchResults)} />
-                <Route exact path='/search' component={requireAuth(Search)} />
-                <Route component={PageNotFound} />
-              </Switch>
+              <Suspense fallback={<Spinner />}>
+                <Switch>
+                  <Route
+                    exact
+                    path='/'
+                    render={() => {
+                      const { data } = this.props.current_user;
+                      if (data) {
+                        return <Redirect to='/home' />;
+                      } else {
+                        return <Landing />;
+                      }
+                    }}
+                  />
+                  <Route exact path='/home' component={requireAuth(Home)} />
+                  <Route exact path='/movie/:id' component={requireAuth(MovieDetail)} />
+                  <Route exact path='/liked_movies' component={requireAuth(LikedMovies)} />
+                  <Route exact path='/search/:title/:page' component={requireAuth(SearchResults)} />
+                  <Route exact path='/search' component={requireAuth(Search)} />
+                  <Route component={PageNotFound} />
+                </Switch>
+              </Suspense>
             </ContentLayout>
             <FooterNav />
           </Layout>
