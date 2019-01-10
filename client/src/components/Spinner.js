@@ -15,7 +15,7 @@ const Spinner = () => {
   return (
     <div style={styles.container}>
       <Fragment>
-        <Spin size='large' indicator={ <Icon type='loading' /> } />
+        <div id='loader' />
       </Fragment>
     </div>
   );
