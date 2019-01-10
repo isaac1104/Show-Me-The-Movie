@@ -30,7 +30,7 @@ const styles = {
 
 const Home = () => {
   return (
-    <div style={styles.container}>
+    <div style={styles.container} className='landing'>
       <div style={styles.poster}/>
       <div style={styles.textContainer}>
         <h1 style={styles.text}><span role='img' aria-label='popcorn'>🍿</span> Show Me The Movie</h1>
