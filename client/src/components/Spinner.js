@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import { Icon, Spin } from 'antd';
 
 const Spinner = () => {
   const styles = {
