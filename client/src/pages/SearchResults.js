@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Row } from 'antd';
+import { Row, Dropdown, Menu, Icon, Button } from 'antd';
 import { connect } from 'react-redux';
 import SearchForm from '../components/searchForms/SearchForm';
 import MovieCard from '../components/MovieCard';
@@ -54,12 +54,39 @@ class SearchResults extends Component {
     });
   };
 
+  renderDropdown() {
+    const menu = (
+      <Menu>
+        <Menu.Item key="0">Rating</Menu.Item>
+        <Menu.Item key="1">Popularity</Menu.Item>
+        <Menu.Item key="2">Release Date</Menu.Item>
+      </Menu>
+    );
+
+    return (
+      <Dropdown
+        overlay={menu}
+        trigger={['click']}
+        >
+          <Button className='ant-dropdown-link'>
+            Sort by <Icon type='down' />
+          </Button>
+      </Dropdown>
+    );
+  }
+
   render() {
     const { movie_data: { data, isFetching }, match: { params : { title, page } } } = this.props;
+    console.log(data);
     return (
       <Fragment>
         <SearchForm />
-        {isFetching ? null : <h3 style={{ marginTop: '15px' }}>{data.total_results} Result(s) Found</h3>}
+        {isFetching ? null : (
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <h3 style={{ marginTop: '15px' }}>{data.total_results} Result(s) Found</h3>
+            {this.renderDropdown()}
+          </div>
+        )}
         <Row type='flex'>
           {this.renderResults()}
         </Row>
