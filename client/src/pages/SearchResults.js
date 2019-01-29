@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Row, Dropdown, Menu, Icon, Button } from 'antd';
+import { Row, Select } from 'antd';
 import { connect } from 'react-redux';
 import SearchForm from '../components/searchForms/SearchForm';
 import MovieCard from '../components/MovieCard';
@@ -55,22 +55,15 @@ class SearchResults extends Component {
   };
 
   renderDropdown() {
-    const menu = (
-      <Menu>
-        <Menu.Item key='0' onClick={() => this.props.sortMovieData('vote_average')}>Rating</Menu.Item>
-        <Menu.Item key='1' onClick={() => this.props.sortMovieData('popularity')}>Popularity</Menu.Item>
-      </Menu>
-    );
-
     return (
-      <Dropdown
-        overlay={menu}
-        trigger={['click']}
+      <Select
+        style={{ width: 120 }}
+        placeholder='Sort By'
+        onChange={value => this.props.sortMovieData(value)}
         >
-          <Button className='ant-dropdown-link'>
-            Sort by <Icon type='down' />
-          </Button>
-      </Dropdown>
+        <Select.Option value='vote_average'>Rating</Select.Option>
+        <Select.Option value='popularity'>Popularity</Select.Option>
+      </Select>
     );
   }
 
