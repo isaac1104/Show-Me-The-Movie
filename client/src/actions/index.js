@@ -119,3 +119,7 @@ export const fetchPopularMovies = () => async dispatch => {
     dispatch({ type: types.REJECT_POPULAR_MOVIES, payload: e });
   }
 };
+
+export const sortMovieData = category => ({
+  type: types.SORT_MOVIE_DATA, payload: category
+});

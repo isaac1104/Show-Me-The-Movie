@@ -1,4 +1,4 @@
-import { REQUEST_MOVIE_DATA, RECEIVE_MOVIE_DATA, REJECT_MOVIE_DATA, RESET_MOVIE_DATA } from '../actions/types';
+import { REQUEST_MOVIE_DATA, RECEIVE_MOVIE_DATA, REJECT_MOVIE_DATA, RESET_MOVIE_DATA, SORT_MOVIE_DATA } from '../actions/types';
 
 const INITIAL_STATE = {
   data: '',
@@ -26,6 +26,16 @@ const movieDataReducer = (state = INITIAL_STATE, action) => {
         data: '',
         isFetching: false,
         error: action.payload
+      };
+    case SORT_MOVIE_DATA:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          results: [...state.data.results].sort((a,b) => b[action.payload] - a[action.payload])
+        },
+        isFetching: false,
+        error: ''
       };
     case RESET_MOVIE_DATA:
       return INITIAL_STATE;

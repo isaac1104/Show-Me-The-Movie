@@ -5,7 +5,7 @@ import SearchForm from '../components/searchForms/SearchForm';
 import MovieCard from '../components/MovieCard';
 import Spinner from '../components/Spinner';
 import MoviePagination from '../components/MoviePagination';
-import { searchForMovies, resetMovieData } from '../actions';
+import { searchForMovies, resetMovieData, sortMovieData } from '../actions';
 
 class SearchResults extends Component {
   componentDidMount() {
@@ -57,9 +57,8 @@ class SearchResults extends Component {
   renderDropdown() {
     const menu = (
       <Menu>
-        <Menu.Item key="0">Rating</Menu.Item>
-        <Menu.Item key="1">Popularity</Menu.Item>
-        <Menu.Item key="2">Release Date</Menu.Item>
+        <Menu.Item key='0' onClick={() => this.props.sortMovieData('vote_average')}>Rating</Menu.Item>
+        <Menu.Item key='1' onClick={() => this.props.sortMovieData('popularity')}>Popularity</Menu.Item>
       </Menu>
     );
 
@@ -77,7 +76,6 @@ class SearchResults extends Component {
 
   render() {
     const { movie_data: { data, isFetching }, match: { params : { title, page } } } = this.props;
-    console.log(data);
     return (
       <Fragment>
         <SearchForm />
@@ -104,4 +102,4 @@ function mapStateToProps({ movie_data }) {
   return { movie_data };
 };
 
-export default connect(mapStateToProps, { searchForMovies, resetMovieData })(SearchResults);
+export default connect(mapStateToProps, { searchForMovies, resetMovieData, sortMovieData })(SearchResults);
