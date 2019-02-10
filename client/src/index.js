@@ -4,6 +4,7 @@ import rootReducer from './reducers';
 import reduxThunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
+import { initSimpleImg } from 'react-simple-img';
 import './styles/index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
@@ -15,6 +16,8 @@ const store = createStore(
   {},
   composeEnhancer(applyMiddleware(reduxThunk))
 );
+
+initSimpleImg();
 
 ReactDOM.render(
   <Provider store={store}>

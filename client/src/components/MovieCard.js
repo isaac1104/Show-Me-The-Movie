@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Card, Col, Rate } from 'antd';
-import { SimpleImg, SimpleImgProvider } from 'react-simple-img';
+import { SimpleImg } from 'react-simple-img';
 const { Meta } = Card;
 
 class MovieCard extends Component {
@@ -29,14 +29,12 @@ class MovieCard extends Component {
         <Card
           hoverable
           cover={
-            <SimpleImgProvider>
-              <SimpleImg
-                width={180}
-                height={240}
-                src={poster ? `https://image.tmdb.org/t/p/w185/${poster}` : poster_path ? `https://image.tmdb.org/t/p/w185/${poster_path}` : 'https://via.placeholder.com/300?text=Poster+Not+Available'}
-                alt={title}
-              />
-            </SimpleImgProvider>
+            <SimpleImg
+              width={180}
+              height={240}
+              src={poster ? `https://image.tmdb.org/t/p/w185/${poster}` : poster_path ? `https://image.tmdb.org/t/p/w185/${poster_path}` : 'https://via.placeholder.com/300?text=Poster+Not+Available'}
+              alt={title}
+            />
           }
           onClick={() => this.props.history.push(`/movie/${movieId ? movieId : id }`)}
           style={styles.card}

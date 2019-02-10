@@ -3,7 +3,7 @@ import Spinner from '../components/Spinner';
 import LikeIcon from '../components/LikeIcon';
 import MovieCarousel from '../components/MovieCarousel';
 import { Button, Col, Divider, Rate, Row, Tag } from 'antd';
-import { SimpleImg, SimpleImgProvider } from 'react-simple-img';
+import { SimpleImg } from 'react-simple-img';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
@@ -46,13 +46,11 @@ class MovieDetail extends Component {
           />
           <Row type='flex' gutter={16}>
             <Col xs={24} sm={24} md={10} lg={10} xl={10} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '30px' }}>
-              <SimpleImgProvider>
-                <SimpleImg
-                  height={700}
-                  src={data.poster_path ? `https://image.tmdb.org/t/p/w185/${data.poster_path}` : 'https://via.placeholder.com/300?text=Poster+Not+Available' }
-                  alt='movie-poster'
-                />
-              </SimpleImgProvider>
+              <SimpleImg
+                height={700}
+                src={data.poster_path ? `https://image.tmdb.org/t/p/w185/${data.poster_path}` : 'https://via.placeholder.com/300?text=Poster+Not+Available' }
+                alt='movie-poster'
+              />
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={12}>
               <h1>
