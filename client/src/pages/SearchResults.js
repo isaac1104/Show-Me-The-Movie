@@ -60,7 +60,7 @@ class SearchResults extends Component {
         style={{ width: 120 }}
         placeholder='Sort By'
         onChange={value => this.props.sortMovieData(value)}
-        >
+      >
         <Select.Option value='vote_average'>Rating</Select.Option>
         <Select.Option value='popularity'>Popularity</Select.Option>
       </Select>
