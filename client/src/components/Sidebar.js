@@ -7,15 +7,14 @@ const { Sider } = Layout;
 class Sidebar extends Component {
   highlightMenu() {
     const { pathname } = window.location;
-    switch (pathname) {
-      case '/home':
-        return ['0'];
-      case '/liked_movies':
-        return ['1'];
-      case '/search':
-        return ['2'];
-      default:
-        return ['0'];
+    if (pathname.includes('/home')) {
+      return ['0'];
+    } else if (pathname.includes('/liked_movies')) {
+      return ['1'];
+    } else if (pathname.includes('/search')) {
+      return ['2'];
+    } else {
+      return ['0'];
     }
   };
 
