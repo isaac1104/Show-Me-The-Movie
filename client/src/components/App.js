@@ -48,6 +48,7 @@ class App extends Component {
                   <Route exact path='/movie/:id' component={requireAuth(MovieDetail)} />
                   <Route exact path='/liked_movies' component={requireAuth(LikedMovies)} />
                   <Route exact path='/search/:title/:page' component={requireAuth(SearchResults)} />
+                  <Redirect from='/search/:title/' to='/search/:title/1' />
                   <Route exact path='/search' component={requireAuth(Search)} />
                   <Route render={() => <PageNotFound />} />
                 </Switch>
