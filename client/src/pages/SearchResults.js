@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from 'react';
-import { Row, Select } from 'antd';
+import { Row } from 'antd';
 import { connect } from 'react-redux';
 import SearchForm from '../components/searchForms/SearchForm';
 import MovieCard from '../components/MovieCard';
 import Spinner from '../components/Spinner';
 import MoviePagination from '../components/MoviePagination';
+import SortDropdown from '../components/SortDropdown';
 import { searchForMovies, resetMovieData, sortMovieData } from '../actions';
 
 class SearchResults extends Component {
@@ -54,19 +55,6 @@ class SearchResults extends Component {
     });
   };
 
-  renderDropdown() {
-    return (
-      <Select
-        style={{ width: 120 }}
-        placeholder='Sort By'
-        onChange={value => this.props.sortMovieData(value)}
-      >
-        <Select.Option value='vote_average'>Rating</Select.Option>
-        <Select.Option value='popularity'>Popularity</Select.Option>
-      </Select>
-    );
-  }
-
   render() {
     const { movie_data: { data, isFetching }, match: { params : { title, page } } } = this.props;
     return (
@@ -75,7 +63,7 @@ class SearchResults extends Component {
         {isFetching ? null : (
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <h3 style={{ marginTop: '15px' }}>{data.total_results} Result(s) Found</h3>
-            {this.renderDropdown()}
+            <SortDropdown />
           </div>
         )}
         <Row type='flex'>
