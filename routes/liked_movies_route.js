@@ -5,7 +5,7 @@ const requireAuth = require('../middlewares/requireAuth');
 module.exports = app => {
   app.get('/api/liked_movies', requireAuth, async (req, res) => {
     const likedMovies = await LikedMovies.find({ _user: req.user.id });
-    res.send(likedMovies);
+    res.status(200).send(likedMovies);
   });
 
   app.post('/api/liked_movies', requireAuth, async (req, res) => {
@@ -24,8 +24,7 @@ module.exports = app => {
     });
     try {
       await likedMovie.save();
-      res.status(201);
-      res.json();
+      res.status(201).json();
     } catch (e) {
       res.status(400).send(e);
     }
@@ -35,8 +34,7 @@ module.exports = app => {
     const { movieId } = req.query;
     try {
       const likedMovie = await LikedMovies.deleteOne({ movieId });
-      res.status(201);
-      res.json();
+      res.status(200).json();
     } catch (e) {
       res.status(400).send(e);
     }
