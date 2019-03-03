@@ -40,6 +40,30 @@ class MovieDetail extends Component {
     this.setState({ visible: false });
   }
 
+  renderTrailerModal() {
+    return (
+      <Modal
+        visible={this.state.visible}
+        closable={false}
+        onCancel={this.handleModalClose}
+        destroyOnClose
+        footer={[
+          <Button key='close' onClick={this.handleModalClose}>Close</Button>
+        ]}
+      >
+        <iframe
+          title='trailer'
+          width='100%'
+          height='315'
+          src='https://www.youtube.com/embed/Z1BCujX3pw8'
+          frameBorder='0'
+          allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+          allowFullScreen
+        />
+      </Modal>
+    );
+  }
+
   renderMovieDetail() {
     const { movie_data: { isFetching, data }, liked_movies, recommended_movies } = this.props;
     if (isFetching || recommended_movies.isFetching) {
@@ -80,16 +104,7 @@ class MovieDetail extends Component {
                   theme='twoTone'
                   onClick={this.handleModalOpen}
                 />
-                <Modal
-                  visible={this.state.visible}
-                  closable={false}
-                  onCancel={this.handleModalClose}
-                  footer={[
-                    <Button onClick={this.handleModalClose}>Close</Button>
-                  ]}
-                >
-                  <p>Some contents...</p>
-                </Modal>
+                {this.renderTrailerModal()}
                 <Divider type='vertical' />
                 {data.title}
                 <Divider type='vertical' />
