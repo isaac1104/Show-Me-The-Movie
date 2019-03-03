@@ -105,13 +105,17 @@ class MovieDetail extends Component {
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={12}>
               <h1>
-                <Icon
-                  type='video-camera'
-                  theme='twoTone'
-                  onClick={this.handleModalOpen}
-                />
+                {data.trailer ? (
+                  <Fragment>
+                    <Icon
+                      type='video-camera'
+                      theme='twoTone'
+                      onClick={this.handleModalOpen}
+                    />
+                    <Divider type='vertical' />
+                  </Fragment>
+                ): null}
                 {this.renderTrailerModal()}
-                <Divider type='vertical' />
                 {data.title}
                 <Divider type='vertical' />
                 <LikeIcon
