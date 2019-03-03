@@ -47,6 +47,7 @@ class MovieDetail extends Component {
         <Modal
           title={trailer.name}
           visible={this.state.visible}
+          width={1040}
           closable={false}
           onCancel={this.handleModalClose}
           destroyOnClose
@@ -57,7 +58,7 @@ class MovieDetail extends Component {
           <iframe
             title='trailer'
             width='100%'
-            height='315'
+            height='500'
             src={`https://www.youtube.com/embed/${trailer.key}`}
             frameBorder='0'
             allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
