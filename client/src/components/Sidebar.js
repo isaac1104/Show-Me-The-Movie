@@ -42,8 +42,7 @@ class Sidebar extends Component {
     if (data) {
       return (
         <Sider breakpoint='lg' collapsedWidth='0' style={styles.sidebar}>
-          <div className="logo"/>
-          <Menu mode="inline" theme='dark' defaultSelectedKeys={this.highlightMenu()} style={styles.menu}>
+          <Menu mode='inline' theme='dark' defaultSelectedKeys={this.highlightMenu()} style={styles.menu}>
             {menuItems.map(({ path, icon, text }, i) =>
               <Menu.Item key={i}>
                 <Link to={`/${path}`}>

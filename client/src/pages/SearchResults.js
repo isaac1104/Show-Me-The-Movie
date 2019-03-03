@@ -57,12 +57,23 @@ class SearchResults extends Component {
 
   render() {
     const { movie_data: { data, isFetching }, match: { params : { title, page } } } = this.props;
+    const styles = {
+      container: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+      },
+      text: {
+        marginTop: '15px'
+      }
+    };
+
     return (
       <Fragment>
         <SearchForm />
         {isFetching ? null : (
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <h3 style={{ marginTop: '15px' }}>{data.total_results} Result(s) Found</h3>
+          <div style={styles.container}>
+            <h3 style={styles.text}>{data.total_results} Result(s) Found</h3>
             <SortDropdown />
           </div>
         )}

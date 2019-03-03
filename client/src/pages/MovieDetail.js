@@ -35,6 +35,15 @@ class MovieDetail extends Component {
     }
 
     if (data) {
+      const styles = {
+        column: {
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginBottom: '30px'
+        }
+      };
+
       return (
         <Fragment>
           <Button
@@ -45,7 +54,7 @@ class MovieDetail extends Component {
             onClick={() => this.props.history.goBack()}
           />
           <Row type='flex' gutter={16}>
-            <Col xs={24} sm={24} md={10} lg={10} xl={10} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '30px' }}>
+            <Col xs={24} sm={24} md={10} lg={10} xl={10} style={styles.column}>
               <SimpleImg
                 height={700}
                 src={data.poster_path ? `https://image.tmdb.org/t/p/w185/${data.poster_path}` : 'https://via.placeholder.com/300?text=Poster+Not+Available' }

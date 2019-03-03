@@ -80,28 +80,6 @@ const MovieCarousel = ({ type, title, data, tagColor }) => {
   }
 
   if (data && type === 'recommendation') {
-    if (data.length === 0) {
-      return <h3>Recommeded Movies: N/A</h3>;
-    }
-
-    if (data.length <= 4) {
-      return (
-        <Fragment>
-          <h3>{title}</h3>
-          {data.map(movie => {
-            return (
-              <div key={movie.id}>
-                <MovieCard
-                  movie={movie}
-                  colWidth={'25%'}
-                />
-              </div>
-            );
-          })}
-        </Fragment>
-      );
-    }
-
     const settings = {
       arrows: false,
       dots: true,
@@ -141,7 +119,29 @@ const MovieCarousel = ({ type, title, data, tagColor }) => {
           }
         }
       ]
-    };
+    };  
+    if (data.length === 0) {
+      return <h3>Recommeded Movies: N/A</h3>;
+    }
+
+    if (data.length <= 4) {
+      return (
+        <Fragment>
+          <h3>{title}</h3>
+          {data.map(movie => {
+            return (
+              <div key={movie.id}>
+                  <MovieCard
+                  movie={movie}
+                  colWidth={'25%'}
+                />
+              </div>
+            );
+          })}
+        </Fragment>
+      );
+    }
+
     return (
       <Fragment>
         <h3>{title}</h3>

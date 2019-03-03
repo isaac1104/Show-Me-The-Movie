@@ -6,9 +6,15 @@ const { Option } = Select;
 
 class SortDropdown extends Component {
   render() {
+    const styles = {
+      select: {
+        width: 120
+      }
+    };
+
     return (
       <Select
-        style={{ width: 120 }}
+        style={styles.select}
         placeholder='Sort By'
         onChange={value => this.props.sortMovieData(value)}
       >

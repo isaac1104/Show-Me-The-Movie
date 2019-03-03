@@ -15,12 +15,18 @@ const LikeIcon = ({ likedMovies, movieData, deleteLikedMovie, saveLikedMovie }) 
     );
   }
 
+  const styles = {
+    likeIcon: {
+      color: 'red'
+    }
+  };
+
   return (
     <Rate
       character={<Icon type='heart' theme='filled' />}
       defaultValue={0}
       count={1}
-      style={{ color: 'red' }}
+      style={styles.likeIcon}
       onChange={() => saveLikedMovie({
         title: movieData.title,
         movieId: movieData.id,
