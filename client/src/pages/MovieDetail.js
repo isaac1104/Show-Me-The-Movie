@@ -41,27 +41,33 @@ class MovieDetail extends Component {
   }
 
   renderTrailerModal() {
-    return (
-      <Modal
-        visible={this.state.visible}
-        closable={false}
-        onCancel={this.handleModalClose}
-        destroyOnClose
-        footer={[
-          <Button key='close' onClick={this.handleModalClose}>Close</Button>
-        ]}
-      >
-        <iframe
-          title='trailer'
-          width='100%'
-          height='315'
-          src='https://www.youtube.com/embed/Z1BCujX3pw8'
-          frameBorder='0'
-          allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-          allowFullScreen
-        />
-      </Modal>
-    );
+    const { data: { trailer } } = this.props.movie_data;
+    if (trailer) {
+      return (
+        <Modal
+          title={trailer.name}
+          visible={this.state.visible}
+          closable={false}
+          onCancel={this.handleModalClose}
+          destroyOnClose
+          footer={[
+            <Button key='close' onClick={this.handleModalClose}>Close</Button>
+          ]}
+        >
+          <iframe
+            title='trailer'
+            width='100%'
+            height='315'
+            src={`https://www.youtube.com/embed/${trailer.key}`}
+            frameBorder='0'
+            allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+            allowFullScreen
+          />
+        </Modal>
+      );
+    }
+
+    return null;
   }
 
   renderMovieDetail() {

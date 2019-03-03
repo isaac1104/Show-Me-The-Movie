@@ -15,9 +15,13 @@ module.exports = app => {
 
   app.get('/api/movie_data', requireAuth, async (req, res) => {
     try {
-      const request = await axios.get(`https://api.themoviedb.org/3/movie/${req.query.id}?api_key=${keys.tmdbApiKey}&language=en-US`);
-      const { data } = request;
-      res.status(200).send(data);
+      const request = await axios.all([
+        axios.get(`https://api.themoviedb.org/3/movie/${req.query.id}?api_key=${keys.tmdbApiKey}&language=en-US`),
+        axios.get(`https://api.themoviedb.org/3/movie/${req.query.id}/videos?api_key=${keys.tmdbApiKey}&language=en-US`)
+      ]);
+      const movieData = request[0].data;
+      const trailer = request[1].data.results[0];
+      res.status(200).send({ ...movieData, trailer });
     } catch (e) {
       res.status(404).send(e);
     }
