@@ -105,6 +105,17 @@ export const fetchPopularMovies = () => async dispatch => {
   }
 };
 
+export const fetchTrendingMovies = () => async dispatch => {
+  dispatch({ type: types.REQUEST_TRENDING_MOVIES, payload: true });
+  try {
+    const request = await axios.get('/api/trending_movies');
+    const { data } = request;
+    dispatch({ type: types.RECEIVE_TRENDING_MOVIES, payload: data });
+  } catch (e) {
+    dispatch({ type: types.REJECT_TRENDING_MOVIES, payload: e });
+  }
+};
+
 export const sortMovieData = category => ({
   type: types.SORT_MOVIE_DATA, payload: category
 });
