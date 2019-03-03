@@ -13,17 +13,15 @@ class MovieDetail extends Component {
   };
 
   componentDidMount() {
-    const { fetchMovieData, fetchRecommendedMovies, fetchLikedMovies, match: { params: { id } } } = this.props;
+    const { fetchMovieData, fetchLikedMovies, match: { params: { id } } } = this.props;
     fetchMovieData(id);
-    fetchRecommendedMovies(id);
     fetchLikedMovies();
   };
 
   componentDidUpdate(prevProps) {
-    const { fetchMovieData, fetchLikedMovies, fetchRecommendedMovies, match: { params: { id } } } = this.props;
+    const { fetchMovieData, fetchLikedMovies, match: { params: { id } } } = this.props;
     if (prevProps.match.params.id !== id) {
       fetchMovieData(id);
-      fetchRecommendedMovies(id);
       fetchLikedMovies();
     }
   };
@@ -72,8 +70,8 @@ class MovieDetail extends Component {
   }
 
   renderMovieDetail() {
-    const { movie_data: { isFetching, data }, liked_movies, recommended_movies } = this.props;
-    if (isFetching || recommended_movies.isFetching) {
+    const { movie_data: { isFetching, data }, liked_movies } = this.props;
+    if (isFetching) {
       return <Spinner />;
     }
 
@@ -151,7 +149,7 @@ class MovieDetail extends Component {
               <MovieCarousel
                 type='recommendation'
                 title='Recommended Movies:'
-                data={this.props.recommended_movies.data.results}
+                data={data.recommended.results}
               />
             </Col>
           </Row>
@@ -171,8 +169,8 @@ class MovieDetail extends Component {
   };
 }
 
-function mapStateToProps({ movie_data, liked_movies, recommended_movies }) {
-  return { movie_data, liked_movies, recommended_movies };
+function mapStateToProps({ movie_data, liked_movies }) {
+  return { movie_data, liked_movies };
 };
 
 export default connect(mapStateToProps, actions)(MovieDetail);
