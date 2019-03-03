@@ -9,6 +9,7 @@ class Home extends Component {
       <div>
         <h1><Avatar src={avatar} /> Welcome, {username ? username.split(' ')[0] : 'Guest'}</h1>
         <h1><a href='/search'><Icon type='search' /> Search</a> for a movie to get started!</h1>
+        <h1>Here are today's top 20 trending movies</h1>
       </div>
     );
   };

@@ -25,6 +25,7 @@ app.use(passport.session());
 require('./routes/auth')(app);
 require('./routes/movie_data_api')(app);
 require('./routes/liked_movies_route')(app);
+require('./routes/trending_movies_api')(app);
 require('./routes/now_playing_movies_route')(app);
 require('./routes/popular_movies_route')(app);
 
