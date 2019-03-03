@@ -2,12 +2,16 @@ import React, { Component, Fragment } from 'react';
 import Spinner from '../components/Spinner';
 import LikeIcon from '../components/LikeIcon';
 import MovieCarousel from '../components/MovieCarousel';
-import { Button, Col, Divider, Rate, Row, Tag } from 'antd';
+import { Button, Col, Divider, Rate, Row, Tag, Icon, Modal } from 'antd';
 import { SimpleImg } from 'react-simple-img';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 class MovieDetail extends Component {
+  state = {
+    visible: false
+  };
+
   componentDidMount() {
     const { fetchMovieData, fetchRecommendedMovies, fetchLikedMovies, match: { params: { id } } } = this.props;
     fetchMovieData(id);
@@ -28,6 +32,14 @@ class MovieDetail extends Component {
     this.props.resetMovieData();
   };
 
+  handleModalOpen = () => {
+    this.setState({ visible: true });
+  }
+
+  handleModalClose = () => {
+    this.setState({ visible: false });
+  }
+
   renderMovieDetail() {
     const { movie_data: { isFetching, data }, liked_movies, recommended_movies } = this.props;
     if (isFetching || recommended_movies.isFetching) {
@@ -47,9 +59,9 @@ class MovieDetail extends Component {
       return (
         <Fragment>
           <Button
-            type="primary"
-            shape="circle"
-            icon="left"
+            type='primary'
+            shape='circle'
+            icon='left'
             size='large'
             onClick={() => this.props.history.goBack()}
           />
@@ -63,6 +75,22 @@ class MovieDetail extends Component {
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={12}>
               <h1>
+                <Icon
+                  type='video-camera'
+                  theme='twoTone'
+                  onClick={this.handleModalOpen}
+                />
+                <Modal
+                  visible={this.state.visible}
+                  closable={false}
+                  onCancel={this.handleModalClose}
+                  footer={[
+                    <Button onClick={this.handleModalClose}>Close</Button>
+                  ]}
+                >
+                  <p>Some contents...</p>
+                </Modal>
+                <Divider type='vertical' />
                 {data.title}
                 <Divider type='vertical' />
                 <LikeIcon
@@ -92,7 +120,7 @@ class MovieDetail extends Component {
               <Divider />
               <h3>Plot:</h3>
               <p>{data.overview ? data.overview : 'N/A'}</p>
-              <p>{data.tagline ? `"${data.tagline}"` : ''}</p>
+              <p>{data.tagline ? `'${data.tagline}'` : ''}</p>
               <Divider />
               <MovieCarousel
                 type='recommendation'
@@ -104,6 +132,8 @@ class MovieDetail extends Component {
         </Fragment>
       );
     }
+
+    return null;
   };
 
   render() {
