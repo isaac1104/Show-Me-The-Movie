@@ -4,6 +4,7 @@ import LikeIcon from '../components/LikeIcon';
 import MovieCarousel from '../components/MovieCarousel';
 import { Button, Col, Divider, Rate, Row, Tag, Icon, Modal } from 'antd';
 import { SimpleImg } from 'react-simple-img';
+import ReactPlayer from 'react-player';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
@@ -53,14 +54,12 @@ class MovieDetail extends Component {
             <Button key='close' onClick={this.handleModalClose}>Close</Button>
           ]}
         >
-          <iframe
-            title='trailer'
+          <ReactPlayer
+            url={`https://www.youtube.com/embed/${trailer.key}`}
+            playing
+            controls
             width='100%'
-            height='500'
-            src={`https://www.youtube.com/embed/${trailer.key}`}
-            frameBorder='0'
-            allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-            allowFullScreen
+            height={500}
           />
         </Modal>
       );
