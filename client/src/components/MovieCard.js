@@ -32,7 +32,13 @@ class MovieCard extends Component {
             <SimpleImg
               width={180}
               height={240}
-              src={poster ? `https://image.tmdb.org/t/p/w185/${poster}` : poster_path ? `https://image.tmdb.org/t/p/w185/${poster_path}` : 'https://via.placeholder.com/300?text=Poster+Not+Available'}
+              src={
+                poster
+                ? `https://image.tmdb.org/t/p/w185/${poster}`
+                  : poster_path
+                  ? `https://image.tmdb.org/t/p/w185/${poster_path}`
+                  : 'https://via.placeholder.com/300/f0f2f5/000000?text=Poster+Not+Available'
+              }
               alt={title}
             />
           }
@@ -44,7 +50,14 @@ class MovieCard extends Component {
             description={release_date ? release_date : releaseDate}
           />
           <Meta
-            description={<Rate allowHalf disabled defaultValue={vote_average ? vote_average / 2 : rating / 2} style={styles.rate} />}
+            description={
+              <Rate
+                allowHalf
+                disabled
+                defaultValue={vote_average ? vote_average / 2 : rating / 2}
+                style={styles.rate}
+              />
+            }
           />
         </Card>
       </Col>

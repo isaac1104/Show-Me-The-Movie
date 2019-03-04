@@ -81,6 +81,15 @@ class MovieDetail extends Component {
           justifyContent: 'center',
           alignItems: 'center',
           marginBottom: '30px'
+        },
+        noPoster: {
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          textAlign: 'center',
+          height: '680px',
+          width: '468px',
+          backgroundColor: '#f0f2f5'
         }
       };
 
@@ -95,11 +104,17 @@ class MovieDetail extends Component {
           />
           <Row type='flex' gutter={16}>
             <Col xs={24} sm={24} md={10} lg={10} xl={10} style={styles.column}>
-              <SimpleImg
-                height={700}
-                src={data.poster_path ? `https://image.tmdb.org/t/p/w185/${data.poster_path}` : 'https://via.placeholder.com/300?text=Poster+Not+Available' }
-                alt='movie-poster'
-              />
+              {data.poster_path ? (
+                <SimpleImg
+                  height={700}
+                  src={`https://image.tmdb.org/t/p/w185/${data.poster_path}`}
+                  alt='movie-poster'
+                />
+              ) : (
+                <div style={styles.noPoster}>
+                  <h1>Poster Not Available</h1>
+                </div>
+              )}
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={12}>
               <h1>
