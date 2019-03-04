@@ -74,7 +74,7 @@ class MovieDetail extends Component {
       return <Spinner />;
     }
 
-    if (data) {
+    if (data && data.recommended) {
       const styles = {
         column: {
           display: 'flex',
