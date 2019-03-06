@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import GoogleButton from '../components/GoogleButton';
-import FacebookButton from '../components/FacebookButton';
+import SignInButton from '../components/SignInButton';
 
 class PageNotFound extends Component {
   renderErrorMsg() {
@@ -38,8 +37,8 @@ class PageNotFound extends Component {
         <div>
           <h1 style={styles.text}><span role='img' aria-label='stop'>🛑</span> Error: Page Not Found!</h1>
           <h2 style={styles.text}>Please Login First <span role='img' aria-label='point-down'>👇</span></h2>
-          <GoogleButton />
-          <FacebookButton />
+          <SignInButton platform='Google' />
+          <SignInButton platform='Facebook' />
         </div>
       </div>
     );
