@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Spinner from '../components/Spinner';
 import LikeIcon from '../components/LikeIcon';
 import MovieCarousel from '../components/MovieCarousel';
-import { Button, Col, Divider, Rate, Row, Tag, Icon, Modal } from 'antd';
+import { Button, Col, Divider, Rate, Row, Tag, Icon, Modal, Empty } from 'antd';
 import { SimpleImg } from 'react-simple-img';
 import ReactPlayer from 'react-player';
 import { connect } from 'react-redux';
@@ -90,6 +90,12 @@ class MovieDetail extends Component {
           height: '680px',
           width: '468px',
           backgroundColor: '#f0f2f5'
+        },
+        xIcon: {
+          fontSize: '5em'
+        },
+        text: {
+          fontSize: '1em'
         }
       };
 
@@ -112,7 +118,10 @@ class MovieDetail extends Component {
                 />
               ) : (
                 <div style={styles.noPoster}>
-                  <h1>Poster Not Available</h1>
+                  <Empty
+                    image={<Icon type='picture' style={styles.xIcon} />}
+                    description='Poster Not Available'
+                  />
                 </div>
               )}
             </Col>
