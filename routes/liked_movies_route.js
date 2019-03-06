@@ -24,7 +24,7 @@ module.exports = app => {
     });
     try {
       await likedMovie.save();
-      res.status(201).json();
+      res.sendStatus(200);
     } catch (e) {
       res.status(400).send(e);
     }
@@ -34,7 +34,7 @@ module.exports = app => {
     const { movieId } = req.query;
     try {
       const likedMovie = await LikedMovies.deleteOne({ movieId });
-      res.status(200).json();
+      res.sendStatus(200);
     } catch (e) {
       res.status(400).send(e);
     }
