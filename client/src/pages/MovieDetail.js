@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Spinner from '../components/Spinner';
 import LikeIcon from '../components/LikeIcon';
 import MovieCarousel from '../components/MovieCarousel';
-import { Button, Col, Divider, Rate, Row, Tag, Icon, Modal, Empty } from 'antd';
+import { Button, Col, Divider, Rate, Row, Tag, Icon, Modal, Empty, Popover } from 'antd';
 import { SimpleImg } from 'react-simple-img';
 import ReactPlayer from 'react-player';
 import { connect } from 'react-redux';
@@ -129,11 +129,13 @@ class MovieDetail extends Component {
               <h1>
                 {data.trailer ? (
                   <Fragment>
-                    <Icon
-                      type='video-camera'
-                      theme='twoTone'
-                      onClick={this.handleModalOpen}
-                    />
+                    <Popover content={'Trailer'}>
+                      <Icon
+                        type='video-camera'
+                        theme='twoTone'
+                        onClick={this.handleModalOpen}
+                      />
+                    </Popover>
                     <Divider type='vertical' />
                   </Fragment>
                 ): null}
