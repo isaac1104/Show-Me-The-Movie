@@ -37,8 +37,7 @@ class PageNotFound extends Component {
         <div>
           <h1 style={styles.text}><span role='img' aria-label='stop'>🛑</span> Error: Page Not Found!</h1>
           <h2 style={styles.text}>Please Login First <span role='img' aria-label='point-down'>👇</span></h2>
-          <SignInButton platform='Google' />
-          <SignInButton platform='Facebook' />
+          <SignInButton platforms={[ 'Google', 'Facebook' ]} />
         </div>
       </div>
     );
