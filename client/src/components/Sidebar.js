@@ -36,27 +36,35 @@ class Sidebar extends Component {
     const menuItems = [
       { path: 'home', icon: 'home', text: 'Home' },
       { path: 'liked_movies', icon: 'heart', text: 'Liked' },
-      { path: 'search', icon: 'search', text: 'Search' }
+      { path: 'search', icon: 'search', text: 'Search' },
+      { path: 'api/signout', icon: 'logout', text: 'Logout' }
     ];
 
     if (data) {
       return (
-        <Sider breakpoint='lg' collapsedWidth='0' style={styles.sidebar}>
+        <Sider breakpoint='xl' collapsedWidth='0' style={styles.sidebar}>
           <Menu mode='inline' theme='dark' defaultSelectedKeys={this.highlightMenu()} style={styles.menu}>
-            {menuItems.map(({ path, icon, text }, i) =>
-              <Menu.Item key={i}>
-                <Link to={`/${path}`}>
-                  <Icon type={icon} />
-                  <span className='nav-text'>{text}</span>
-                </Link>
-              </Menu.Item>
-            )}
-            <Menu.Item key='3' style={styles.logout}>
-              <a href='/api/signout'>
-                <Icon type='logout' />
-                <span className='nav-text'>Logout</span>
-              </a>
-            </Menu.Item>
+            {menuItems.map(({ path, icon, text }, i) => {
+              if (path === 'api/signout') {
+                return (
+                  <Menu.Item key={i} style={styles.logout}>
+                    <a href={`/${path}`}>
+                      <Icon type={icon} />
+                      <span className='nav-text'>{text}</span>
+                    </a>
+                  </Menu.Item>
+                );
+              }
+
+              return (
+                <Menu.Item key={i}>
+                  <Link to={`/${path}`}>
+                    <Icon type={icon} />
+                    <span className='nav-text'>{text}</span>
+                  </Link>
+                </Menu.Item>
+              );
+            })}
           </Menu>
         </Sider>
       );
