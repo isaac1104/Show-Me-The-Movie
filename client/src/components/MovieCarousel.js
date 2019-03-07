@@ -7,7 +7,7 @@ const MovieCarousel = ({ type, title, data, tagColor }) => {
   if (data && type === 'search') {
     const settings = {
       arrows: false,
-      dots: true,
+      dots: window.innerWidth < 595 ? false: true,
       draggable: false,
       autoplay: true,
       infinite: true,
@@ -16,35 +16,28 @@ const MovieCarousel = ({ type, title, data, tagColor }) => {
       slidesToScroll: 8,
       responsive: [
         {
-          breakpoint: 1600,
-          settings: {
-            slidesToShow: 8,
-            slidesToScroll: 8
-          }
-        },
-        {
-          breakpoint: 1440,
+          breakpoint: 1624,
           settings: {
             slidesToShow: 6,
             slidesToScroll: 6
           }
         },
         {
-          breakpoint: 1200,
+          breakpoint: 1292,
           settings: {
             slidesToShow: 4,
             slidesToScroll: 4
           }
         },
         {
-          breakpoint: 1024,
+          breakpoint: 760,
           settings: {
             slidesToShow: 3,
             slidesToScroll: 3
           }
         },
         {
-          breakpoint: 576,
+          breakpoint: 594,
           settings: {
             slidesToShow: 2,
             slidesToScroll: 2
@@ -82,7 +75,7 @@ const MovieCarousel = ({ type, title, data, tagColor }) => {
   if (data && type === 'recommendation') {
     const settings = {
       arrows: false,
-      dots: true,
+      dots: window.innerWidth < 396 ? false : true,
       draggable: false,
       autoplay: true,
       infinite: true,
@@ -91,28 +84,42 @@ const MovieCarousel = ({ type, title, data, tagColor }) => {
       slidesToScroll: 4,
       responsive: [
         {
-          breakpoint: 1440,
+          breakpoint: 1600,
           settings: {
             slidesToShow: 3,
             slidesToScroll: 3
           }
         },
         {
-          breakpoint: 1024,
+          breakpoint: 1302,
           settings: {
             slidesToShow: 2,
             slidesToScroll: 2
           }
         },
         {
-          breakpoint: 576,
+          breakpoint: 1199,
           settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
+            slidesToShow: 4,
+            slidesToScroll: 4
           }
         },
         {
-          breakpoint: 480,
+          breakpoint: 757,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3
+          }
+        },
+        {
+          breakpoint: 591,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 426,
           settings: {
             slidesToShow: 1,
             slidesToScroll: 1

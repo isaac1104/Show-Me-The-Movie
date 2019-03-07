@@ -109,7 +109,7 @@ class MovieDetail extends Component {
             onClick={() => this.props.history.goBack()}
           />
           <Row type='flex' gutter={16}>
-            <Col xs={24} sm={24} md={10} lg={10} xl={10} style={styles.column}>
+            <Col xs={24} sm={24} md={24} lg={24} xl={10} style={styles.column}>
               {data.poster_path ? (
                 <SimpleImg
                   src={`https://image.tmdb.org/t/p/w500/${data.poster_path}`}
@@ -127,7 +127,7 @@ class MovieDetail extends Component {
                 </div>
               )}
             </Col>
-            <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+            <Col xs={24} sm={24} md={24} lg={24} xl={12}>
               <h1>
                 {data.trailer ? (
                   <Fragment>
