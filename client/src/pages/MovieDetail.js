@@ -80,7 +80,7 @@ class MovieDetail extends Component {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          marginBottom: '30px'
+          margin: '1em 0 1em 0'
         },
         noPoster: {
           display: 'flex',
@@ -112,8 +112,7 @@ class MovieDetail extends Component {
             <Col xs={24} sm={24} md={10} lg={10} xl={10} style={styles.column}>
               {data.poster_path ? (
                 <SimpleImg
-                  height={700}
-                  src={`https://image.tmdb.org/t/p/w185/${data.poster_path}`}
+                  src={`https://image.tmdb.org/t/p/w500/${data.poster_path}`}
                   alt='movie-poster'
                 />
               ) : (
