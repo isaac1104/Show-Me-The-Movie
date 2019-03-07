@@ -32,11 +32,12 @@ class MovieCard extends Component {
             <SimpleImg
               width={180}
               height={240}
+              applyAspectRatio
               src={
                 poster
-                ? `https://image.tmdb.org/t/p/w185/${poster}`
+                ? `https://image.tmdb.org/t/p/w500/${poster}`
                   : poster_path
-                  ? `https://image.tmdb.org/t/p/w185/${poster_path}`
+                  ? `https://image.tmdb.org/t/p/w500/${poster_path}`
                   : 'https://via.placeholder.com/300/f0f2f5/000000?text=Poster+Not+Available'
               }
               alt={title}
@@ -64,17 +65,5 @@ class MovieCard extends Component {
     );
   }
 }
-
-MovieCard.defaultProp = {
-  colWidth: null,
-  cardWidth: '100%',
-  id: null,
-  movieId: null,
-  title: '',
-  release_date: '',
-  releaseDate: '',
-  vote_average: 0,
-  rating: 0
-};
 
 export default withRouter(MovieCard);

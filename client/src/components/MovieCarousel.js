@@ -119,7 +119,7 @@ const MovieCarousel = ({ type, title, data, tagColor }) => {
           }
         }
       ]
-    };  
+    };
     if (data.length === 0) {
       return <h3>Recommeded Movies: N/A</h3>;
     }
