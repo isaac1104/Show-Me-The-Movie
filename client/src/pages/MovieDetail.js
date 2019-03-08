@@ -102,9 +102,9 @@ class MovieDetail extends Component {
       return (
         <Fragment>
           <Button
-            type='primary'
+            type='danger'
             shape='circle'
-            icon='left'
+            icon='caret-left'
             size='large'
             onClick={() => this.props.history.goBack()}
           />
