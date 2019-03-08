@@ -23,7 +23,7 @@ const styles = {
   poster: {
     position: 'absolute',
     width: '100%',
-    height: '100%',
+    height: '100vh',
     backgroundImage: `url(${moviesImage})`,
     filter: 'blur(3px) brightness(0.3)'
   },
