@@ -99,13 +99,13 @@ class MovieCarousel extends Component {
         ...settings,
         dots: this.state.width < 427 ? false : true,
         slidesToShow: 4,
-        slidesToScroll: 2,
+        slidesToScroll: 3,
         responsive: [
           {
             breakpoint: 1600,
             settings: {
               slidesToShow: 3,
-              slidesToScroll: 1
+              slidesToScroll: 2
             }
           },
           {
@@ -119,14 +119,14 @@ class MovieCarousel extends Component {
             breakpoint: 1199,
             settings: {
               slidesToShow: 4,
-              slidesToScroll: 2
+              slidesToScroll: 3
             }
           },
           {
             breakpoint: 757,
             settings: {
               slidesToShow: 3,
-              slidesToScroll: 1
+              slidesToScroll: 2
             }
           },
           {
