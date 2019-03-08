@@ -35,34 +35,34 @@ class MovieCarousel extends Component {
         ...settings,
         dots: this.state.width < 595 ? false: true,
         slidesToShow: 8,
-        slidesToScroll: 8,
+        slidesToScroll: 4,
         responsive: [
           {
             breakpoint: 1624,
             settings: {
               slidesToShow: 6,
-              slidesToScroll: 6
+              slidesToScroll: 3
             }
           },
           {
             breakpoint: 1292,
             settings: {
               slidesToShow: 4,
-              slidesToScroll: 4
+              slidesToScroll: 2
             }
           },
           {
             breakpoint: 760,
             settings: {
               slidesToShow: 3,
-              slidesToScroll: 3
+              slidesToScroll: 1
             }
           },
           {
             breakpoint: 594,
             settings: {
               slidesToShow: 2,
-              slidesToScroll: 2
+              slidesToScroll: 1
             }
           },
           {
@@ -99,41 +99,41 @@ class MovieCarousel extends Component {
         ...settings,
         dots: this.state.width < 427 ? false : true,
         slidesToShow: 4,
-        slidesToScroll: 4,
+        slidesToScroll: 2,
         responsive: [
           {
             breakpoint: 1600,
             settings: {
               slidesToShow: 3,
-              slidesToScroll: 3
+              slidesToScroll: 1
             }
           },
           {
             breakpoint: 1302,
             settings: {
               slidesToShow: 2,
-              slidesToScroll: 2
+              slidesToScroll: 1
             }
           },
           {
             breakpoint: 1199,
             settings: {
               slidesToShow: 4,
-              slidesToScroll: 4
+              slidesToScroll: 2
             }
           },
           {
             breakpoint: 757,
             settings: {
               slidesToShow: 3,
-              slidesToScroll: 3
+              slidesToScroll: 1
             }
           },
           {
             breakpoint: 591,
             settings: {
               slidesToShow: 2,
-              slidesToScroll: 2
+              slidesToScroll: 1
             }
           },
           {
