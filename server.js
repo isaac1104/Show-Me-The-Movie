@@ -1,4 +1,5 @@
 const express = require('express');
+const helmet = require('helmet');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
 const mongoose = require('mongoose');
@@ -15,6 +16,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect(keys.mongodbURI);
 
 app.use(express.json());
+app.use(helmet());
 app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
   keys: [keys.cookieKey]
