@@ -1,6 +1,8 @@
 import React from 'react';
+import { Steps, Icon, Row, Col } from 'antd';
 import SignInButton from '../components/SignInButton';
 import moviesImage from '../images/movies.jpg';
+const { Step } = Steps;
 
 const styles = {
   container: {
@@ -8,12 +10,12 @@ const styles = {
     overflow: 'hidden',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
-    textAlign: 'center'
+    alignItems: 'center'
   },
   text: {
     color: '#ffffff',
-    marginBottom: '20px'
+    marginBottom: '20px',
+    textAlign: 'center'
   },
   textContainer: {
     zIndex: 1
@@ -21,9 +23,13 @@ const styles = {
   poster: {
     position: 'absolute',
     width: '100%',
-    height: '100vh',
+    height: '100%',
     backgroundImage: `url(${moviesImage})`,
     filter: 'blur(3px) brightness(0.3)'
+  },
+  buttonsContainer: {
+    textAlign: 'center',
+    marginTop: '1em'
   }
 };
 
@@ -34,7 +40,20 @@ const Home = () => {
       <div style={styles.textContainer}>
         <h1 style={styles.text}><span role='img' aria-label='popcorn'>🍿</span> Show Me The Movie</h1>
         <h3 style={styles.text}>Whether You Are Looking For Your Favorite Old Movies, Or In A Mood To Discover Something New, We Have It All</h3>
-        <SignInButton platforms={[ 'Google', 'Facebook' ]} />
+        <Row>
+          <Col xs={9} sm={9} md={24} lg={24} xl={24}>
+            <Steps size='small'>
+              <Step status='finish' title='Login' icon={<Icon type='user' />} />
+              <Step status='finish' title='Search' icon={<Icon type='search' style={{ color: '#00aca4' }} />} />
+              <Step status='finish' title='Like' icon={<Icon type='heart' style={{ color: '#d44700' }} />} />
+            </Steps>
+          </Col>
+          <Col xs={12} sm={12} md={24} lg={24} xl={24}>
+            <div style={styles.buttonsContainer}>
+              <SignInButton platforms={[ 'Google', 'Facebook' ]} />
+            </div>
+          </Col>
+        </Row>
       </div>
     </div>
   );
