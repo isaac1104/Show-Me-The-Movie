@@ -14,7 +14,7 @@ const Spinner = () => {
   return (
     <div style={styles.container}>
       <Fragment>
-        <div id='loader' />
+        <div className='loader' />
       </Fragment>
     </div>
   );
