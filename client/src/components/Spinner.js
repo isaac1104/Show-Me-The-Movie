@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 const Spinner = () => {
   const styles = {
@@ -13,9 +13,7 @@ const Spinner = () => {
 
   return (
     <div style={styles.container}>
-      <Fragment>
-        <div className='loader' />
-      </Fragment>
+      <div className='loader' />
     </div>
   );
 }
