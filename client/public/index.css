@@ -18,7 +18,7 @@ body {
   left: calc(50% - 4em);
   width: 6em;
   height: 6em;
-  border: 0.4em solid #ffffff;
+  border: 0.4em solid #f0f2f5;
   border-left: 0.4em solid #1890ff;
   border-radius: 50%;
   animation: animate 1s infinite linear;
