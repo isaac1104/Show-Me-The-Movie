@@ -28,7 +28,8 @@ passport.use(new GoogleStrategy({
   const user = await new User({
     googleId: profile.id,
     username: profile.displayName,
-    avatar: profile.photos[0].value || ''
+    avatar: profile.photos[0].value || '',
+    lastSignedIn: Date.now()
   }).save();
   done(null, user);
 }));
@@ -47,7 +48,8 @@ passport.use(new FacebookStrategy({
   const user = await new User({
     facebookId: profile.id,
     username: profile.displayName,
-    avatar: profile.photos[0].value || ''
+    avatar: profile.photos[0].value || '',
+    lastSignedIn: Date.now()
   }).save();
   done(null, user);
 }));
