@@ -116,7 +116,6 @@ class MovieDetail extends Component {
                   alt={data.original_title}
                   width='100%'
                   height='100%'
-                  applyAspectRatio
                 />
               ) : (
                 <div style={styles.noPoster}>

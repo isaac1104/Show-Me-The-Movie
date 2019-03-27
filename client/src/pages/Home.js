@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Avatar, Icon } from 'antd';
+import { Avatar, Icon, Typography } from 'antd';
 import { connect } from 'react-redux';
 import { fetchTrendingMovies } from '../actions';
 import MovieCarousel from '../components/MovieCarousel';
 import Spinner from '../components/Spinner';
+
+const { Title } = Typography;
 
 class Home extends Component {
   componentDidMount() {
@@ -19,8 +21,8 @@ class Home extends Component {
 
     return (
       <div>
-        <h1><Avatar src={avatar} /> Welcome, {username ? username.split(' ')[0] : 'Guest'}</h1>
-        <h1><a href='/search'><Icon type='search' /> Search</a> for a movie to get started!</h1>
+        <Title level={2}><Avatar src={avatar} /> Welcome, {username ? username.split(' ')[0] : 'Guest'}</Title>
+        <Title level={4}><a href='/search'><Icon type='search' /> Search</a> for a movie to get started!</Title>
         <h1>Here are today's top 20 trending movies</h1>
         <MovieCarousel
           type='search'
