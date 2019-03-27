@@ -30,6 +30,7 @@ class MovieCarousel extends Component {
       infinite: true,
       speed: 1500
     };
+    
     if (data && type === 'search') {
       const searchSettings = {
         ...settings,
@@ -79,17 +80,15 @@ class MovieCarousel extends Component {
         <Fragment>
           <Tag color={tagColor} style={{ marginTop: '15px' }}>{title}</Tag>
           <Slider {...searchSettings}>
-            {data.map(movie => {
-              return (
-                <div key={movie.id}>
-                  <MovieCard
-                    movie={movie}
-                    colWidth={'100%'}
-                    cardWidth={'90%'}
-                  />
-                </div>
-              );
-            })}
+            {data.map(movie => (
+              <div key={movie.id}>
+                <MovieCard
+                  movie={movie}
+                  colWidth={'100%'}
+                  cardWidth={'90%'}
+                />
+              </div>
+            ))}
           </Slider>
         </Fragment>
       );
@@ -201,16 +200,14 @@ class MovieCarousel extends Component {
           <Fragment>
             <h3>{title}</h3>
             <Slider {...setting}>
-              {data.map(movie => {
-                return (
-                  <div key={movie.id}>
-                    <MovieCard
-                      movie={movie}
-                      colWidth={'100%'}
-                    />
-                  </div>
-                );
-              })}
+              {data.map(movie => (
+                <div key={movie.id}>
+                  <MovieCard
+                    movie={movie}
+                    colWidth={'100%'}
+                  />
+                </div>
+              ))}
             </Slider>
           </Fragment>
         );
@@ -220,16 +217,14 @@ class MovieCarousel extends Component {
         <Fragment>
           <h3>{title}</h3>
           <Slider {...recSettings}>
-            {data.map(movie => {
-              return (
-                <div key={movie.id}>
-                  <MovieCard
-                    movie={movie}
-                    colWidth={'100%'}
-                  />
-                </div>
-              );
-            })}
+            {data.map(movie => (
+              <div key={movie.id}>
+                <MovieCard
+                  movie={movie}
+                  colWidth={'100%'}
+                />
+              </div>
+            ))}
           </Slider>
         </Fragment>
       );
