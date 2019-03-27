@@ -74,6 +74,7 @@ class MovieCarousel extends Component {
           }
         ]
       };
+
       return (
         <Fragment>
           <Tag color={tagColor} style={{ marginTop: '15px' }}>{title}</Tag>
@@ -145,24 +146,72 @@ class MovieCarousel extends Component {
           }
         ]
       };
+
       if (data.length === 0) {
         return <h3>Recommeded Movies: N/A</h3>;
       }
 
-      if (data.length <= 4) {
+      if (data.length < 4) {
+        const setting = {
+          ...settings,
+          slidesToShow: 3,
+          responsive: [
+            {
+              breakpoint: 1600,
+              settings: {
+                slidesToShow: 3
+              }
+            },
+            {
+              breakpoint: 1302,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1
+              }
+            },
+            {
+              breakpoint: 1199,
+              settings: {
+                slidesToShow: 3
+              }
+            },
+            {
+              breakpoint: 757,
+              settings: {
+                slidesToShow: 3,
+              }
+            },
+            {
+              breakpoint: 591,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1
+              }
+            },
+            {
+              breakpoint: 426,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+            }
+          ]
+        }
         return (
           <Fragment>
             <h3>{title}</h3>
-            {data.map(movie => {
-              return (
-                <div key={movie.id}>
+            <Slider {...setting}>
+              {data.map(movie => {
+                return (
+                  <div key={movie.id}>
                     <MovieCard
-                    movie={movie}
-                    colWidth={'25%'}
-                  />
-                </div>
-              );
-            })}
+                      movie={movie}
+                      colWidth={'100%'}
+                    />
+                  </div>
+                );
+              })}
+            </Slider>
           </Fragment>
         );
       }
