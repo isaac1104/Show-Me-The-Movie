@@ -1,6 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { Typography } from 'antd';
 import SignInButton from '../components/SignInButton';
+
+const { Title } = Typography;
 
 class PageNotFound extends Component {
   renderErrorMsg() {
@@ -25,8 +28,8 @@ class PageNotFound extends Component {
       return (
         <div style={styles.container}>
           <div>
-            <h1 style={styles.text}><span role='img' aria-label='stop'>🛑</span> Error: Page Not Found!</h1>
-            <h2 style={styles.text}>Please Navigate Using The Sidebar <span role='img' aria-label='point-left'>👈</span></h2>
+            <Title level={3} style={styles.text}><span role='img' aria-label='stop'>🛑</span> Error: Page Not Found!</Title>
+            <Title level={4} style={styles.text}>Please Navigate Using The Sidebar <span role='img' aria-label='point-left'>👈</span></Title>
           </div>
         </div>
       );
@@ -35,8 +38,8 @@ class PageNotFound extends Component {
     return (
       <div style={styles.container}>
         <div>
-          <h1 style={styles.text}><span role='img' aria-label='stop'>🛑</span> Error: Page Not Found!</h1>
-          <h2 style={styles.text}>Please Login First <span role='img' aria-label='point-down'>👇</span></h2>
+          <Title level={3} style={styles.text}><span role='img' aria-label='stop'>🛑</span> Error: Page Not Found!</Title>
+          <Title level={4} style={styles.text}>Please Login First <span role='img' aria-label='point-down'>👇</span></Title>
           <SignInButton platforms={[ 'Google', 'Facebook' ]} />
         </div>
       </div>

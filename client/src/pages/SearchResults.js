@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Row } from 'antd';
+import { Row, Typography } from 'antd';
 import { connect } from 'react-redux';
 import SearchForm from '../components/searchForms/SearchForm';
 import MovieCard from '../components/MovieCard';
@@ -7,6 +7,8 @@ import Spinner from '../components/Spinner';
 import MoviePagination from '../components/MoviePagination';
 import SortDropdown from '../components/SortDropdown';
 import { searchForMovies, resetMovieData, sortMovieData } from '../actions';
+
+const { Title } = Typography;
 
 class SearchResults extends Component {
   componentDidMount() {
@@ -39,7 +41,14 @@ class SearchResults extends Component {
         }
       };
 
-      return <h1 style={styles.text}><span role='img' aria-label='shrugg'>🤷‍</span> Hmm... Sorry, we couldn't find that. Please check for any spelling errors and try again!</h1>;
+      return (
+        <Title
+          level={3}
+          style={styles.text}
+        >
+          <span role='img' aria-label='shrugg'>🤷‍</span> Hmm... Sorry, we couldn't find that. Please check for any spelling errors and try again!
+        </Title>
+      );
     }
 
     if (!results) return null;
