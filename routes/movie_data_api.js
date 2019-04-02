@@ -20,10 +20,12 @@ module.exports = app => {
         axios.get(`https://api.themoviedb.org/3/movie/${req.query.id}/videos?api_key=${keys.tmdbApiKey}&language=en-US`),
         axios.get(`https://api.themoviedb.org/3/movie/${req.query.id}/recommendations?api_key=${keys.tmdbApiKey}&language=en-US&page=1`)
       ]);
-      const movieData = request[0].data;
-      const trailer = request[1].data.results[0];
-      const recommended = request[2].data;
-      res.status(200).send({ ...movieData, trailer, recommended });
+      const [ movieData, trailer, recommended ] = request;
+      res.status(200).send({
+        ...movieData.data,
+        trailer: trailer.data.results[0],
+        recommended: recommended.data
+      });
     } catch (e) {
       res.status(404).send(e);
     }
