@@ -1,7 +1,8 @@
 import React from 'react';
-import { Steps, Icon, Row, Col } from 'antd';
+import { Steps, Icon, Row, Col, Typography } from 'antd';
 import SignInButton from '../components/SignInButton';
 import moviesImage from '../images/movies.jpg';
+const { Title } = Typography;
 const { Step } = Steps;
 
 const styles = {
@@ -38,8 +39,8 @@ const Home = () => {
     <div style={styles.container} className='landing'>
       <div style={styles.poster}/>
       <div style={styles.textContainer}>
-        <h1 style={styles.text}><span role='img' aria-label='popcorn'>🍿</span> Show Me The Movie</h1>
-        <h3 style={styles.text}>Whether You Are Looking For Your Favorite Old Movies, Or In A Mood To Discover Something New, We Have It All</h3>
+        <Title level={2} style={styles.text}><span role='img' aria-label='popcorn'>🍿</span> Show Me The Movie</Title>
+        <Typography style={styles.text}>Whether You Are Looking For Your Favorite Old Movies, Or In A Mood To Discover Something New, We Have It All</Typography>
         <Row>
           <Col xs={9} sm={9} md={24} lg={24} xl={24}>
             <Steps size='small'>
