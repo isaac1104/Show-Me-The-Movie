@@ -13,7 +13,7 @@ require('./models/LikedMovies');
 require('./utils/passport');
 
 mongoose.Promise = global.Promise;
-mongoose.connect(keys.mongodbURI);
+mongoose.connect(keys.mongodbURI, { useNewUrlParser: true });
 
 app.use(express.json());
 app.use(helmet());
