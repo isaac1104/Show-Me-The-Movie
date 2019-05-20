@@ -2,11 +2,13 @@ import React, { Component, Fragment } from 'react';
 import Spinner from '../components/Spinner';
 import LikeIcon from '../components/LikeIcon';
 import MovieCarousel from '../components/MovieCarousel';
-import { Button, Col, Divider, Rate, Row, Tag, Icon, Modal, Empty, Popover } from 'antd';
+import { Button, Col, Divider, Rate, Row, Tag, Icon, Modal, Empty, Popover, Typography } from 'antd';
 import { SimpleImg } from 'react-simple-img';
 import ReactPlayer from 'react-player';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+
+const { Title } = Typography;
 
 class MovieDetail extends Component {
   state = {
@@ -127,7 +129,7 @@ class MovieDetail extends Component {
               )}
             </Col>
             <Col xs={24} sm={24} md={24} lg={24} xl={12}>
-              <h1>
+              <Title level={4}>
                 {data.trailer ? (
                   <Fragment>
                     <Popover content={'Trailer'}>
@@ -149,12 +151,12 @@ class MovieDetail extends Component {
                   saveLikedMovie={this.props.saveLikedMovie}
                   deleteLikedMovie={this.props.deleteLikedMovie}
                 />
-              </h1>
-              <h4>
+              </Title>
+              <h3>
                 Release Date: {data.release_date ? data.release_date : 'N/A'}
                 <Divider type='vertical'/>
                 Runtime: {data.runtime ? `${data.runtime} Min.` : 'N/A'}
-              </h4>
+              </h3>
               <div>
                 <Rate
                   allowHalf
@@ -169,8 +171,8 @@ class MovieDetail extends Component {
               </div>
               <Divider />
               <h3>Plot:</h3>
-              <p>{data.overview ? data.overview : 'N/A'}</p>
-              <p>{data.tagline ? `'${data.tagline}'` : ''}</p>
+              <Typography>{data.overview ? data.overview : 'N/A'}</Typography>
+              <Typography>{data.tagline ? `'${data.tagline}'` : ''}</Typography>
               <Divider />
               <MovieCarousel
                 type='recommendation'
