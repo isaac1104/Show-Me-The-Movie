@@ -6,20 +6,24 @@ const { Content } = Layout;
 
 class ContentLayout extends Component {
   state = {
-    averageColor: '255, 255, 255'
+    averageColor: {}
   }
 
   componentDidMount() {
     const { poster_path } = this.props.movie_data.data;
-    if (poster_path) {
+    const { pathname } = window.location;
+    if (pathname.includes('movie') && !pathname.includes('liked') && poster_path) {
       this.getPosterAverageColor(`https://image.tmdb.org/t/p/w500/${this.props.movie_data.data.poster_path}`);
     }
-    return this.setState({ averageColor: { r: 255, g: 255, b: 255 } });
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.movie_data.data.poster_path !== this.props.movie_data.data.poster_path) {
-      this.getPosterAverageColor(`https://image.tmdb.org/t/p/w500/${this.props.movie_data.data.poster_path}`);
+    const { poster_path } = this.props.movie_data.data;
+    const { pathname } = window.location;
+    if (prevProps.movie_data.data.poster_path !== poster_path) {
+      if (pathname.includes('movie') && !pathname.includes('liked') && poster_path) {
+        this.getPosterAverageColor(`https://image.tmdb.org/t/p/w500/${poster_path}`);
+      }
     }
   }
 
@@ -30,15 +34,15 @@ class ContentLayout extends Component {
   render() {
     const { r, g, b } = this.state.averageColor;
     const { pathname } = window.location;
-    console.log(pathname.includes('movie'));
     const style = {
       layout: {
-        backgroundColor: pathname === '/' ? 'transparent' : '#ffffff',
+        background: this.state.averageColor ? `rgb(${r}, ${g}, ${b})` : '#f0f2f5',
+        padding: 24,
         height: '100vh',
         overflow: 'hidden'
       },
       content: {
-        backgroundColor: pathname.includes('movie') && !pathname.includes('liked') ? `rgb(${r}, ${g}, ${b})` : '#ffffff',
+        backgroundColor: pathname === '/' ? 'transparent' : '#ffffff',
         padding: 24,
         margin: 0,
         width: '100%',
