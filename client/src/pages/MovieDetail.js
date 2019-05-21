@@ -31,7 +31,7 @@ class MovieDetail extends Component {
 
   componentWillUnmount() {
     this.props.resetMovieData();
-  };
+  }
 
   handleModalOpen = () => {
     this.setState({ visible: true });
