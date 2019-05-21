@@ -3,7 +3,6 @@ import { Button, Col, Divider, Rate, Row, Tag, Icon, Modal, Empty, Popover, Typo
 import { SimpleImg } from 'react-simple-img';
 import ReactPlayer from 'react-player';
 import { connect } from 'react-redux';
-import getAverageColor from 'get-average-color';
 import Spinner from '../components/Spinner';
 import LikeIcon from '../components/LikeIcon';
 import MovieCarousel from '../components/MovieCarousel';
@@ -13,25 +12,16 @@ const { Title } = Typography;
 
 class MovieDetail extends Component {
   state = {
-    visible: false,
-    averageColor: ''
+    visible: false
   };
 
   componentDidMount() {
-    const { poster_path } = this.props.movie_data.data;
-    if (poster_path) {
-      this.getPosterAverageColor(`https://image.tmdb.org/t/p/w500/${this.props.movie_data.data.poster_path}`);
-    }
     const { fetchMovieData, fetchLikedMovies, match: { params: { id } } } = this.props;
     fetchMovieData(id);
     fetchLikedMovies();
   };
 
   componentDidUpdate(prevProps) {
-    const { poster_path } = this.props.movie_data.data;
-    if (poster_path) {
-      this.getPosterAverageColor(`https://image.tmdb.org/t/p/w500/${this.props.movie_data.data.poster_path}`);
-    }
     const { fetchMovieData, fetchLikedMovies, match: { params: { id } } } = this.props;
     if (prevProps.match.params.id !== id) {
       fetchMovieData(id);
@@ -42,10 +32,6 @@ class MovieDetail extends Component {
   componentWillUnmount() {
     this.props.resetMovieData();
   };
-
-  getPosterAverageColor(src) {
-    return getAverageColor(src).then(rgb => this.setState({ averageColor: rgb }));
-  }
 
   handleModalOpen = () => {
     this.setState({ visible: true });
