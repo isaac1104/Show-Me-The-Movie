@@ -11,7 +11,9 @@ const movieDataReducer = (state = INITIAL_STATE, action) => {
     case REQUEST_MOVIE_DATA:
       return {
         ...state,
-        isFetching: action.payload
+        isFetching: action.payload,
+        data: '',
+        error: ''
       };
     case RECEIVE_MOVIE_DATA:
       return {
