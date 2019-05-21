@@ -21,10 +21,10 @@ class ContentLayout extends Component {
     const { poster_path } = this.props.movie_data.data;
     const { pathname } = window.location;
     if (prevProps.movie_data.data.poster_path !== poster_path) {
-      if (pathname.includes('movie') && !pathname.includes('liked')) {
+      if (pathname.includes('movie') && !pathname.includes('liked') && poster_path) {
         this.getPosterAverageColor(`https://image.tmdb.org/t/p/w500/${poster_path}`);
       }
-      if (!poster_path) {
+      if (poster_path === undefined) {
         this.setState({ averageColor: { r: 240 , g: 242, b: 255 } });
       }
     }
