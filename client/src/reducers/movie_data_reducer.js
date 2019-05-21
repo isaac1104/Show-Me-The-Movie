@@ -19,7 +19,7 @@ const movieDataReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         data: action.payload,
-        isFetching: false,
+        isFetching: true,
         error: ''
       };
     case REJECT_MOVIE_DATA:

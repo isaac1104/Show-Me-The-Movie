@@ -16,10 +16,10 @@ body {
   position: absolute;
   top: calc(50% - 4em);
   left: calc(50% - 4em);
-  width: 6em;
-  height: 6em;
-  border: 0.4em solid #f0f2f5;
-  border-left: 0.4em solid #1890ff;
+  width: 3em;
+  height: 3em;
+  border: 0.2em solid #ffffff;
+  border-left: 0.2em solid #1890ff;
   border-radius: 50%;
   animation: animate 1s infinite linear;
 }
