@@ -40,6 +40,7 @@ class ContentLayout extends Component {
     const style = {
       layout: {
         background: this.state.averageColor ? `rgb(${r}, ${g}, ${b})` : '#f0f2f5',
+        transition: 'background-color 0.5s ease',
         padding: 24,
         height: '100vh',
         overflow: 'hidden'
