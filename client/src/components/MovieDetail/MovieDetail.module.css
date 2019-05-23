@@ -1,0 +1,25 @@
+.MovieDetailColumn {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 1em 0 1em 0;
+}
+
+.MovieDetailPoster {
+  height: auto !important;
+  display: inline-block !important;
+}
+
+.MovieDetailNoPoster {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 680px;
+  width: 468px;
+  background-color: #f0f2f5;
+}
+
+.MovieDetailXIcon {
+  font-size: 5em;
+}

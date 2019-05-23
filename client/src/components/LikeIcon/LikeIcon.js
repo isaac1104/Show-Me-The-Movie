@@ -1,5 +1,6 @@
 import React from 'react';
 import { Icon, Rate } from 'antd';
+import classes from './LikedIcon.module.css';
 
 const LikeIcon = ({ likedMovies, movieData, deleteLikedMovie, saveLikedMovie }) => {
   const savedMovie = likedMovies.find(movie => movie.movieId === parseInt(movieData.id, 10));
@@ -9,24 +10,18 @@ const LikeIcon = ({ likedMovies, movieData, deleteLikedMovie, saveLikedMovie }) 
         character={<Icon type='heart' theme='filled' />}
         defaultValue={1}
         count={1}
-        style={{ color: 'red' }}
+        className={classes.LikedIcon}
         onChange={() => deleteLikedMovie(movieData.id)}
       />
     );
   }
-
-  const styles = {
-    likeIcon: {
-      color: 'red'
-    }
-  };
 
   return (
     <Rate
       character={<Icon type='heart' theme='filled' />}
       defaultValue={0}
       count={1}
-      style={styles.likeIcon}
+      className={classes.LikedIcon}
       onChange={() => saveLikedMovie({
         title: movieData.title,
         movieId: movieData.id,

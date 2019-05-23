@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Layout, Menu, Icon } from 'antd';
+import classes from './Sidebar.module.css';
+
 const { Sider } = Layout;
 
 class Sidebar extends Component {
@@ -20,34 +22,21 @@ class Sidebar extends Component {
 
   renderSidebar() {
     const { data } = this.props.current_user;
-    const styles = {
-      logout: {
-        position: 'absolute',
-        bottom: 0
-      },
-      sidebar: {
-        backgroundColor: '#202225'
-      },
-      menu: {
-        backgroundColor: '#202225'
-      }
-    };
-
     const menuItems = [
-      { path: 'home', icon: 'home', text: 'Home' },
-      { path: 'liked_movies', icon: 'heart', text: 'Liked' },
-      { path: 'search', icon: 'search', text: 'Search' },
-      { path: 'api/signout', icon: 'logout', text: 'Logout' }
+    { path: 'home', icon: 'home', text: 'Home' },
+    { path: 'liked_movies', icon: 'heart', text: 'Liked' },
+    { path: 'search', icon: 'search', text: 'Search' },
+    { path: 'api/signout', icon: 'logout', text: 'Logout' }
     ];
 
     if (data) {
       return (
-        <Sider breakpoint='xl' collapsedWidth='0' style={styles.sidebar}>
-          <Menu mode='inline' theme='dark' defaultSelectedKeys={this.highlightMenu()} style={styles.menu}>
+        <Sider breakpoint='xl' collapsedWidth='0' className={classes.Sidebar}>
+          <Menu mode='inline' theme='dark' defaultSelectedKeys={this.highlightMenu()} className={classes.SidebarMenu}>
             {menuItems.map(({ path, icon, text }, i) => {
               if (path === 'api/signout') {
                 return (
-                  <Menu.Item key={i} style={styles.logout}>
+                  <Menu.Item key={i} className={classes.SidebarLogoutButton}>
                     <a href={`/${path}`}>
                       <Icon type={icon} />
                       <span className='nav-text'>{text}</span>

@@ -1,0 +1,12 @@
+.Sidebar {
+  background-color: #202225;
+}
+
+.SidebarLogoutButton {
+  position: absolute !important;
+  bottom: 0 !important;
+}
+
+.SidebarMenu {
+  background-color: #202225;
+}

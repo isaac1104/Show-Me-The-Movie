@@ -1,0 +1,44 @@
+.LandingContainer {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 1s;
+}
+
+.LandingPoster {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  filter: blur(3px) brightness(0.3);
+}
+
+.LandingTextContainer {
+  z-index: 1;
+}
+
+.LandingButtonsContainer {
+  text-align: center;
+  margin-top: 1em;
+}
+
+.LandingText {
+  color: #ffffff !important;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

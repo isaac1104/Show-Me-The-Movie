@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import getAverageColor from 'get-average-color';
 import { Layout } from 'antd';
+import classes from './ContentLayout.module.css';
 const { Content } = Layout;
 
 class ContentLayout extends Component {
@@ -39,25 +40,17 @@ class ContentLayout extends Component {
     const { pathname } = window.location;
     const style = {
       layout: {
-        background: this.state.averageColor ? `rgb(${r}, ${g}, ${b})` : '#f0f2f5',
-        transition: 'background-color 0.5s ease',
-        padding: 24,
-        height: '100vh',
-        overflow: 'hidden'
+        background: this.state.averageColor ? `rgb(${r}, ${g}, ${b})` : '#f0f2f5'
       },
       content: {
         backgroundColor: pathname === '/' ? 'transparent' : '#ffffff',
-        padding: 24,
-        margin: 0,
-        width: '100%',
-        height: '100%',
         overflowY: pathname === '/' ? 'hidden' : 'scroll'
       }
     };
 
     return (
-      <Layout style={style.layout}>
-        <Content style={style.content}>
+      <Layout className={classes.Layout} style={style.layout}>
+        <Content className={classes.Content} style={style.content}>
           {this.props.children}
         </Content>
       </Layout>

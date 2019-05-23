@@ -2,11 +2,12 @@ import React, { Component, Fragment } from 'react';
 import { Row, Typography } from 'antd';
 import { connect } from 'react-redux';
 import SearchForm from '.././SearchForms/SearchForm';
-import MovieCard from '.././MovieCard';
+import MovieCard from '.././MovieCard/MovieCard';
 import Spinner from '.././Spinner/Spinner';
 import MoviePagination from '.././MoviePagination/MoviePagination';
 import SortDropdown from '.././SortDropdown/SortDropdown';
 import { searchForMovies, resetMovieData, sortMovieData } from '../../actions';
+import classes from './SearchResults.module.css';
 
 const { Title } = Typography;
 
@@ -34,17 +35,10 @@ class SearchResults extends Component {
     }
 
     if (results && results.length === 0) {
-      const styles = {
-        text: {
-          marginTop: '15px',
-          fontWeight: 'bold'
-        }
-      };
-
       return (
         <Title
           level={3}
-          style={styles.text}
+          className={classes.SearchResultsNotFoundText}
         >
           <span role='img' aria-label='shrugg'>🤷‍</span> Hmm... Sorry, we couldn't find that. Please check for any spelling errors and try again!
         </Title>
@@ -66,23 +60,13 @@ class SearchResults extends Component {
 
   render() {
     const { movie_data: { data, isFetching }, match: { params : { title, page } } } = this.props;
-    const styles = {
-      container: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center'
-      },
-      text: {
-        marginTop: '15px'
-      }
-    };
 
     return (
       <Fragment>
         <SearchForm />
         {isFetching ? null : (
-          <div style={styles.container}>
-            <h3 style={styles.text}>{data.total_results} Result(s) Found</h3>
+          <div className={classes.SearchResultsFound}>
+            <h3 className={classes.SearchResultsText}>{data.total_results} Result(s) Found</h3>
             <SortDropdown />
           </div>
         )}

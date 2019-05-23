@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import MovieCard from './MovieCard';
+import MovieCard from './MovieCard/MovieCard';
 import { Tag } from 'antd';
 import Slider from 'react-slick';
 
@@ -30,7 +30,7 @@ class MovieCarousel extends Component {
       infinite: true,
       speed: 1500
     };
-    
+
     if (data && type === 'search') {
       const searchSettings = {
         ...settings,

@@ -2,19 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Select } from 'antd';
 import { sortMovieData } from '../../actions';
+import classes from './SortDropdown.module.css';
+
 const { Option } = Select;
 
 class SortDropdown extends Component {
   render() {
-    const styles = {
-      select: {
-        width: 120
-      }
-    };
-
     return (
       <Select
-        style={styles.select}
+        className={classes.SortDropdown}
         placeholder='Sort By'
         onChange={value => this.props.sortMovieData(value)}
       >

@@ -7,6 +7,7 @@ import Spinner from '.././Spinner/Spinner';
 import LikeIcon from '.././LikeIcon/LikeIcon';
 import MovieCarousel from '.././MovieCarousel';
 import * as actions from '../../actions';
+import classes from './MovieDetail.module.css';
 
 const { Title } = Typography;
 
@@ -77,30 +78,6 @@ class MovieDetail extends Component {
     }
 
     if (data && data.recommended) {
-      const styles = {
-        column: {
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'flex-start',
-          margin: '1em 0 1em 0'
-        },
-        noPoster: {
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          textAlign: 'center',
-          height: '680px',
-          width: '468px',
-          backgroundColor: '#f0f2f5'
-        },
-        xIcon: {
-          fontSize: '5em'
-        },
-        text: {
-          fontSize: '1em'
-        }
-      };
-
       return (
         <Fragment>
           <Button
@@ -111,19 +88,19 @@ class MovieDetail extends Component {
             onClick={() => this.props.history.goBack()}
           />
           <Row type='flex' gutter={16}>
-            <Col xs={24} sm={24} md={24} lg={24} xl={10} style={styles.column}>
+            <Col xs={24} sm={24} md={24} lg={24} xl={10} className={classes.MovieDetailColumn}>
               {data.poster_path ? (
                 <SimpleImg
-                  className='movie-poster'
+                  className={classes.MovieDetailPoster}
                   src={`https://image.tmdb.org/t/p/w500/${data.poster_path}`}
                   alt={data.original_title}
                   width='100%'
                   height='100%'
                 />
               ) : (
-                <div style={styles.noPoster}>
+                <div className={classes.MovieDetailNoPoster}>
                   <Empty
-                    image={<Icon type='picture' style={styles.xIcon} />}
+                    image={<Icon type='picture' className={classes.MovieDetailXIcon} />}
                     description='Poster Not Available'
                   />
                 </div>

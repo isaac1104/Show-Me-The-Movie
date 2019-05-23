@@ -1,0 +1,14 @@
+.SearchResultsNotFoundText {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.SearchResultsFound {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.SearchResultsText {
+  margin-top: 15px;
+}

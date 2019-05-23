@@ -2,45 +2,23 @@ import React from 'react';
 import { Steps, Icon, Row, Col, Typography } from 'antd';
 import SignInButton from '../SignInButton';
 import moviesImage from '../../images/movies.jpg';
+import classes from './Landing.module.css';
 const { Title } = Typography;
 const { Step } = Steps;
 
 const styles = {
-  container: {
-    height: '100%',
-    overflow: 'hidden',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  text: {
-    color: '#ffffff',
-    marginBottom: '20px',
-    textAlign: 'center'
-  },
-  textContainer: {
-    zIndex: 1
-  },
   poster: {
-    position: 'absolute',
-    width: '100%',
-    height: '100vh',
-    backgroundImage: `url(${moviesImage})`,
-    filter: 'blur(3px) brightness(0.3)'
-  },
-  buttonsContainer: {
-    textAlign: 'center',
-    marginTop: '1em'
+    backgroundImage: `url(${moviesImage})`
   }
 };
 
 const Home = () => {
   return (
-    <div style={styles.container} className='landing'>
-      <div style={styles.poster}/>
-      <div style={styles.textContainer}>
-        <Title level={2} style={styles.text}><span role='img' aria-label='popcorn'>🍿</span> Show Me The Movie</Title>
-        <Typography style={styles.text}>Whether You Are Looking For Your Favorite Old Movies, Or In A Mood To Discover Something New, We Have It All</Typography>
+    <div className={classes.LandingContainer}>
+      <div className={classes.LandingPoster} style={styles.poster} />
+      <div className={classes.LandingTextContainer}>
+        <Title level={2} className={classes.LandingText}><span role='img' aria-label='popcorn'>🍿</span> Show Me The Movie</Title>
+        <Typography className={classes.LandingText}>Whether You Are Looking For Your Favorite Old Movies, Or In A Mood To Discover Something New, We Have It All</Typography>
         <Row>
           <Col xs={9} sm={9} md={24} lg={24} xl={24}>
             <Steps size='small'>
@@ -50,7 +28,7 @@ const Home = () => {
             </Steps>
           </Col>
           <Col xs={12} sm={12} md={24} lg={24} xl={24}>
-            <div style={styles.buttonsContainer}>
+            <div className={classes.LandingButtonsContainer}>
               <SignInButton platforms={[ 'Google', 'Facebook' ]} />
             </div>
           </Col>

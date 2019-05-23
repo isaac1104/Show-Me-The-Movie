@@ -1,23 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Divider, Icon, Layout } from 'antd';
+import classes from './FooterNav.module.css';
 const { Footer } = Layout;
 
 class FooterNav extends Component {
   renderFooter() {
     const { data } = this.props.current_user;
-    const style = {
-      textAlign: 'center',
-      position: 'fixed',
-      width: '100%',
-      bottom: 0,
-      backgroundColor: '#202225',
-      color: '#fff'
-    };
-
     if (!data) {
       return (
-        <Footer style={style}>
+        <Footer className={classes.FooterNav}>
           {`Show Me The Movie ©${new Date().getFullYear()} by Isaac Kwon`}
           <Divider type='vertical'/>
           <a href='https://github.com/isaac1104'>

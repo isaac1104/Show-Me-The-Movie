@@ -1,18 +1,12 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Pagination } from 'antd';
+import classes from './MoviePagination.module.css';
 
 const MoviePagination = ({ data, title, page, history }) => {
-  if (!data) return null;
-  const styles = {
-    pagination: {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginTop: '15px'
-    }
-  };
-
+  if (!data) {
+    return null;
+  }
   return (
     <Pagination
       defaultPageSize={20}
@@ -20,7 +14,7 @@ const MoviePagination = ({ data, title, page, history }) => {
       hideOnSinglePage
       total={data.total_results}
       onChange={page => history.push(`/search/${title}/${page}`)}
-      style={styles.pagination}
+      className={classes.MoviePagination}
     />
   );
 };

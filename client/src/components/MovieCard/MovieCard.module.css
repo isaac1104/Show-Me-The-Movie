@@ -1,0 +1,14 @@
+.MovieCard {
+  height: 100%;
+  margin: auto;
+}
+
+.MovieCardCol {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.MovieCardRate {
+  font-size: 12px;
+  margin-top: 10px;
+}

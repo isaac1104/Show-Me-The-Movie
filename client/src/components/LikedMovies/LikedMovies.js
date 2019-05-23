@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Spinner from '.././Spinner/Spinner';
-import MovieCard from '.././MovieCard';
+import MovieCard from '.././MovieCard/MovieCard';
 import { connect } from 'react-redux';
 import { Button, Empty, Icon, Row } from 'antd';
 import { fetchLikedMovies } from '../../actions';
+import classes from './LikedMovies.module.css';
 
 class LikedMovies extends Component {
   componentDidMount() {
@@ -12,23 +13,13 @@ class LikedMovies extends Component {
 
   renderLikedMovies() {
     const { isFetching, data } = this.props.liked_movies;
-    const styles = {
-      container: {
-        height: '90vh',
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }
-    };
-
     if (isFetching) {
       return <Spinner />;
     }
 
     if (data.length === 0) {
       return (
-        <div style={styles.container}>
+        <div className={classes.LikedMoviesContainer}>
           <Empty
             description={`You don't have any liked movies.`}
           >
