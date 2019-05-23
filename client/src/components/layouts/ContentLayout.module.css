@@ -1,6 +1,6 @@
 .Layout {
   transition: background-color 0.5s ease;
-  padding: 24px;
+  padding: 18px;
   height: 100vh;
   overflow: hidden;
 }
