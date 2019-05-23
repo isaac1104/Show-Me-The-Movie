@@ -173,7 +173,8 @@ class MovieDetail extends Component {
               <Divider />
               <h3>Plot:</h3>
               <Typography>{data.overview ? data.overview : 'N/A'}</Typography>
-              <Typography>{data.tagline ? `'${data.tagline}'` : ''}</Typography>
+              <div>&nbsp;</div>
+              <Typography><i>{data.tagline ? `'${data.tagline}'` : ''}</i></Typography>
               <Divider />
               <MovieCarousel
                 type='recommendation'
