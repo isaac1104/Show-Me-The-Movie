@@ -3,7 +3,7 @@ import { Avatar, Icon, Typography } from 'antd';
 import { connect } from 'react-redux';
 import { fetchTrendingMovies } from '../actions';
 import MovieCarousel from '../components/MovieCarousel';
-import Spinner from '../components/Spinner';
+import Spinner from '../components/Spinner/Spinner';
 
 const { Title } = Typography;
 

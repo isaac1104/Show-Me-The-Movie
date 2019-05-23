@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import { Row, Typography } from 'antd';
 import { connect } from 'react-redux';
-import SearchForm from '../components/searchForms/SearchForm';
-import MovieCard from '../components/MovieCard';
-import Spinner from '../components/Spinner';
-import MoviePagination from '../components/MoviePagination';
-import SortDropdown from '../components/SortDropdown';
-import { searchForMovies, resetMovieData, sortMovieData } from '../actions';
+import SearchForm from '.././SearchForms/SearchForm';
+import MovieCard from '.././MovieCard';
+import Spinner from '.././Spinner/Spinner';
+import MoviePagination from '.././MoviePagination/MoviePagination';
+import SortDropdown from '.././SortDropdown/SortDropdown';
+import { searchForMovies, resetMovieData, sortMovieData } from '../../actions';
 
 const { Title } = Typography;
 

@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Typography } from 'antd';
-import SignInButton from '../components/SignInButton';
+import SignInButton from '.././SignInButton';
 
 const { Title } = Typography;
 

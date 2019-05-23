@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Spinner from '../components/Spinner';
-import MovieCard from '../components/MovieCard';
+import Spinner from '.././Spinner/Spinner';
+import MovieCard from '.././MovieCard';
 import { connect } from 'react-redux';
 import { Button, Empty, Icon, Row } from 'antd';
-import { fetchLikedMovies } from '../actions';
+import { fetchLikedMovies } from '../../actions';
 
 class LikedMovies extends Component {
   componentDidMount() {

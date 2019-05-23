@@ -1,7 +1,7 @@
 import React from 'react';
 import { Steps, Icon, Row, Col, Typography } from 'antd';
-import SignInButton from '../components/SignInButton';
-import moviesImage from '../images/movies.jpg';
+import SignInButton from '../SignInButton';
+import moviesImage from '../../images/movies.jpg';
 const { Title } = Typography;
 const { Step } = Steps;
 

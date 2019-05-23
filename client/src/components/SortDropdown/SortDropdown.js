@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Select } from 'antd';
-import { sortMovieData } from '../actions';
+import { sortMovieData } from '../../actions';
 const { Option } = Select;
 
 class SortDropdown extends Component {

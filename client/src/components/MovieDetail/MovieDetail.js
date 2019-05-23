@@ -3,10 +3,10 @@ import { Button, Col, Divider, Rate, Row, Tag, Icon, Modal, Empty, Popover, Typo
 import { SimpleImg } from 'react-simple-img';
 import ReactPlayer from 'react-player';
 import { connect } from 'react-redux';
-import Spinner from '../components/Spinner';
-import LikeIcon from '../components/LikeIcon';
-import MovieCarousel from '../components/MovieCarousel';
-import * as actions from '../actions';
+import Spinner from '.././Spinner/Spinner';
+import LikeIcon from '.././LikeIcon/LikeIcon';
+import MovieCarousel from '.././MovieCarousel';
+import * as actions from '../../actions';
 
 const { Title } = Typography;
 

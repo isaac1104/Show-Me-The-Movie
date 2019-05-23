@@ -5,18 +5,18 @@ import { connect } from 'react-redux';
 import { fetchCurrentUser } from '../actions';
 import ScrollToTop from './utils/ScrollToTop';
 import requireAuth from './utils/requireAuth';
-import ContentLayout from './layouts/ContentLayout';
-import Sidebar from './Sidebar';
-import FooterNav from './FooterNav';
-import Spinner from './Spinner';
+import ContentLayout from './Layouts/ContentLayout';
+import Sidebar from './Sidebar/Sidebar';
+import FooterNav from './FooterNav/FooterNav';
+import Spinner from './Spinner/Spinner';
 
-const Landing = lazy(() => import('../pages/Landing'));
-const Home = lazy(() => import('../pages/Home'));
-const MovieDetail = lazy(() => import('../pages/MovieDetail'));
-const LikedMovies = lazy(() => import('../pages/LikedMovies'));
-const Search = lazy(() => import('../pages/Search'));
-const SearchResults = lazy(() => import('../pages/SearchResults'));
-const PageNotFound = lazy(() => import('../pages/PageNotFound'));
+const Landing = lazy(() => import('./Landing/Landing'));
+const Home = lazy(() => import('./Home'));
+const MovieDetail = lazy(() => import('./MovieDetail/MovieDetail'));
+const LikedMovies = lazy(() => import('./LikedMovies/LikedMovies'));
+const Search = lazy(() => import('./Search'));
+const SearchResults = lazy(() => import('./SearchResults/SearchResults'));
+const PageNotFound = lazy(() => import('./PageNotFound/PageNotFound'));
 
 class App extends Component {
   componentDidMount() {
