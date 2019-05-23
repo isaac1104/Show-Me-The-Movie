@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { fetchCurrentUser } from '../actions';
 import ScrollToTop from './utils/ScrollToTop';
 import requireAuth from './utils/requireAuth';
-import ContentLayout from './Layouts/ContentLayout';
+import ContentLayout from './ContentLayout/ContentLayout';
 import Sidebar from './Sidebar/Sidebar';
 import FooterNav from './FooterNav/FooterNav';
 import Spinner from './Spinner/Spinner';
