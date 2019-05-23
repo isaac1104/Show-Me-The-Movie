@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "Mern Boilerplate",
   "main": "server.js",
-  "engines": {
-    "node": "11.2.0",
-    "npm": "6.4.1"
-  },
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
