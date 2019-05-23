@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Row, Typography } from 'antd';
 import { connect } from 'react-redux';
-import SearchForm from '.././SearchForms/SearchForm';
+import SearchForm from '.././SearchForm/SearchForm';
 import MovieCard from '.././MovieCard/MovieCard';
 import Spinner from '.././Spinner/Spinner';
 import MoviePagination from '.././MoviePagination/MoviePagination';
