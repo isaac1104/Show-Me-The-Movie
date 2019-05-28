@@ -34,12 +34,8 @@ class MovieDetail extends Component {
     this.props.resetMovieData();
   }
 
-  handleModalOpen = () => {
-    this.setState({ visible: true });
-  }
-
-  handleModalClose = () => {
-    this.setState({ visible: false });
+  toggleTrailerModal = () => {
+    this.setState({ visible: !this.state.visible });
   }
 
   renderTrailerModal() {
@@ -51,10 +47,10 @@ class MovieDetail extends Component {
           visible={this.state.visible}
           width={1040}
           closable={false}
-          onCancel={this.handleModalClose}
+          onCancel={this.toggleTrailerModal}
           destroyOnClose
           footer={[
-            <Button key='close' onClick={this.handleModalClose}>Close</Button>
+            <Button key='close' onClick={this.toggleTrailerModal}>Close</Button>
           ]}
         >
           <ReactPlayer
@@ -114,7 +110,7 @@ class MovieDetail extends Component {
                       <Icon
                         type='video-camera'
                         theme='twoTone'
-                        onClick={this.handleModalOpen}
+                        onClick={this.toggleTrailerModal}
                       />
                     </Popover>
                     <Divider type='vertical' />
