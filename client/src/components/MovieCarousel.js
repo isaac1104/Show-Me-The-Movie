@@ -27,7 +27,7 @@ class MovieCarousel extends Component {
       arrows: false,
       draggable: false,
       autoplay: true,
-      infinite: true,
+      infinite: data.length > 4,
       speed: 1500
     };
 
