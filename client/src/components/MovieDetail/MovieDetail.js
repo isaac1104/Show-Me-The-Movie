@@ -3,6 +3,7 @@ import { Button, Col, Divider, Rate, Row, Tag, Icon, Modal, Empty, Popover, Typo
 import { SimpleImg } from 'react-simple-img';
 import ReactPlayer from 'react-player';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 import Spinner from '.././Spinner/Spinner';
 import LikeIcon from '.././LikeIcon/LikeIcon';
 import MovieCarousel from '.././MovieCarousel';
@@ -94,13 +95,13 @@ class MovieDetail extends Component {
                   height='100%'
                 />
               ) : (
-                <div className={classes.MovieDetailNoPoster}>
-                  <Empty
-                    image={<Icon type='picture' className={classes.MovieDetailXIcon} />}
-                    description='Poster Not Available'
-                  />
-                </div>
-              )}
+                  <div className={classes.MovieDetailNoPoster}>
+                    <Empty
+                      image={<Icon type='picture' className={classes.MovieDetailXIcon} />}
+                      description='Poster Not Available'
+                    />
+                  </div>
+                )}
             </Col>
             <Col xs={24} sm={24} md={24} lg={24} xl={12}>
               <Title level={4}>
@@ -115,7 +116,7 @@ class MovieDetail extends Component {
                     </Popover>
                     <Divider type='vertical' />
                   </Fragment>
-                ): null}
+                ) : null}
                 {this.renderTrailerModal()}
                 {data.title}
                 <Divider type='vertical' />
@@ -128,7 +129,7 @@ class MovieDetail extends Component {
               </Title>
               <h3>
                 Release Date: {data.release_date ? data.release_date : 'N/A'}
-                <Divider type='vertical'/>
+                <Divider type='vertical' />
                 Runtime: {data.runtime ? `${data.runtime} Min.` : 'N/A'}
               </h3>
               <div>
@@ -163,9 +164,24 @@ class MovieDetail extends Component {
     return null;
   };
 
+  renderDocumentTitle() {
+    const { data } = this.props.movie_data;
+
+    if (data) {
+      return (
+        <Helmet>
+          <title>{data.title}</title>
+        </Helmet>
+      );
+    }
+
+    return null;
+  }
+
   render() {
     return (
       <Fragment>
+        {this.renderDocumentTitle()}
         {this.renderMovieDetail()}
       </Fragment>
     );
