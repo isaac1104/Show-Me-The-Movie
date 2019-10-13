@@ -33,6 +33,7 @@ class MovieDetail extends Component {
 
   componentWillUnmount() {
     this.props.resetMovieData();
+    document.title = 'Show Me The Movie';
   }
 
   toggleTrailerModal = () => {
