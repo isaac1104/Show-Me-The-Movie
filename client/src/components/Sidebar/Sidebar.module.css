@@ -1,4 +1,5 @@
-.Sidebar {
+.Sidebar,
+.SidebarMenu {
   background-color: #202225;
 }
 
@@ -7,6 +8,10 @@
   bottom: 0 !important;
 }
 
-.SidebarMenu {
-  background-color: #202225;
+.MenuItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: auto !important;
 }
