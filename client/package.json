@@ -1,9 +1,6 @@
 {
   "name": "show-me-the-movie",
   "version": "0.1.0",
-  "engines": {
-    "node": "14.5.0"
-  },
   "private": true,
   "dependencies": {
     "antd": "^3.23.2",
