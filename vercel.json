@@ -2,7 +2,5 @@
   "version": 2,
   "name": "show-me-the-movie",
   "outputDirectory": "/client/build",
-  "rewrites": [
-     { "source": "/(.*)", "destination": "/server.js" }
-  ]
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
