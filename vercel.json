@@ -2,7 +2,7 @@
   "version": 2,
   "name": "show-me-the-movie",
   "outputDirectory": "/client/build",
-  "routes": [
+  "redirects": [
      { "src": "/(.*)", "dest": "/server.js" }
   ]
 }
