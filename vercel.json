@@ -1,9 +1,7 @@
 {
   "version": "1.0.0",
   "name": "show-me-the-movie",
-  "builds": [
-     { "src": "/client/build", "use": "@vercel/node" }
-  ],
+  "outputDirectory": "/client/build",
   "routes": [
      { "src": "/(.*)", "dest": "/server.js" }
   ]
