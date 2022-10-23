@@ -2,5 +2,17 @@
   "version": 2,
   "name": "show-me-the-movie",
   "outputDirectory": "/client/build",
-  "rewrites": [{ "source": "/(.*)", "destination": "server.js" }]
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api" },
+    { "source": "/auth/google", "destination": "/auth/google" },
+    {
+      "source": "/auth/google/callback",
+      "destination": "/auth/google/callback"
+    },
+    { "source": "/auth/facebook", "destination": "/auth/facebook" },
+    {
+      "source": "/auth/facebook/callback",
+      "destination": "/auth/facebook/callback"
+    }
+  ]
 }
