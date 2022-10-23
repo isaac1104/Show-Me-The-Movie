@@ -3,6 +3,6 @@
   "name": "show-me-the-movie",
   "outputDirectory": "/client/build",
   "rewrites": [
-     { "src": "/(.*)", "dest": "/server.js" }
+     { "source": "/(.*)", "destination": "/server.js" }
   ]
 }
