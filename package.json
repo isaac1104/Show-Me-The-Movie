@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Show Me The Movie is a fun web app that lets you search for your favorite movies, get details, and like those movies for you to access them later.",
   "main": "server.js",
-  "engines": {
-    "node": "14.5.0"
-  },
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
