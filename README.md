@@ -35,4 +35,4 @@ Show Me The Movie is a fun web app that lets you search for your favorite movies
 2. Redux
 3. MongoDB
 4. Node
-5. Express 
+5. Express
