@@ -1,18 +1,15 @@
 {
   "version": 2,
   "name": "show-me-the-movie",
-  "outputDirectory": "/client/build",
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api" },
-    { "source": "/auth/google", "destination": "/auth/google" },
+  "builds": [
     {
-      "source": "/auth/google/callback",
-      "destination": "/auth/google/callback"
+      "src": "./server.js",
+      "use": "@vercel/node"
     },
-    { "source": "/auth/facebook", "destination": "/auth/facebook" },
     {
-      "source": "/auth/facebook/callback",
-      "destination": "/auth/facebook/callback"
+      "src": "./client/build",
+      "use": "@vercel/static"
     }
-  ]
+  ],
+  "rewrites": [{ "source": "/(.*)", "destination": "./server.js" }]
 }
